@@ -16,6 +16,8 @@ index.html
 *.blg
 *.run.xml
 *.tdo
+*.fls
+*.fdb_latexmk
 all.pdf
 title.pdf
 towers.pdf

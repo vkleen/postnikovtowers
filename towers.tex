@@ -11,7 +11,7 @@
 \tableofcontents
 }
 
-\section{Moore--Postnikov Factorizations as Truncation Functors}
+\section{Truncated and Connected Morphisms}
 Most of the material in this section is due to \cite{mr2522659} and \cite{rezkhomotopytoposes}. For the benefit of the reader\footnote{and for our own benefit} we try to elaborate on results whose proofs are only sketched in these references.
 
 \begin{definition}\label{defn:truncated_simp}
@@ -21,6 +21,10 @@ Most of the material in this section is due to \cite{mr2522659} and \cite{rezkho
 \begin{definition}\label{defn:truncated_object}
   Let \(\mathbf{M}\) be a combinatorial simplicial model category. An object \(X\in\mathbf{M}\) is called \emph{\(k\)--truncated} (\(k\geq -1\)) if for all objects \(Y\in\mathbf{M}\) the derived mapping space \(\RHom(Y,X)\) is a \(\pi\)--\(k\)--truncated simplicial set. A morphism \(f\colon Y\to X\) in \(\mathbf{M}\) is called \emph{\(k\)--truncated} if for all objects \(Z\in\mathbf{M}\) the induced morphism \(f_{*}\colon \RHom(Z,Y)\to\RHom(Z,X)\) is \(\pi\)--\(k\)--truncated.
 \end{definition}
+
+\begin{remark}
+  An object \(X\in\mathbf M\) is \(k\)--truncated if and only if the morphism \(X\to *\) is \(k\)--truncated.
+\end{remark}
 
 As a matter of convention, an object \(X\) will be called \((-2)\)--truncated if it is contractible and a morphism \(f\colon Y\to X\) will be called \((-2)\)--truncated if it is a weak equivalence.
 
@@ -69,14 +73,22 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
 \end{proof}
 
 \begin{definition}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\).
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\). We will sometimes write \(\disc(\mathbf M) = \mathbf{M}|_{\leq 0}\)
 \end{definition}
 
-\begin{proposition}\label{prop:truncated-objects-limits}
-  The full subcategory \(\mathbf{M}|_{{\leq} k}\) is stable under homotopy limits.
+\begin{proposition}\label{prop:truncated-objects-exact-functors}
+  Let \(F\colon \mathbf{M}\to\mathbf{N}\) be a homotopical functor between combinatorial simplicial model categories that preserves homotopy pullbacks; that is, \(F(f)\) is a weak equivalence in \(\mathbf N\) for every weak equivalence in \(f\) in \(\mathbf M\) and the image under \(F\) of any homotopy pullback square in \(\mathbf M\) is a homotopy pullback square in \(\mathbf N\). Then \(F\) preserves \(k\)--truncated morphisms for any \(k\) and consequently restricts to a functor \(F\colon \mathbf M|_{\leq k}\to\mathbf N|_{\leq k}\).
 \end{proposition}
 \begin{proof}
-  \viktor{Write up the proof of \autoref{prop:truncated-objects-limits}}
+  Since \(F\) is homotopical, by definition it preserves \((-2)\)--truncated morphisms. Let \(k\geq -2\) and suppose by induction that \(F\) preserves \(n\)--truncated morphisms for \(n<k\). Let \(f\colon Y\to X\) be \(k\)--truncated in \(\mathbf M\). By \autoref{cor:general-diagonal-truncated} the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated and by induction \(F(\Delta_{f})\) is \((k-1)\)--truncated. Since \(F\) preserves homotopy pullbacks \(F(\Delta_{f})\) is weakly equivalent to \(\Delta_{F(f)}\). Again by \autoref{cor:general-diagonal-truncated} we conclude that \(F(f)\) is \(k\)--truncated.
+\end{proof}
+
+
+\begin{corollary}\label{cor:truncated-objects-limits}
+  The full subcategory \(\mathbf{M}|_{{\leq} k}\) is stable under homotopy limits.
+\end{corollary}
+\begin{proof}
+  Forming homotopy limits is an example of a homotopical functor which preserves homotopy pullbacks.
 \end{proof}
 
 \begin{theorem}\label{thm:truncated-model-structure-exists}
@@ -123,8 +135,12 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
 \begin{definition}
   Let \(k\geq -2\) and \(f\colon X\to Y\) be a morphism in \(\mathbf M\). If for all \(Z\in\mathbf M|_{\leq k}\) the induced map
   \[f^{*}\colon \RHom_{\mathbf M}(Y, Z) \to \RHom_{\mathbf M}(X, Z)\]
-  is a weak equivalence of simplicial sets, \(f\) will be a called a \emph{\(k\)--equivalence}. We write \(X\simeq_{\leq k} Y\).
+  is a weak equivalence of simplicial sets, \(f\) will be a called \emph{\(k\)--connected} or a \emph{\(k\)--equivalence}. We write \(X\simeq_{\leq k} Y\).
 \end{definition}
+
+\begin{remark}
+  Observe that every morphism is \((-2)\)--connected. A \((-1)\)--connected morphism is also called an \emph{effective epimorphism}.
+\end{remark}
 
 \begin{corollary}\label{cor:weak-equiv-level}
   The model category \(\mathbf M_{\leq k}\) is the left Bousfield localization of \(\mathbf M\) with respect to the collection of all \(k\)--equivalences.
@@ -160,6 +176,33 @@ whenever \(Y\) is \(k\)--truncated.
   \end{align*}
   It follows that \(\trunc{n}\trunc{m}X\simeq \trunc{n}X\).
 \end{proof}
+
+For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf M/X\) is again a combinatorial simplicial model category. Hence, by the above, it has truncation functors which we will denote by \(\trunc{k}^{X}\). Observe that an object \(f\colon Y\to X\) in \(\mathbf M/X\) is \(k\)--truncated if and only if \(f\) is a \(k\)--truncated morphism in \(\mathbf M\). Indeed, for any \(g\colon Z\to X\) we have a weak equivalence
+\[\RHom_{\mathbf M/X}(g, f)\simeq \RHom_{\mathbf M}(Y, X)\times^{h}_{\RHom_{\mathbf M}(Z, X)} \{g\}.\]
+
+\section{Homotopy Sheaves}
+
+Given a space \(X\) in classical homotopy theory one can always choose a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) = [S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\) the group structure comes from the usual cogroup structure on \(S^{n}\): the multiplication is induced by precomposition with the \enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
+
+The main difficulty in working with homotopy groups in more general homotopy theories is that for various purposes restricting one's attention to pointed spaces is not good enough. This phenomenon is entirely analogous to the observation that a sheaf of sets on a topological space need not have any global section! For example, the sheaf of local sections of a torsor on a topological space has a global section if and only if the torsor is trivial. One could now imagine working with a more general notion of basepoint for objects in an arbitrary model category; for example, for simplicial sheaves there certainly exist sections over small enough open sets. But doing so amounts to choosing a presentation of a combinatorial model category in the sense of \cite{mr1870516}.
+
+In light of these considerations we will attempt to treat all possible basepoints at the same time. Let us first spell out the case of simplicial sets. Let \(X\) be some simplicial set (connected or not). Choose some simplicial model \(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that the homotopy fiber of \(p\) over some point \(x\in X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the connected components of this homotopy fiber is precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible basepoints. This motivates the definition of homotopy sheaves in any combinatorial simplicial model category.
+
+\begin{definition}
+  Let \(\mathbf M\) be a combinatorial simplicial model category and let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\) homotopy sheaf} of \(X\) is the object \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf M/X)\).
+\end{definition}
+
+Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves \(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
+
+\begin{proposition}
+  Given maps \(f\colon X\to Y\) and \(g\colon Y\to X\) there is a long exact sequence
+  \[
+  \cdots \to f^{*}\pi_{n+1}(g) \to \pi_{n}(f) \to \pi_{n}(g\circ f) \to f^{*}\pi_{n}(g) \to \cdots
+  \]
+  of pointed objects in \(\disc(\mathbf M/X)\)
+\end{proposition}
+
+\section{Postnikov Towers}
 
 Using truncation functors we can define Postnikov towers in any combinatorial simplicial model category. Recall that a \emph{tower} in \(\mathbf M\) is a diagram of the form
 \[\cdots \to X_{n+1}\to X_{n}\to X_{n-1}\to \cdots \to X_{0} \]
