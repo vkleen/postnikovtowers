@@ -163,7 +163,7 @@ for \(\mathbf M_{\leq k}\). The functor \(\trunc{k}\) is called the \emph{\(k\te
 \[X\to \trunc{k} X\to *,\]
 the first one being an acyclic cofibration in \(\mathbf{M}_{\leq k}\) and the second one being a fibration in \(\mathbf{M}_{\leq k}\). \Autoref{cor:weak-equiv-level} implies that there are natural weak equivalences
 \[\RHom_{\mathbf M_{\leq k}}(\trunc{k} X, Y)\simeq \RHom_{\mathbf M}(\trunc{k} X, Y) \simeq \RHom_{\mathbf M}(X, Y)\]
-whenever \(Y\) is \(k\)--truncated.
+whenever \(Y\) is \(k\)--truncated. Concretely, every morphism \(f\colon X\to Y\) factors up to weak equivalence as morphisms \(X\to \trunc{k}X\to Y\) if \(Y\) is \(k\)--truncated.
 
 \begin{corollary}
   Given \(n \leq m\), for any \(X\in\mathbf M\) there is a natural weak equivalence \(\trunc{n}\trunc{m} X \simeq \trunc{n} X\) in \(\mathbf M\). In particular, \(\trunc{n}X\) is weakly equivalent to the \(n\textsuperscript{th}\) truncation of \(\tau_{m}X\) for every \(m\geq n\).
@@ -180,26 +180,104 @@ whenever \(Y\) is \(k\)--truncated.
 For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf M/X\) is again a combinatorial simplicial model category. Hence, by the above, it has truncation functors which we will denote by \(\trunc{k}^{X}\). Observe that an object \(f\colon Y\to X\) in \(\mathbf M/X\) is \(k\)--truncated if and only if \(f\) is a \(k\)--truncated morphism in \(\mathbf M\). Indeed, for any \(g\colon Z\to X\) we have a weak equivalence
 \[\RHom_{\mathbf M/X}(g, f)\simeq \RHom_{\mathbf M}(Y, X)\times^{h}_{\RHom_{\mathbf M}(Z, X)} \{g\}.\]
 
+\begin{proposition}\label{prop:left-exact-preserves-trunc}
+  Let \(\mathbf M\) and \(\mathbf N\) be combinatorial simplicial model categories and let
+  \[
+  \begin{tikzcd}
+    \mathbf M \arrow[r, shift right=.7ex, "G"'] & \arrow[l, shift right=.7ex, "F"'] \mathbf N
+  \end{tikzcd}
+  \]
+  be a simplicial Quillen adjunction. Assume that the derived left adjoint \(\LL F\) preserves finite homotopy limits. Then there is a natural weak equivalence
+  \[\trunc{n}^{\mathbf M} \LL F(X) \simeq \LL F(\trunc{n}^{\mathbf N} X)\]
+  for every \(X\in\mathbf N\).
+\end{proposition}
+\begin{proof}
+  By \autoref{prop:truncated-objects-exact-functors} \(\LL F\) sends \(n\)--truncated objects in \(\mathbf N\) to \(n\)--truncated objects in \(\mathbf M\). Hence, the canonical morphism \(\LL F(X)\to\LL F(\trunc{n}^{\mathbf N}X)\) factors up to weak equivalence through a morphism \(f\colon \trunc{n}^{\mathbf M}\LL F(X)\to \LL F(\trunc{n}^{\mathbf N}X)\). To show that this is a weak equivalence, let \(Y\in\mathbf M\) be \(n\)--truncated. Then the induced morphism \(f^{*}\) factors through weak equivalences
+  \begin{align*}
+    \RHom_{\mathbf M}(\LL F(\trunc{n}^{\mathbf N}X), Y)&\simeq \RHom_{\mathbf N}(\trunc{n}^{\mathbf N}X, \RR G(Y)) \simeq\\
+                                                    &\simeq \RHom_{\mathbf N}(X, \RR G(Y)) \simeq \\
+                                                    &\simeq \RHom_{\mathbf M}(\LL F(X), Y) \simeq \\
+                                                    &\simeq \RHom_{\mathbf M}(\trunc{n}^{\mathbf M}\LL F(X), Y).
+  \end{align*}
+  Hence, \(f\) is \(n\)--connected. But since \(f\) is a morphism beteween \(n\)--truncated objects, this is enough to show that \(f\) is a weak equivalence in \(\mathbf M\).
+\end{proof}
+
+\section{Truncation Functors in Simplicial Sets}
+\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove classical homotopy group statements.}
+
 \section{Homotopy Sheaves}
 
 Given a space \(X\) in classical homotopy theory one can always choose a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) = [S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\) the group structure comes from the usual cogroup structure on \(S^{n}\): the multiplication is induced by precomposition with the \enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
 
 The main difficulty in working with homotopy groups in more general homotopy theories is that for various purposes restricting one's attention to pointed spaces is not good enough. This phenomenon is entirely analogous to the observation that a sheaf of sets on a topological space need not have any global section! For example, the sheaf of local sections of a torsor on a topological space has a global section if and only if the torsor is trivial. One could now imagine working with a more general notion of basepoint for objects in an arbitrary model category; for example, for simplicial sheaves there certainly exist sections over small enough open sets. But doing so amounts to choosing a presentation of a combinatorial model category in the sense of \cite{mr1870516}.
 
-In light of these considerations we will attempt to treat all possible basepoints at the same time. Let us first spell out the case of simplicial sets. Let \(X\) be some simplicial set (connected or not). Choose some simplicial model \(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that the homotopy fiber of \(p\) over some point \(x\in X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the connected components of this homotopy fiber is precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible basepoints. This motivates the definition of homotopy sheaves in any combinatorial simplicial model category.
+In light of these considerations we will attempt to treat all possible basepoints at the same time. Let us first spell out the case of simplicial sets. Let \(X\) be some simplicial set (connected or not). Choose some simplicial model \(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that the homotopy fiber of \(p\) over some point \(x\in X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the set of connected components of this homotopy fiber is precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible basepoints. This motivates the definition of homotopy sheaves in any combinatorial simplicial model category.
 
 \begin{definition}
   Let \(\mathbf M\) be a combinatorial simplicial model category and let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\) homotopy sheaf} of \(X\) is the object \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf M/X)\).
 \end{definition}
 
+The sheaves \(\pi_{n}(X)\) admit a canonical section. Indeed, the unique map \(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\) which is a section of the map \(X^{S^{n}}\to X\). Applying \(\trunc{0}^{X}\) yields a section of \(\pi_{n}(X)\). Hence, the homotopy sheaves of \(X\) can be considered as pointed objects in \(\disc(\mathbf M/X)\). However, to construct a group structure on higher homotopy sheaves we will need to assume some exactness properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a \emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
+
+\begin{definition}\label{defn:model-topos}
+  A combinatorial simplicial model category \(\mathbf M\) is a \emph{model topos} if there is a presentation of \(\mathbf M\) as a \emph{left exact} Bousfield localization of a category of simplicial presheaves. That is, \(\mathbf M\) is a model topos if there is a simplicial Quillen adjunction\footnote{Written in the direction of the right adjoint.}
+\[
+\begin{tikzcd}
+  \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex, "L"'] \spshv(\mathbf C)
+\end{tikzcd}
+\]
+for some simplicial category \(\mathbf C\) and the injective model structure on \(\spshv(\mathbf C)\) such that \(\LL L\) preserves finite homotopy limits and \(\RR i\) is \emph{homotopically fully faithful}, i.\,e.~it induces weak equivalences
+\[\RHom(X, Y)\simeq\RHom(\RR i(X), \RR i(Y))\]
+for all \(X,Y\in\mathbf M\).
+\end{definition}
+
+Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an object in a model topos \(\mathbf M\), the slice category \(\mathbf M/X\) is again a model topos.
+
+\begin{lemma}\label{lem:trunc-presheaves}
+  Let \(\mathbf C\) be a simplicial category and let \(F\in\spshv(\mathbf C)\) be a simplicial presheaf. Then, for every \(c\in\mathbf C\) there is a natural weak equivalence \((\trunc{n}F)(c)\simeq \trunc{n}F(c)\) of simplicial sets.
+\end{lemma}
+\begin{proof}
+  This follows from the fact that homotopy limits in \(\spshv(\mathbf C)\) may be computed pointwise and \autoref{prop:truncated-objects-exact-functors}.
+\end{proof}
+
+\begin{proposition}[{see \cite[Lemma~6.5.1.2]{mr2522659}}]\label{prop:trunc-products}
+  If \(\mathbf M\) is a model topos, then the truncation functors \(\trunc{n}\) preserve finite homotopy products.
+\end{proposition}
+\begin{proof}
+  First, let \(F,G\in\spshv(\mathbf C)\) be simplicial presheaves on some simplicial category \(\mathbf C\) and consider the canonical morphism
+  \[\trunc{n}(F\times G)\to \trunc{n}F\times\trunc{n}G.\]
+  To prove that it is a weak equivalence, it will be enough to check this after evaluating at all \(c\in\mathbf C\). Hence, by \autoref{lem:trunc-presheaves} we have reduced to the case of simplicial sets. There it follows from Whitehead's theorem by computing homotopy groups of both sides.
+
+  Now choose a simplicial Quillen adjunction
+  \[
+  \begin{tikzcd}
+    \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex, "L"'] \spshv(\mathbf C)
+  \end{tikzcd}
+  \]
+  as in \autoref{defn:model-topos} and take \(X, Y\in\mathbf M\). By our previous considerations we have a natural weak equivalence \(\trunc{n}(\RR i(X)\times^{h}\RR i(Y))\simeq \trunc{n}\RR i(X)\times^{h}\trunc{n}\RR i(Y)\). Since \(\RR i\) is homotopically fully faithful the counit of the adjunction \(\LL L\dashv \RR i\) induces a weak equivalence \(\LL L\,\RR i (Z)\simeq Z\) for all \(Z\). Consequently, \autoref{prop:left-exact-preserves-trunc} provides us with weak equivalences
+  \begin{align*}
+    \trunc{n}(X\times^{h} Y) &\simeq \trunc{n}(\LL L\,\RR i(X\times^{h} Y)) \simeq \LL L\trunc{n}(\RR i(X)\times^{h} \RR i(Y)) \simeq \\
+                         &\simeq \LL L(\trunc{n}\RR i(X)\times^{h} \trunc{n}\RR i(Y)) \simeq \\
+                         &\simeq \trunc{n}(\LL L\,\RR i(X)) \times^{h} \trunc{n}(\LL L\,\RR i(Y)) \simeq \\
+                         &\simeq \trunc{n}(X) \times^{h} \trunc{n}(Y)
+  \end{align*}
+  since \(\LL L\) is assumed to preserve finite homotopy limits.
+\end{proof}
+
+
+
 Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves \(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
 
-\begin{proposition}
+One can give a slightly more concrete description of \(\pi_{n}(f)\) as follows. Consider the homotopy fiber product \(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\) along the canonical section \(Y\to Y^{S^{n}}\). This is a model for the object \(f^{S^{n}}\in \mathbf M/Y\). Hence, along the equivalence \((\mathbf M/Y)/f\simeq \mathbf M/X\), we find that
+\[\trunc{0}^{X}(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y)\to X\]
+is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
+
+\begin{proposition}[{see~\cite[Remark~6.5.1.5]{mr2522659}}]
   Given maps \(f\colon X\to Y\) and \(g\colon Y\to X\) there is a long exact sequence
   \[
   \cdots \to f^{*}\pi_{n+1}(g) \to \pi_{n}(f) \to \pi_{n}(g\circ f) \to f^{*}\pi_{n}(g) \to \cdots
   \]
-  of pointed objects in \(\disc(\mathbf M/X)\)
+  of pointed objects in \(\disc(\mathbf M/X)\).
 \end{proposition}
 
 \section{Postnikov Towers}
