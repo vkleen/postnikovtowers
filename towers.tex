@@ -73,7 +73,7 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
 \end{proof}
 
 \begin{definition}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\). We will sometimes write \(\disc(\mathbf M) = \mathbf{M}|_{\leq 0}\)
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\). We will write \(\disc(\mathbf M) = \mathbf M|_{\leq 0}\).
 \end{definition}
 
 \begin{proposition}\label{prop:truncated-objects-exact-functors}
@@ -264,7 +264,11 @@ Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an obje
   since \(\LL L\) is assumed to preserve finite homotopy limits.
 \end{proof}
 
-
+\Autoref{prop:trunc-products} allows us to produce a group structure on \(\pi_{n}(X)\) for \(n\geq 1\) if \(X\) is an object in a model topos \(\mathbf M\): We have the usual cogroup structure on \(S^{n}\) given by the pinch map \(S^{n}\to S^{n}\vee S^{n}\). This induces a morphism
+\[X^{S^{n}}\times^{h}_{X^{*}} X^{S^{n}} \simeq X^{S^{n}}\times^{h}_{X} X^{S^{n}} \simeq  X^{S^{n}\vee S^{n}} \to X^{S^{n}}.\]
+By \autoref{prop:trunc-products} the functor \(\trunc{0}^{X}\) preserves finite homotopy products in \(\mathbf M/X\), so we get a morphism
+\[\pi_{n}(X)\times_{X}\pi_{n}(X)\simeq \trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\simeq \trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \simeq \pi_{n}(X)\]
+It is then straightforward\viktor{I should check that I'm not sweeping anything under the rug by ignoring homotopies in \((\mathbf M/X)_{\leq 0}\). So far I can only prove that homotopic implies isomorphic for cofibrant and fibrant objects.}{} to check that this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\), which are abelian for \(n\geq 2\).
 
 Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves \(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
 
