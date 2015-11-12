@@ -73,7 +73,7 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
 \end{proof}
 
 \begin{definition}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\). We will write \(\disc(\mathbf M) = \mathbf M|_{\leq 0}\).
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\).
 \end{definition}
 
 \begin{proposition}\label{prop:truncated-objects-exact-functors}
@@ -157,6 +157,12 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
   in which all vertical maps are weak equivalences of simplicial sets. Hence, \(f\) is a weak equivalence in \(\mathbf M_{\leq k}\) if and only if for all \(Z\) the bottom map is a weak equivalence if and only if for all \(Z\) the top map is a weak equivalence if and only if \(f\) is a \(k\)--equivalence.
 \end{proof}
 
+\begin{remark}
+  The model category \(\mathbf M_{\leq 0}\) is discrete in the following sense. Consider the full simplicial subcategory \((\mathbf M_{\leq 0})^{cf}\subset \mathbf M_{\leq 0}\) on the cofibrant--fibrant objects. Then a morphism \(f\colon X\to Y\) in \((\mathbf M_{\leq 0})^{cf}\) is a weak equivalence if and only if it is an isomorphism in \((\mathbf M_{\leq 0})^{cf}\). This follows from the fact that \(\pi_{0}(S) \isom S_{0}\) for \(0\)--truncated simplicial sets \(S\). In particular, the homotopy category of \(\mathbf M_{\leq 0}\) is equivalent to the category \((\mathbf M_{\leq 0})^{cf}\) and we will denote it by \(\disc(\mathbf M)\).
+
+  As a matter of terminology, given an object \(X\in\mathbf M\), homotopy types in \(\disc(\mathbf M/X)\) will be called \emph{sheaves on \(X\)}.
+\end{remark}
+
 By functorial factorizations, \autoref{thm:truncated-model-structure-exists} implies, for every \(k\geq -2\), the existence of fibrant replacement functors
 \[\trunc{k}\colon \mathbf{M}\to\mathbf{M}|_{\leq k}\]
 for \(\mathbf M_{\leq k}\). The functor \(\trunc{k}\) is called the \emph{\(k\textsuperscript{th}\) truncation functor} for \(\mathbf{M}\). In particular, given any object \(X\in\mathbf{M}\) we get maps
@@ -214,10 +220,10 @@ The main difficulty in working with homotopy groups in more general homotopy the
 In light of these considerations we will attempt to treat all possible basepoints at the same time. Let us first spell out the case of simplicial sets. Let \(X\) be some simplicial set (connected or not). Choose some simplicial model \(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that the homotopy fiber of \(p\) over some point \(x\in X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the set of connected components of this homotopy fiber is precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible basepoints. This motivates the definition of homotopy sheaves in any combinatorial simplicial model category.
 
 \begin{definition}
-  Let \(\mathbf M\) be a combinatorial simplicial model category and let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\) homotopy sheaf} of \(X\) is the object \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf M/X)\).
+  Let \(\mathbf M\) be a combinatorial simplicial model category and let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\) homotopy sheaf} of \(X\) is the homotopy type \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf M/X)\).
 \end{definition}
 
-The sheaves \(\pi_{n}(X)\) admit a canonical section. Indeed, the unique map \(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\) which is a section of the map \(X^{S^{n}}\to X\). Applying \(\trunc{0}^{X}\) yields a section of \(\pi_{n}(X)\). Hence, the homotopy sheaves of \(X\) can be considered as pointed objects in \(\disc(\mathbf M/X)\). However, to construct a group structure on higher homotopy sheaves we will need to assume some exactness properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a \emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
+The sheaves \(\pi_{n}(X)\) admit canonical sections. Indeed, the unique map \(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\) which is a section of the map \(X^{S^{n}}\to X\). Applying \(\trunc{0}^{X}\) yields a section of \(\pi_{n}(X)\). Hence, the homotopy sheaves of \(X\) can be considered as pointed objects in \(\disc(\mathbf M/X)\). However, to construct a group structure on higher homotopy sheaves we will need to assume some exactness properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a \emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
 
 \begin{definition}\label{defn:model-topos}
   A combinatorial simplicial model category \(\mathbf M\) is a \emph{model topos} if there is a presentation of \(\mathbf M\) as a \emph{left exact} Bousfield localization of a category of simplicial presheaves. That is, \(\mathbf M\) is a model topos if there is a simplicial Quillen adjunction\footnote{Written in the direction of the right adjoint.}
@@ -267,8 +273,8 @@ Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an obje
 \Autoref{prop:trunc-products} allows us to produce a group structure on \(\pi_{n}(X)\) for \(n\geq 1\) if \(X\) is an object in a model topos \(\mathbf M\): We have the usual cogroup structure on \(S^{n}\) given by the pinch map \(S^{n}\to S^{n}\vee S^{n}\). This induces a morphism
 \[X^{S^{n}}\times^{h}_{X^{*}} X^{S^{n}} \simeq X^{S^{n}}\times^{h}_{X} X^{S^{n}} \simeq  X^{S^{n}\vee S^{n}} \to X^{S^{n}}.\]
 By \autoref{prop:trunc-products} the functor \(\trunc{0}^{X}\) preserves finite homotopy products in \(\mathbf M/X\), so we get a morphism
-\[\pi_{n}(X)\times_{X}\pi_{n}(X)\simeq \trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\simeq \trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \simeq \pi_{n}(X)\]
-It is then straightforward\viktor{I should check that I'm not sweeping anything under the rug by ignoring homotopies in \((\mathbf M/X)_{\leq 0}\). So far I can only prove that homotopic implies isomorphic for cofibrant and fibrant objects.}{} to check that this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\), which are abelian for \(n\geq 2\).
+\[\pi_{n}(X)\times_{X}\pi_{n}(X)\isom \trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\isom \trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \isom \pi_{n}(X)\]
+in \(\disc(\mathbf M/X)\). It is then straightforward to check that this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\), which are abelian for \(n\geq 2\).
 
 Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves \(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
 
