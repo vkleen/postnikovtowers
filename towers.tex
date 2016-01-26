@@ -11,32 +11,23 @@
 \tableofcontents
 }
 
-\section{Truncated and Connected Morphisms}
-Most of the material in this section is due to \cite{mr2522659} and \cite{rezkhomotopytoposes}. For the benefit of the reader\footnote{and for our own benefit} we try to elaborate on results whose proofs are only sketched in these references.
+\section{Truncated and Connected Simplicial Sets}
 
 \begin{definition}\label{defn:truncated_simp}
-  A simplicial set \(X\) is called \emph{\(\pi\)--\(k\)--truncated}\footnote{This terminology is nonstandard, but we feel it is useful to distinguish from \autoref{defn:truncated_object}. We will momentarily proof that the two notions are the same, see \autoref{cor:truncatedness-makes-sense}.} for \(k\geq -1\) if \(\pi_{n}(X,x) = *\) for every \(x\in X_{0}\) and every \(n>k\). A morphism \(f\colon Y\to X\) of simplicial sets is called \emph{\(\pi\)--\(k\)--truncated} if every homotopy fiber of \(f\) is \(\pi\)--\(k\)--truncated.
+  A simplicial set \(X\) is called \emph{\(k\)--truncated} for \(k\geq -1\) if \(\pi_{n}(X,x) = *\) for every \(x\in X_{0}\) and every \(n>k\). A morphism \(f\colon Y\to X\) of simplicial sets is called \emph{\(k\)--truncated} if every homotopy fiber of \(f\) is \(k\)--truncated.
 \end{definition}
 
-\begin{definition}\label{defn:truncated_object}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. An object \(X\in\mathbf{M}\) is called \emph{\(k\)--truncated} (\(k\geq -1\)) if for all objects \(Y\in\mathbf{M}\) the derived mapping space \(\RHom(Y,X)\) is a \(\pi\)--\(k\)--truncated simplicial set. A morphism \(f\colon Y\to X\) in \(\mathbf{M}\) is called \emph{\(k\)--truncated} if for all objects \(Z\in\mathbf{M}\) the induced morphism \(f_{*}\colon \RHom(Z,Y)\to\RHom(Z,X)\) is \(\pi\)--\(k\)--truncated.
-\end{definition}
-
-\begin{remark}
-  An object \(X\in\mathbf M\) is \(k\)--truncated if and only if the morphism \(X\to *\) is \(k\)--truncated.
-\end{remark}
-
-As a matter of convention, an object \(X\) will be called \((-2)\)--truncated if it is contractible and a morphism \(f\colon Y\to X\) will be called \((-2)\)--truncated if it is a weak equivalence.
+By convention we call a simplicial set \((-2)\)--truncated if and only if it is contractible; a map of simplicial sets is \((-2)\)--truncated if it is a weak equivalence.
 
 \begin{lemma}\label{lem:truncated-diagonal}
-  A simplicial set \(X\) is \(\pi\)--\(k\)--truncated if and only if the diagonal \(\Delta\colon X\to X\times X\) is \(\pi\)--\((k-1)\)--truncated.
+  A simplicial set \(X\) is \(k\)--truncated if and only if the diagonal \(\Delta\colon X\to X\times X\) is \((k-1)\)--truncated.
 \end{lemma}
 \begin{proof}
-  Let \(X\) be any connected simplicial set and let \((a,b)\in X\times X\). Let \(P\) be the homotopy fiber of \(\Delta\) at \((a,b)\).  Any path from \(a\) to \(b\) in \(X\) induces a homotopy equivalence \(\Omega_{a}X \simeq P \simeq \Omega_{b} X\), hence isomorphisms \(\pi_{n+1}(X)\cong \pi_{n}(P)\). This proves the claim for connected simplicial sets. For the general case, write \(X = \bigsqcup_{i\in I} X_{i}\) as a disjoint union of its connected components and observe that \(X\times X = \bigsqcup_{i,j\in I} X_{i}\times X_{j}\). Then the homotopy fiber of the diagonal over a point \((a,b)\in X_{i}\times X_{j}\) is either empty (if \(i\neq j\)) or homotopy equivalent to \(\Omega_{a}X_{i}\) (if \(i = j\)). Since \(X\) is \(\pi\)--\(k\)--truncated if and only if all its connected components are \(\pi\)--\(k\)--truncated, this reduces the problem to the case of connected simplicial sets, which we have already dealt with.
+  Let \(X\) be any connected simplicial set and let \((a,b)\in X\times X\). Let \(P\) be the homotopy fiber of \(\Delta\) at \((a,b)\).  Any path from \(a\) to \(b\) in \(X\) induces a homotopy equivalence \(\Omega_{a}X \simeq P \simeq \Omega_{b} X\), hence isomorphisms \(\pi_{n+1}(X)\cong \pi_{n}(P)\). This proves the claim for connected simplicial sets. For the general case, write \(X = \bigsqcup_{i\in I} X_{i}\) as a disjoint union of its connected components and observe that \(X\times X = \bigsqcup_{i,j\in I} X_{i}\times X_{j}\). Then the homotopy fiber of the diagonal over a point \((a,b)\in X_{i}\times X_{j}\) is either empty (if \(i\neq j\)) or homotopy equivalent to \(\Omega_{a}X_{i}\) (if \(i = j\)). Since \(X\) is \(k\)--truncated if and only if all its connected components are \(k\)--truncated, this reduces the problem to the case of connected simplicial sets, which we have already dealt with.
 \end{proof}
 
 \begin{lemma}\label{lem:relative-truncated-diagonal}
-  A map \(f\colon Y\to X\) of simplicial sets is \(\pi\)--\(k\)--truncated if and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \(\pi\)--\((k-1)\)--truncated.
+  A map \(f\colon Y\to X\) of simplicial sets is \(k\)--truncated if and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated.
 \end{lemma}
 \begin{proof}
   We can assume that \(f\) is a fibration between fibrant simplicial sets. If \(x\in X\) then the homotopy fiber of \(f\) is just the ordinary fiber product \(Y_{x}\coloneqq \{x\}\times_{X} Y\). Observe that \(\Delta_{f}\) is weakly equivalent to the fibration \(Y^{\Delta^{1}}\to Y\times_{X} Y\) and \(Y\times_{X}^{h} Y \simeq Y\times_{X} Y\). Given any \((y, y')\in Y\times_{X} Y\), let \(x = f(y) = f(y')\). Then there is a commutative diagram
@@ -76,13 +67,18 @@ In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--
   Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\).
 \end{definition}
 
-\begin{proposition}\label{prop:truncated-objects-exact-functors}
+Recall that a \emph{relative category} is a category \(\mathbf{M}\) together with a subcategory \(W\subseteq \mathbf{M}\) containing all objects of \(\mathbf{M}\). For instance, every model category with the subcategory of weak equivalences is a relative category. A \emph{relative functor} \(F\colon (\mathbf{M},W) \to (\mathbf{N},W')\) is a functor \(\mathbf{M}\to\mathbf{N}\) such that \(F(W)\subset W'\). A relative functor between model categories is sometimes also called a \emph{homotopical functor}.
+
+\begin{remark}
+  Let \(I\) be some category and let \(\mathbf{M}^{I}\) be the category of \(I\)--shaped diagrams in \(\mathbf{M}\).
+\end{remark}
+
+\begin{proposition}\label{prop:truncated-objects-exact-functors}\viktor{Per Aravind's suggestion: factor out the definition of homotopical functors and give examples.}
   Let \(F\colon \mathbf{M}\to\mathbf{N}\) be a homotopical functor between combinatorial simplicial model categories that preserves homotopy pullbacks; that is, \(F(f)\) is a weak equivalence in \(\mathbf N\) for every weak equivalence in \(f\) in \(\mathbf M\) and the image under \(F\) of any homotopy pullback square in \(\mathbf M\) is a homotopy pullback square in \(\mathbf N\). Then \(F\) preserves \(k\)--truncated morphisms for any \(k\) and consequently restricts to a functor \(F\colon \mathbf M|_{\leq k}\to\mathbf N|_{\leq k}\).
 \end{proposition}
 \begin{proof}
   Since \(F\) is homotopical, by definition it preserves \((-2)\)--truncated morphisms. Let \(k\geq -2\) and suppose by induction that \(F\) preserves \(n\)--truncated morphisms for \(n<k\). Let \(f\colon Y\to X\) be \(k\)--truncated in \(\mathbf M\). By \autoref{cor:general-diagonal-truncated} the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated and by induction \(F(\Delta_{f})\) is \((k-1)\)--truncated. Since \(F\) preserves homotopy pullbacks \(F(\Delta_{f})\) is weakly equivalent to \(\Delta_{F(f)}\). Again by \autoref{cor:general-diagonal-truncated} we conclude that \(F(f)\) is \(k\)--truncated.
 \end{proof}
-
 
 \begin{corollary}\label{cor:truncated-objects-limits}
   The full subcategory \(\mathbf{M}|_{{\leq} k}\) is stable under homotopy limits.
@@ -208,9 +204,6 @@ For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf M/X\) is aga
   Hence, \(f\) is \(n\)--connected. But since \(f\) is a morphism beteween \(n\)--truncated objects, this is enough to show that \(f\) is a weak equivalence in \(\mathbf M\).
 \end{proof}
 
-\section{Truncation Functors in Simplicial Sets}
-\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove classical homotopy group statements.}
-
 \section{Homotopy Sheaves}
 
 Given a space \(X\) in classical homotopy theory one can always choose a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) = [S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\) the group structure comes from the usual (homotopy) ogroup structure on \(S^{n}\): the multiplication is induced by precomposition with the \enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
@@ -310,7 +303,7 @@ is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
 \begin{proof}
   We will first construct the relevant maps between homotopy sheaves. First, \(g\) induces a natural map
   \[g_{*}\colon X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\to X^{S^{n}}\times^{h}_{Z^{S^{n}}} Z\]
-  and by functoriality of truncation we get at map \(g_{*}\colon \pi_{n}(f)\to\pi_{n}(g\circ f)\). Secondly, applying \autoref{rem:homotopy-group-functoriality} to the model topos \(\mathbf M/Z\) yields the required morphism \(f_{*}\colon \pi_{n}(g\circ f)\to f^{*}\pi_{n}(g)\).
+  and by functoriality of truncation we get at map \(g_{*}\colon \pi_{n}(f)\to\pi_{n}(g\circ f)\). Second, applying \autoref{rem:homotopy-group-functoriality} to the model topos \(\mathbf M/Z\) yields the required morphism \(f_{*}\colon \pi_{n}(g\circ f)\to f^{*}\pi_{n}(g)\).
   \viktor{finish constructing the connecting homomorphism and prove exactness}
 \end{proof}
 
@@ -337,3 +330,8 @@ is a weak equivalence.
 
 \listoftodos
 \end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-command-default: "LatexMk"
+%%% End:
