@@ -1,5 +1,6 @@
 \RequirePackage[l2tabu, orthodox]{nag}
 \documentclass[11pt,headsepline=true,toc=flat]{scrartcl}
+\usepackage[utf8]{inputenc}
 
 \usepackage{xspace, xifthen, enumitem}
 
@@ -51,14 +52,14 @@
 \declaretheoremstyle[spaceabove=\topsep,spacebelow=\topsep,headfont=\normalfont\scshape,notefont=\normalfont\mdseries,notebraces={(}{)},bodyfont=\normalfont,postheadspace=5pt plus 1pt minus 1pt]{scdef}
 \declaretheoremstyle[spaceabove=\topsep,spacebelow=\topsep,headfont=\normalfont\scshape,notefont=\normalfont\mdseries,notebraces={(}{)},bodyfont=\itshape,postheadspace=5pt plus 1pt minus 1pt]{scthm}
 
-\declaretheorem[style=scdef,numberwithin=section,   name=Definition,refname={definition,definitions},Refname={Definition,Definitions}]{definition}
-\declaretheorem[style=scdef,sharenumber=definition, name=Remark,refname={remark,remarks},Refname={Remark,Remarks}]{remark}
-\declaretheorem[style=scdef,sharenumber=definition, name=Example,refname={example,examples},Refname={Example,Examples}]{example}
+\declaretheorem[style=scdef,numberwithin=section,   name=Definition,refname={Definition,Definitions},Refname={Definition,Definitions}]{definition}
+\declaretheorem[style=scdef,sharenumber=definition, name=Remark,refname={Remark,Remarks},Refname={Remark,Remarks}]{remark}
+\declaretheorem[style=scdef,sharenumber=definition, name=Example,refname={Example,Examples},Refname={Example,Examples}]{example}
 
-\declaretheorem[style=scthm,sharenumber=definition, name=Theorem,refname={theorem,theorems},Refname={Theorem,Theorems}]{theorem}
-\declaretheorem[style=scthm,sharenumber=definition, name=Lemma,refname={lemma,lemmas},Refname={Lemma,Lemmas}]{lemma}
-\declaretheorem[style=scthm,sharenumber=definition, name=Corollary,refname={corollary,corollaries},Refname={Corollary,Corollaries}]{corollary}
-\declaretheorem[style=scthm,sharenumber=definition, name=Proposition,refname={proposition,propositions},Refname={Proposition,Propositions}]{proposition}
+\declaretheorem[style=scthm,sharenumber=definition, name=Theorem,refname={Theorem,Theorems},Refname={Theorem,Theorems}]{theorem}
+\declaretheorem[style=scthm,sharenumber=definition, name=Lemma,refname={Lemma,Lemmas},Refname={Lemma,Lemmas}]{lemma}
+\declaretheorem[style=scthm,sharenumber=definition, name=Corollary,refname={Corollary,Corollaries},Refname={Corollary,Corollaries}]{corollary}
+\declaretheorem[style=scthm,sharenumber=definition, name=Proposition,refname={Proposition,Propositions},Refname={Proposition,Propositions}]{proposition}
 
 \undef\Re
 \undef\Im

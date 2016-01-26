@@ -37,24 +37,63 @@ By convention we call a simplicial set \((-2)\)--truncated if and only if it is 
     * \arrow[r, "{(y,y')}"'] & Y_{x}\times Y_{x} \arrow[r] & Y\times_{X} Y
   \end{tikzcd}
   \]
-  in which both small squares are cartesian. It follows that the homotopy fiber of \(\Delta_{f}\) at \((y,y')\) is weakly equivalent to the homotopy fiber of \(\Delta\colon Y_{x}\to Y_{x}\times Y_{x}\). Hence, all homotopy fibers of \(\Delta_{f}\) are \(\pi\)--\((k-1)\)--truncated if and only if all homotopy fibers of all diagonals \(Y_{x}\to Y_{x}\times Y_{x}\) are. By \autoref{lem:truncated-diagonal} this is the case if and only if all \(Y_{x}\) are \(\pi\)--\(k\)--truncated, i.\,e.~if and only if the map \(Y\to X\) is \(\pi\)--\(k\)--truncated.
+  in which both small squares are cartesian. It follows that the homotopy fiber of \(\Delta_{f}\) at \((y,y')\) is weakly equivalent to the homotopy fiber of \(\Delta\colon Y_{x}\to Y_{x}\times Y_{x}\). Hence, all homotopy fibers of \(\Delta_{f}\) are \((k-1)\)--truncated if and only if all homotopy fibers of all diagonals \(Y_{x}\to Y_{x}\times Y_{x}\) are. By \autoref{lem:truncated-diagonal} this is the case if and only if all \(Y_{x}\) are \(k\)--truncated, i.\,e.~if and only if the map \(Y\to X\) is \(k\)--truncated.
 \end{proof}
 
 \begin{corollary}\label{cor:truncatedness-makes-sense}
-  If \(\mathbf{M}\) is the category of simplicial sets itself, \(\pi\)--\(k\)--truncatedness coincides with \(k\)--truncatedness.
+  A simplicial set \(X\) is \(k\)--truncated if and only if for every simplicial set \(Z\) the derived mapping space \(\RHom(Z, X)\) is \(k\)--truncated. A map \(f\colon X\to Y\) is \(k\)--truncated if and only if for every \(Z\) the map \(f_{*}\colon \RHom(Z, X)\to\RHom(Z, Y)\) is \(k\)--truncated.
 \end{corollary}
 \begin{proof}
-  The proof proceeds by induction on \(k\). By \autoref{lem:relative-truncated-diagonal} a map \(f\colon Y\to X\) is \(\pi\)--\(k\)--truncated if and only if \(\Delta_{f}\colon Y\to Y\times_{X}^{h} Y\) is \(\pi\)--\((k-1)\)--truncated. By induction this is the case if and only if \(\RHom(Z,Y)\to \RHom(Z, Y\times_{X}^{h} Y)\) is \(\pi\)--\((k-1)\)--truncated. Observe that
+  The proof proceeds by induction on \(k\). By \autoref{lem:relative-truncated-diagonal} a map \(f\colon Y\to X\) is \(k\)--truncated if and only if \(\Delta_{f}\colon Y\to Y\times_{X}^{h} Y\) is \((k-1)\)--truncated. By induction this is the case if and only if \(\RHom(Z,Y)\to \RHom(Z, Y\times_{X}^{h} Y)\) is \((k-1)\)--truncated. Observe that
   \[
   \begin{tikzcd}
     \RHom(Z,Y) \arrow[r] \arrow[dr] & \RHom(Z, Y\times^{h}_{X} Y) \arrow[d, "\simeq"] \\
     {} & \RHom(Z, Y)\times_{\RHom(Z, X)}^{h} \RHom(Z,Y)
   \end{tikzcd}
   \]
-  commutes. Hence, \(\Delta_{f_{*}}\) is \(\pi\)--\((k-1)\)--truncated as well and again by \autoref{lem:relative-truncated-diagonal} this is equivalent to \(f_{*}\colon \RHom(Z, Y)\to\RHom(Z, X)\) being \(\pi\)--\(k\)--truncated, i.\,e.~\(f\) being \(k\)--truncated.
+  commutes. Hence, \(\Delta_{f_{*}}\) is \((k-1)\)--truncated as well and again by \autoref{lem:relative-truncated-diagonal} this is equivalent to \(f_{*}\colon \RHom(Z, Y)\to\RHom(Z, X)\) being \(k\)--truncated.
 \end{proof}
 
-In light of this corollary we will drop the distinction between \(\pi\)--\(k\)--truncatedness and \(k\)--truncated\-ness from now on.
+We will now construct \emph{truncation functors} for the category
+\(\sset\) of simplicial sets. By this we mean functors \(\tau_k\colon
+\sset\to\sset\) such that \(\tau_kX\) is \(k\)--truncated for every
+\(X\in\sset\) and universal in some suitable sense.
+
+First, the simplex category \(\simplex\), when regarded as the
+category of nonzero finite ordinals, has a natural filtration by full
+subcategories
+\[
+* = \simplex_{\leq 0} \subset \simplex_{\leq 1} \subset\cdots\subset\simplex
+\]
+where \(\simplex_k\) is the category of nonzero finite ordinals less than
+or equal to \(k\). This induces a tower of functors
+\[
+\sset \to \cdots \to \sset_{\leq 1} \to \sset_{\leq 0} = \set
+\]
+and we write \(\iota_k^*\colon \sset \to \sset_{\leq k}\) for the
+restriction functors.
+
+By general abstract nonsense the functors \(\iota_k^*\) extend to
+adjunctions
+\[
+(\iota_k)_! \dashv \iota_k^* \dashv (\iota_k)_*,
+\]
+see e.\,g.~\cite[Theorem~4, p.~59]{sheavesgeometrylogic} or
+\cite[{Exposé}~i, Proposition~5.1]{SGA4-1}.
+\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove classical homotopy group statements.}
+
+\section{Truncated and Connected Morphisms}
+Most of the material in this section is due to \cite{mr2522659} and \cite{rezkhomotopytoposes}. For the benefit of the reader\footnote{and for our own benefit} we try to elaborate on results whose proofs are only sketched in these references.
+
+\begin{definition}\label{defn:truncated_object}
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category. An object \(X\in\mathbf{M}\) is called \emph{\(k\)--truncated} (\(k\geq -1\)) if for all objects \(Y\in\mathbf{M}\) the derived mapping space \(\RHom(Y,X)\) is a \(k\)--truncated simplicial set. A morphism \(f\colon Y\to X\) in \(\mathbf{M}\) is called \emph{\(k\)--truncated} if for all objects \(Z\in\mathbf{M}\) the induced morphism \(f_{*}\colon \RHom(Z,Y)\to\RHom(Z,X)\) is \(k\)--truncated.
+\end{definition}
+
+\begin{remark}
+  An object \(X\in\mathbf M\) is \(k\)--truncated if and only if the morphism \(X\to *\) is \(k\)--truncated.
+\end{remark}
+
+As a matter of convention, an object \(X\) will be called \((-2)\)--truncated if it is contractible and a morphism \(f\colon Y\to X\) will be called \((-2)\)--truncated if it is a weak equivalence.
 
 \begin{corollary}\label{cor:general-diagonal-truncated}
   In any combinatorial simplicial model category, a morphism \(f\colon Y\to X\) is \(k\)--truncated if and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated.
