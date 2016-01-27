@@ -14,44 +14,94 @@
 \section{Truncated and Connected Simplicial Sets}
 
 \begin{definition}\label{defn:truncated_simp}
-  A simplicial set \(X\) is called \emph{\(k\)--truncated} for \(k\geq -1\) if \(\pi_{n}(X,x) = *\) for every \(x\in X_{0}\) and every \(n>k\). A morphism \(f\colon Y\to X\) of simplicial sets is called \emph{\(k\)--truncated} if every homotopy fiber of \(f\) is \(k\)--truncated.
+  A simplicial set \(X\) is called \emph{\(k\)--truncated} for
+  \(k\geq-1\) if \(\pi_{n}(X,x) = *\) for every \(x\in X_{0}\) and
+  every \(n>k\). A morphism \(f\colon Y\to X\) of simplicial sets is
+  called \emph{\(k\)--truncated} if every homotopy fiber of \(f\)
+  is \(k\)--truncated.
 \end{definition}
 
-By convention we call a simplicial set \((-2)\)--truncated if and only if it is contractible; a map of simplicial sets is \((-2)\)--truncated if it is a weak equivalence.
+By convention we call a simplicial set \((-2)\)--truncated
+if and only if it is contractible; a map of simplicial sets is
+\((-2)\)--truncated if it is a weak equivalence.
 
 \begin{lemma}\label{lem:truncated-diagonal}
-  A simplicial set \(X\) is \(k\)--truncated if and only if the diagonal \(\Delta\colon X\to X\times X\) is \((k-1)\)--truncated.
+  A simplicial set \(X\) is \(k\)--truncated if and only if the
+  diagonal \(\Delta\colon X\to X\times X\) is \((k-1)\)--truncated.
 \end{lemma}
 \begin{proof}
-  Let \(X\) be any connected simplicial set and let \((a,b)\in X\times X\). Let \(P\) be the homotopy fiber of \(\Delta\) at \((a,b)\).  Any path from \(a\) to \(b\) in \(X\) induces a homotopy equivalence \(\Omega_{a}X \simeq P \simeq \Omega_{b} X\), hence isomorphisms \(\pi_{n+1}(X)\cong \pi_{n}(P)\). This proves the claim for connected simplicial sets. For the general case, write \(X = \bigsqcup_{i\in I} X_{i}\) as a disjoint union of its connected components and observe that \(X\times X = \bigsqcup_{i,j\in I} X_{i}\times X_{j}\). Then the homotopy fiber of the diagonal over a point \((a,b)\in X_{i}\times X_{j}\) is either empty (if \(i\neq j\)) or homotopy equivalent to \(\Omega_{a}X_{i}\) (if \(i = j\)). Since \(X\) is \(k\)--truncated if and only if all its connected components are \(k\)--truncated, this reduces the problem to the case of connected simplicial sets, which we have already dealt with.
+  Let \(X\) be any connected simplicial set and let \((a,b)\in X\times
+  X\). Let \(P\) be the homotopy fiber of \(\Delta\) at \((a,b)\).
+  Any path from \(a\) to \(b\) in \(X\) induces a homotopy equivalence
+  \(\Omega_{a}X \simeq P \simeq \Omega_{b} X\), hence isomorphisms
+  \(\pi_{n+1}(X)\cong \pi_{n}(P)\). This proves the claim for
+  connected simplicial sets. For the general case, write \(X =
+  \bigsqcup_{i\in I} X_{i}\) as a disjoint union of its connected
+  components and observe that \(X\times X = \bigsqcup_{i,j\in I}
+  X_{i}\times X_{j}\). Then the homotopy fiber of the diagonal over a
+  point \((a,b)\in X_{i}\times X_{j}\) is either empty (if \(i\neq
+  j\)) or homotopy equivalent to \(\Omega_{a}X_{i}\) (if \(i =
+  j\)). Since \(X\) is \(k\)--truncated if and only if all its
+  connected components are \(k\)--truncated, this reduces the problem
+  to the case of connected simplicial sets, which we have already
+  dealt with.
+
 \end{proof}
 
 \begin{lemma}\label{lem:relative-truncated-diagonal}
-  A map \(f\colon Y\to X\) of simplicial sets is \(k\)--truncated if and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated.
+  A map \(f\colon Y\to X\) of simplicial sets is \(k\)--truncated if
+  and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\)
+  is \((k-1)\)--truncated.
 \end{lemma}
 \begin{proof}
-  We can assume that \(f\) is a fibration between fibrant simplicial sets. If \(x\in X\) then the homotopy fiber of \(f\) is just the ordinary fiber product \(Y_{x}\coloneqq \{x\}\times_{X} Y\). Observe that \(\Delta_{f}\) is weakly equivalent to the fibration \(Y^{\Delta^{1}}\to Y\times_{X} Y\) and \(Y\times_{X}^{h} Y \simeq Y\times_{X} Y\). Given any \((y, y')\in Y\times_{X} Y\), let \(x = f(y) = f(y')\). Then there is a commutative diagram
+  We can assume that \(f\) is a fibration between fibrant simplicial
+  sets. If \(x\in X\) then the homotopy fiber of \(f\) is just the
+  ordinary fiber product \(Y_{x}\coloneqq \{x\}\times_{X} Y\). Observe
+  that \(\Delta_{f}\) is weakly equivalent to the fibration
+  \(Y^{\Delta^{1}}\to Y\times_{X} Y\) and \(Y\times_{X}^{h} Y \simeq
+  Y\times_{X} Y\). Given any \((y, y')\in Y\times_{X} Y\), let \(x =
+  f(y) = f(y')\). Then there is a commutative diagram
   \[
   \begin{tikzcd}
     \Omega_{y} Y_{x} \arrow[r] \arrow[d] & Y_{x}^{\Delta^{1}} \arrow[r] \arrow[d] & Y^{\Delta^{1}} \arrow[d] \\
     * \arrow[r, "{(y,y')}"'] & Y_{x}\times Y_{x} \arrow[r] & Y\times_{X} Y
   \end{tikzcd}
   \]
-  in which both small squares are cartesian. It follows that the homotopy fiber of \(\Delta_{f}\) at \((y,y')\) is weakly equivalent to the homotopy fiber of \(\Delta\colon Y_{x}\to Y_{x}\times Y_{x}\). Hence, all homotopy fibers of \(\Delta_{f}\) are \((k-1)\)--truncated if and only if all homotopy fibers of all diagonals \(Y_{x}\to Y_{x}\times Y_{x}\) are. By \autoref{lem:truncated-diagonal} this is the case if and only if all \(Y_{x}\) are \(k\)--truncated, i.\,e.~if and only if the map \(Y\to X\) is \(k\)--truncated.
+  in which both small squares are cartesian. It follows that the
+  homotopy fiber of \(\Delta_{f}\) at \((y,y')\) is weakly equivalent
+  to the homotopy fiber of \(\Delta\colon Y_{x}\to Y_{x}\times
+  Y_{x}\). Hence, all homotopy fibers of \(\Delta_{f}\) are
+  \((k-1)\)--truncated if and only if all homotopy fibers of all
+  diagonals \(Y_{x}\to Y_{x}\times Y_{x}\) are. By
+  \autoref{lem:truncated-diagonal} this is the case if and only if all
+  \(Y_{x}\) are \(k\)--truncated, i.\,e.~if and only if the map \(Y\to
+  X\) is \(k\)--truncated.
 \end{proof}
 
 \begin{corollary}\label{cor:truncatedness-makes-sense}
-  A simplicial set \(X\) is \(k\)--truncated if and only if for every simplicial set \(Z\) the derived mapping space \(\RHom(Z, X)\) is \(k\)--truncated. A map \(f\colon X\to Y\) is \(k\)--truncated if and only if for every \(Z\) the map \(f_{*}\colon \RHom(Z, X)\to\RHom(Z, Y)\) is \(k\)--truncated.
+  A simplicial set \(X\) is \(k\)--truncated if and only if for every
+  simplicial set \(Z\) the derived mapping space \(\RHom(Z, X)\) is
+  \(k\)--truncated. A map \(f\colon X\to Y\) is \(k\)--truncated if
+  and only if for every \(Z\) the map \(f_{*}\colon \RHom(Z,
+  X)\to\RHom(Z, Y)\) is \(k\)--truncated.
 \end{corollary}
 \begin{proof}
-  The proof proceeds by induction on \(k\). By \autoref{lem:relative-truncated-diagonal} a map \(f\colon Y\to X\) is \(k\)--truncated if and only if \(\Delta_{f}\colon Y\to Y\times_{X}^{h} Y\) is \((k-1)\)--truncated. By induction this is the case if and only if \(\RHom(Z,Y)\to \RHom(Z, Y\times_{X}^{h} Y)\) is \((k-1)\)--truncated. Observe that
+  The proof proceeds by induction on \(k\). By
+  \autoref{lem:relative-truncated-diagonal} a map \(f\colon Y\to X\)
+  is \(k\)--truncated if and only if \(\Delta_{f}\colon Y\to
+  Y\times_{X}^{h} Y\) is \((k-1)\)--truncated. By induction this is
+  the case if and only if \(\RHom(Z,Y)\to \RHom(Z, Y\times_{X}^{h}
+  Y)\) is \((k-1)\)--truncated. Observe that
   \[
   \begin{tikzcd}
     \RHom(Z,Y) \arrow[r] \arrow[dr] & \RHom(Z, Y\times^{h}_{X} Y) \arrow[d, "\simeq"] \\
     {} & \RHom(Z, Y)\times_{\RHom(Z, X)}^{h} \RHom(Z,Y)
   \end{tikzcd}
   \]
-  commutes. Hence, \(\Delta_{f_{*}}\) is \((k-1)\)--truncated as well and again by \autoref{lem:relative-truncated-diagonal} this is equivalent to \(f_{*}\colon \RHom(Z, Y)\to\RHom(Z, X)\) being \(k\)--truncated.
+  commutes. Hence, \(\Delta_{f_{*}}\) is \((k-1)\)--truncated as well
+  and again by \autoref{lem:relative-truncated-diagonal} this is
+  equivalent to \(f_{*}\colon \RHom(Z, Y)\to\RHom(Z, X)\) being
+  \(k\)--truncated.
 \end{proof}
 
 We will now construct \emph{truncation functors} for the category
@@ -80,61 +130,129 @@ adjunctions
 \]
 see e.\,g.~\cite[Theorem~4, p.~59]{sheavesgeometrylogic} or
 \cite[{Exposé}~i, Proposition~5.1]{SGA4-1}.
-\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove classical homotopy group statements.}
+\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove
+  classical homotopy group statements.}
 
 \section{Truncated and Connected Morphisms}
-Most of the material in this section is due to \cite{mr2522659} and \cite{rezkhomotopytoposes}. For the benefit of the reader\footnote{and for our own benefit} we try to elaborate on results whose proofs are only sketched in these references.
+Most of the material in this section is due to \cite{mr2522659} and
+\cite{rezkhomotopytoposes}. For the benefit of the reader\footnote{and
+  for our own benefit} we try to elaborate on results whose proofs are
+only sketched in these references.
 
 \begin{definition}\label{defn:truncated_object}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. An object \(X\in\mathbf{M}\) is called \emph{\(k\)--truncated} (\(k\geq -1\)) if for all objects \(Y\in\mathbf{M}\) the derived mapping space \(\RHom(Y,X)\) is a \(k\)--truncated simplicial set. A morphism \(f\colon Y\to X\) in \(\mathbf{M}\) is called \emph{\(k\)--truncated} if for all objects \(Z\in\mathbf{M}\) the induced morphism \(f_{*}\colon \RHom(Z,Y)\to\RHom(Z,X)\) is \(k\)--truncated.
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category. An
+  object \(X\in\mathbf{M}\) is called \emph{\(k\)--truncated} (\(k\geq
+  -1\)) if for all objects \(Y\in\mathbf{M}\) the derived mapping
+  space \(\RHom(Y,X)\) is a \(k\)--truncated simplicial set. A
+  morphism \(f\colon Y\to X\) in \(\mathbf{M}\) is called
+  \emph{\(k\)--truncated} if for all objects \(Z\in\mathbf{M}\) the
+  induced morphism \(f_{*}\colon \RHom(Z,Y)\to\RHom(Z,X)\) is
+  \(k\)--truncated.
 \end{definition}
 
 \begin{remark}
-  An object \(X\in\mathbf M\) is \(k\)--truncated if and only if the morphism \(X\to *\) is \(k\)--truncated.
+  An object \(X\in\mathbf M\) is \(k\)--truncated if and only if the
+  morphism \(X\to *\) is \(k\)--truncated.
 \end{remark}
 
-As a matter of convention, an object \(X\) will be called \((-2)\)--truncated if it is contractible and a morphism \(f\colon Y\to X\) will be called \((-2)\)--truncated if it is a weak equivalence.
+As a matter of convention, an object \(X\) will be called
+\((-2)\)--truncated if it is contractible and a morphism \(f\colon
+Y\to X\) will be called \((-2)\)--truncated if it is a weak
+equivalence.
 
 \begin{corollary}\label{cor:general-diagonal-truncated}
-  In any combinatorial simplicial model category, a morphism \(f\colon Y\to X\) is \(k\)--truncated if and only if the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated.
+  In any combinatorial simplicial model category, a morphism \(f\colon
+  Y\to X\) is \(k\)--truncated if and only if the diagonal
+  \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is
+  \((k-1)\)--truncated.
 \end{corollary}
 \begin{proof}
-  This follows immediately from \autoref{defn:truncated_object} and \autoref{lem:relative-truncated-diagonal}.
+  This follows immediately from \autoref{defn:truncated_object} and
+  \autoref{lem:relative-truncated-diagonal}.
 \end{proof}
 
 \begin{definition}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full subcategory on \(k\)--truncated objects of \(\mathbf{M}\).
+  Let \(\mathbf{M}\) be a combinatorial simplicial model
+  category. Then \(\mathbf{M}|_{{\leq}k}\) will denote the full
+  subcategory on \(k\)--truncated objects of \(\mathbf{M}\).
 \end{definition}
 
-Recall that a \emph{relative category} is a category \(\mathbf{M}\) together with a subcategory \(W\subseteq \mathbf{M}\) containing all objects of \(\mathbf{M}\). For instance, every model category with the subcategory of weak equivalences is a relative category. A \emph{relative functor} \(F\colon (\mathbf{M},W) \to (\mathbf{N},W')\) is a functor \(\mathbf{M}\to\mathbf{N}\) such that \(F(W)\subset W'\). A relative functor between model categories is sometimes also called a \emph{homotopical functor}.
+Recall that a \emph{relative category} is a category \(\mathbf{M}\)
+together with a subcategory \(W\subseteq \mathbf{M}\) containing all
+objects of \(\mathbf{M}\). For instance, every model category with the
+subcategory of weak equivalences is a relative category. A
+\emph{relative functor} \(F\colon (\mathbf{M},W) \to (\mathbf{N},W')\)
+is a functor \(\mathbf{M}\to\mathbf{N}\) such that \(F(W)\subset
+W'\). A relative functor between model categories is sometimes also
+called a \emph{homotopical functor}.
 
 \begin{remark}
-  Let \(I\) be some category and let \(\mathbf{M}^{I}\) be the category of \(I\)--shaped diagrams in \(\mathbf{M}\).
+  Let \(I\) be some category and let \(\mathbf{M}^{I}\) be the
+  category of \(I\)--shaped diagrams in \(\mathbf{M}\).
 \end{remark}
 
 \begin{proposition}\label{prop:truncated-objects-exact-functors}\viktor{Per Aravind's suggestion: factor out the definition of homotopical functors and give examples.}
-  Let \(F\colon \mathbf{M}\to\mathbf{N}\) be a homotopical functor between combinatorial simplicial model categories that preserves homotopy pullbacks; that is, \(F(f)\) is a weak equivalence in \(\mathbf N\) for every weak equivalence in \(f\) in \(\mathbf M\) and the image under \(F\) of any homotopy pullback square in \(\mathbf M\) is a homotopy pullback square in \(\mathbf N\). Then \(F\) preserves \(k\)--truncated morphisms for any \(k\) and consequently restricts to a functor \(F\colon \mathbf M|_{\leq k}\to\mathbf N|_{\leq k}\).
+  Let \(F\colon \mathbf{M}\to\mathbf{N}\) be a homotopical functor
+  between combinatorial simplicial model categories that preserves
+  homotopy pullbacks; that is, \(F(f)\) is a weak equivalence in
+  \(\mathbf N\) for every weak equivalence in \(f\) in \(\mathbf M\)
+  and the image under \(F\) of any homotopy pullback square in
+  \(\mathbf M\) is a homotopy pullback square in \(\mathbf N\). Then
+  \(F\) preserves \(k\)--truncated morphisms for any \(k\) and
+  consequently restricts to a functor \(F\colon \mathbf M|_{\leq
+    k}\to\mathbf N|_{\leq k}\).
 \end{proposition}
 \begin{proof}
-  Since \(F\) is homotopical, by definition it preserves \((-2)\)--truncated morphisms. Let \(k\geq -2\) and suppose by induction that \(F\) preserves \(n\)--truncated morphisms for \(n<k\). Let \(f\colon Y\to X\) be \(k\)--truncated in \(\mathbf M\). By \autoref{cor:general-diagonal-truncated} the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated and by induction \(F(\Delta_{f})\) is \((k-1)\)--truncated. Since \(F\) preserves homotopy pullbacks \(F(\Delta_{f})\) is weakly equivalent to \(\Delta_{F(f)}\). Again by \autoref{cor:general-diagonal-truncated} we conclude that \(F(f)\) is \(k\)--truncated.
+  Since \(F\) is homotopical, by definition it preserves
+  \((-2)\)--truncated morphisms. Let \(k\geq -2\) and suppose by
+  induction that \(F\) preserves \(n\)--truncated morphisms for
+  \(n<k\). Let \(f\colon Y\to X\) be \(k\)--truncated in \(\mathbf
+  M\). By \autoref{cor:general-diagonal-truncated} the diagonal
+  \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is \((k-1)\)--truncated
+  and by induction \(F(\Delta_{f})\) is \((k-1)\)--truncated. Since
+  \(F\) preserves homotopy pullbacks \(F(\Delta_{f})\) is weakly
+  equivalent to \(\Delta_{F(f)}\). Again by
+  \autoref{cor:general-diagonal-truncated} we conclude that \(F(f)\)
+  is \(k\)--truncated.
 \end{proof}
 
 \begin{corollary}\label{cor:truncated-objects-limits}
-  The full subcategory \(\mathbf{M}|_{{\leq} k}\) is stable under homotopy limits.
+  The full subcategory \(\mathbf{M}|_{{\leq} k}\) is stable under
+  homotopy limits.
 \end{corollary}
 \begin{proof}
-  Forming homotopy limits is an example of a homotopical functor which preserves homotopy pullbacks.
+  Forming homotopy limits is an example of a homotopical functor which
+  preserves homotopy pullbacks.
 \end{proof}
 
 \begin{theorem}\label{thm:truncated-model-structure-exists}
-  Let \(\mathbf{M}\) be a combinatorial simplicial model category and \(k\geq -1\). There is a combinatorial simplicial model structure on \(\mathbf{M}\) whose fibrant objects are exactly the \(k\)--truncated fibrant objects of \(\mathbf{M}\). The resulting model category will be denoted by \(\mathbf{M}_{\leq k}\).
+  Let \(\mathbf{M}\) be a combinatorial simplicial model category and
+  \(k\geq -1\). There is a combinatorial simplicial model structure on
+  \(\mathbf{M}\) whose fibrant objects are exactly the
+  \(k\)--truncated fibrant objects of \(\mathbf{M}\). The resulting
+  model category will be denoted by \(\mathbf{M}_{\leq k}\).
 \end{theorem}
 \begin{proof}
-  By \cite[Prop.~4.7]{mr1870516} there is a set \(A\) of objects of \(\mathbf{M}\) such that every \(X\in\mathbf{M}\) is canonically weakly equivalent to a homotopy colimit of objects in \(A\). Define a set of morphisms
-  \[T \coloneqq \{S^{n}\times a \to D^{n+1}\times a : a\in A, n > k \}\]
-  in \(\mathbf{M}\). Recall that an object \(X\in\mathbf{M}\) is called \(T\)--local if for every \(f\colon S^{n}\times a\to D^{n+1}\times a\) in \(T\) the induced map
-  \[f^{*}\colon \RHom(D^{n+1}\times a, X)\to\RHom(S^{n}\times a, X)\]
-  is a weak equivalence of simplicial sets. We claim that the \(T\)--local objects of \(\mathbf{M}\) are precisely the \(k\)--truncated objects. To see this, assume first that \(X\) is \(T\)--local and let \(Y\in\mathbf{M}\) be any object and let \(\{a_{i}\}\colon I\to\mathbf{M}\) be a diagram of objects \(a_{i}\in A\) such that \(Y\simeq \hocolim_{i\in I} a_{i}\). Then, for \(n>k\), we have
+  By \cite[Prop.~4.7]{mr1870516} there is a set \(A\) of objects of
+  \(\mathbf{M}\) such that every \(X\in\mathbf{M}\) is canonically
+  weakly equivalent to a homotopy colimit of objects in \(A\). Define
+  a set of morphisms
+  \[
+  T \coloneqq \{S^{n}\times a \to D^{n+1}\times a : a\in A, n > k \}
+  \]
+  in \(\mathbf{M}\). Recall that an object \(X\in\mathbf{M}\) is
+  called \(T\)--local if for every \(f\colon S^{n}\times a\to
+  D^{n+1}\times a\) in \(T\) the induced map
+  \[
+  f^{*}\colon \RHom(D^{n+1}\times a, X)\to\RHom(S^{n}\times a, X)
+  \]
+  is a weak equivalence of simplicial sets. We claim that the
+  \(T\)--local objects of \(\mathbf{M}\) are precisely the
+  \(k\)--truncated objects. To see this, assume first that \(X\) is
+  \(T\)--local and let \(Y\in\mathbf{M}\) be any object and let
+  \(\{a_{i}\}\colon I\to\mathbf{M}\) be a diagram of objects
+  \(a_{i}\in A\) such that \(Y\simeq \hocolim_{i\in I} a_{i}\). Then,
+  for \(n>k\), we have
   \begin{align*}
     \RHom(Y, X^{S^{n}}) &\simeq \RHom(\hocolim_{i\in I}a_{i}, X^{S^{n}})\simeq \holim_{i\in I}\RHom(a_{i}, X^{S^{n}}) \simeq \\
                         &\simeq \holim_{i\in I} \RHom(S^{n}\times a_{i}, X) \simeq \holim_{i\in I}\RHom(D^{n+1}\times a_{i}, X)\simeq \\
@@ -155,8 +273,11 @@ Recall that a \emph{relative category} is a category \(\mathbf{M}\) together wit
   \end{align*}
   It follows that \(X\) is \(k\)--truncated.
 
-  Conversely, assume \(X\) is \(k\)--truncated. This means that for any \(Y\in\mathbf{M}\) and any \(n>k\) the restriction map
-  \[\RHom(D^{n+1}, \RHom(Y,X)) \to \RHom(S^{n}, \RHom(Y,X))\]
+  Conversely, assume \(X\) is \(k\)--truncated. This means that for
+  any \(Y\in\mathbf{M}\) and any \(n>k\) the restriction map
+  \[
+  \RHom(D^{n+1}, \RHom(Y,X)) \to \RHom(S^{n}, \RHom(Y,X))
+  \]
   is a weak equivalence. Hence, for every \(a\in A\) we find
   \begin{align*}
     \RHom(S^{n}\times a, X) &\simeq \RHom(S^{n}, \RHom(a, X))\simeq \\
@@ -164,24 +285,48 @@ Recall that a \emph{relative category} is a category \(\mathbf{M}\) together wit
   \end{align*}
   It follows that \(X\) is \(T\)--local.
 
-  Since \(T\) is a set of morphisms and \(\mathbf{M}\) is a combinatorial simplicial model category, the left Bousfield localization \(\mathbf{M}_{\leq k} \coloneqq L_{T}\mathbf{M}\) of \(\mathbf{M}\) at \(T\) exists and is itself a combinatorial simplicial model category, see \cite[Prop.~A.3.7.3]{mr2522659}. Furthermore, the same theorem also shows that the fibrant objects of \(\mathbf{M}_{\leq k}\) are precisely the fibrant \(T\)--local objects. But, by our previous calculations, these are exactly the \(k\)--truncated fibrant objects of \(\mathbf{M}\).
+  Since \(T\) is a set of morphisms and \(\mathbf{M}\) is a
+  combinatorial simplicial model category, the left Bousfield
+  localization \(\mathbf{M}_{\leq k} \coloneqq L_{T}\mathbf{M}\) of
+  \(\mathbf{M}\) at \(T\) exists and is itself a combinatorial
+  simplicial model category, see
+  \cite[Prop.~A.3.7.3]{mr2522659}. Furthermore, the same theorem also
+  shows that the fibrant objects of \(\mathbf{M}_{\leq k}\) are
+  precisely the fibrant \(T\)--local objects. But, by our previous
+  calculations, these are exactly the \(k\)--truncated fibrant objects
+  of \(\mathbf{M}\).
 \end{proof}
 
 \begin{definition}
-  Let \(k\geq -2\) and \(f\colon X\to Y\) be a morphism in \(\mathbf M\). If for all \(Z\in\mathbf M|_{\leq k}\) the induced map
+  Let \(k\geq -2\) and \(f\colon X\to Y\) be a morphism in \(\mathbf
+  M\). If for all \(Z\in\mathbf M|_{\leq k}\) the induced map
   \[f^{*}\colon \RHom_{\mathbf M}(Y, Z) \to \RHom_{\mathbf M}(X, Z)\]
-  is a weak equivalence of simplicial sets, \(f\) will be a called \emph{\(k\)--connected} or a \emph{\(k\)--equivalence}. We write \(X\simeq_{\leq k} Y\).
+  is a weak equivalence of simplicial sets, \(f\) will be a called
+  \emph{\(k\)--connected} or a \emph{\(k\)--equivalence}. We write
+  \(X\simeq_{\leq k} Y\).
 \end{definition}
 
 \begin{remark}
-  Observe that every morphism is \((-2)\)--connected. A \((-1)\)--connected morphism is also called an \emph{effective epimorphism}.
+  Observe that every morphism is \((-2)\)--connected. A
+  \((-1)\)--connected morphism is also called an \emph{effective
+    epimorphism}.
 \end{remark}
 
 \begin{corollary}\label{cor:weak-equiv-level}
-  The model category \(\mathbf M_{\leq k}\) is the left Bousfield localization of \(\mathbf M\) with respect to the collection of all \(k\)--equivalences.
+  The model category \(\mathbf M_{\leq k}\) is the left Bousfield
+  localization of \(\mathbf M\) with respect to the collection of all
+  \(k\)--equivalences.
 \end{corollary}
 \begin{proof}
-  It will be enough to show that the weak equivalences in \(\mathbf M_{\leq k}\) are precisely the \(k\)--equivalences. To that end, let \(f\colon X\to Y\) be a morphism in \(\mathbf M\) and \(Z\in\mathbf M|_{\leq k}\). Let \(Z^{\fib}\) be a fibrant replacement of \(Z\) in \(\mathbf M\) and we can assume without loss of generality that \(X\) and \(Y\) are cofibrant. Because \(Z^{\fib}\) is \(k\)--truncated and fibrant in \(\mathbf M\), by \autoref{thm:truncated-model-structure-exists} it is also fibrant in \(\mathbf M_{\leq k}\). We obtain a commutative diagram
+  It will be enough to show that the weak equivalences in \(\mathbf
+  M_{\leq k}\) are precisely the \(k\)--equivalences. To that end, let
+  \(f\colon X\to Y\) be a morphism in \(\mathbf M\) and \(Z\in\mathbf
+  M|_{\leq k}\). Let \(Z^{\fib}\) be a fibrant replacement of \(Z\) in
+  \(\mathbf M\) and we can assume without loss of generality that
+  \(X\) and \(Y\) are cofibrant. Because \(Z^{\fib}\) is
+  \(k\)--truncated and fibrant in \(\mathbf M\), by
+  \autoref{thm:truncated-model-structure-exists} it is also fibrant in
+  \(\mathbf M_{\leq k}\). We obtain a commutative diagram
   \[
   \begin{tikzcd}
     \RHom_{\mathbf M}(Y, Z) \arrow[r, "f^{*}"] \arrow[d] & \RHom_{\mathbf M}(X, Z) \arrow[d] \\
@@ -189,28 +334,67 @@ Recall that a \emph{relative category} is a category \(\mathbf{M}\) together wit
     \RHom_{\mathbf M_{\leq k}}(Y, Z) \arrow[r, "f^{*}"] \arrow[u] & \RHom_{\mathbf M_{\leq k}}(X, Z). \arrow[u]
   \end{tikzcd}
   \]
-  in which all vertical maps are weak equivalences of simplicial sets. Hence, \(f\) is a weak equivalence in \(\mathbf M_{\leq k}\) if and only if for all \(Z\) the bottom map is a weak equivalence if and only if for all \(Z\) the top map is a weak equivalence if and only if \(f\) is a \(k\)--equivalence.
+  in which all vertical maps are weak equivalences of simplicial
+  sets. Hence, \(f\) is a weak equivalence in \(\mathbf M_{\leq k}\)
+  if and only if for all \(Z\) the bottom map is a weak equivalence if
+  and only if for all \(Z\) the top map is a weak equivalence if and
+  only if \(f\) is a \(k\)--equivalence.
 \end{proof}
 
 \begin{remark}
-  The model category \(\mathbf M_{\leq 0}\) is discrete in the following sense. Consider the full simplicial subcategory \((\mathbf M_{\leq 0})^{cf}\subset \mathbf M_{\leq 0}\) on the cofibrant--fibrant objects. Then a morphism \(f\colon X\to Y\) in \((\mathbf M_{\leq 0})^{cf}\) is a weak equivalence if and only if it is an isomorphism in \((\mathbf M_{\leq 0})^{cf}\). This follows from the fact that \(\pi_{0}(S) \isom S_{0}\) for \(0\)--truncated simplicial sets \(S\). In particular, the homotopy category of \(\mathbf M_{\leq 0}\) is equivalent to the category \((\mathbf M_{\leq 0})^{cf}\) and we will denote it by \(\disc(\mathbf M)\).
+  The model category \(\mathbf M_{\leq 0}\) is discrete in the
+  following sense. Consider the full simplicial subcategory \((\mathbf
+  M_{\leq 0})^{cf}\subset \mathbf M_{\leq 0}\) on the
+  cofibrant--fibrant objects. Then a morphism \(f\colon X\to Y\) in
+  \((\mathbf M_{\leq 0})^{cf}\) is a weak equivalence if and only if
+  it is an isomorphism in \((\mathbf M_{\leq 0})^{cf}\). This follows
+  from the fact that \(\pi_{0}(S) \isom S_{0}\) for \(0\)--truncated
+  simplicial sets \(S\). In particular, the homotopy category of
+  \(\mathbf M_{\leq 0}\) is equivalent to the category \((\mathbf
+  M_{\leq 0})^{cf}\) and we will denote it by \(\disc(\mathbf M)\).
 
-  As a matter of terminology, given an object \(X\in\mathbf M\), homotopy types in \(\disc(\mathbf M/X)\) will be called \emph{sheaves on \(X\)}.
+  As a matter of terminology, given an object \(X\in\mathbf M\),
+  homotopy types in \(\disc(\mathbf M/X)\) will be called
+  \emph{sheaves on \(X\)}.
 \end{remark}
 
-By functorial factorizations, \autoref{thm:truncated-model-structure-exists} implies, for every \(k\geq -2\), the existence of fibrant replacement functors
-\[\trunc{k}\colon \mathbf{M}\to\mathbf{M}|_{\leq k}\]
-for \(\mathbf M_{\leq k}\). The functor \(\trunc{k}\) is called the \emph{\(k\textsuperscript{th}\) truncation functor} for \(\mathbf{M}\). In particular, given any object \(X\in\mathbf{M}\) we get maps
-\[X\to \trunc{k} X\to *,\]
-the first one being an acyclic cofibration in \(\mathbf{M}_{\leq k}\) and the second one being a fibration in \(\mathbf{M}_{\leq k}\). \Autoref{cor:weak-equiv-level} implies that there are natural weak equivalences
-\[\RHom_{\mathbf M_{\leq k}}(\trunc{k} X, Y)\simeq \RHom_{\mathbf M}(\trunc{k} X, Y) \simeq \RHom_{\mathbf M}(X, Y)\]
-whenever \(Y\) is \(k\)--truncated. Concretely, every morphism \(f\colon X\to Y\) factors up to weak equivalence as morphisms \(X\to \trunc{k}X\to Y\) if \(Y\) is \(k\)--truncated.
+By functorial factorizations,
+\autoref{thm:truncated-model-structure-exists} implies, for every
+\(k\geq -2\), the existence of fibrant replacement functors
+\[
+\trunc{k}\colon \mathbf{M}\to\mathbf{M}|_{\leq k}
+\]
+for \(\mathbf M_{\leq k}\). The functor \(\trunc{k}\) is called the
+\emph{\(k\textsuperscript{th}\) truncation functor} for
+\(\mathbf{M}\). In particular, given any object \(X\in\mathbf{M}\) we
+get maps
+\[
+X\to \trunc{k} X\to *,
+\]
+the first one being an acyclic cofibration in \(\mathbf{M}_{\leq k}\)
+and the second one being a fibration in \(\mathbf{M}_{\leq
+  k}\). \Autoref{cor:weak-equiv-level} implies that there are natural
+weak equivalences
+\[
+\RHom_{\mathbf M_{\leq k}}(\trunc{k} X, Y)\simeq \RHom_{\mathbf
+  M}(\trunc{k} X, Y) \simeq \RHom_{\mathbf M}(X, Y)
+\]
+whenever \(Y\) is \(k\)--truncated. Concretely, every morphism
+\(f\colon X\to Y\) factors up to weak equivalence as morphisms \(X\to
+\trunc{k}X\to Y\) if \(Y\) is \(k\)--truncated.
 
 \begin{corollary}
-  Given \(n \leq m\), for any \(X\in\mathbf M\) there is a natural weak equivalence \(\trunc{n}\trunc{m} X \simeq \trunc{n} X\) in \(\mathbf M\). In particular, \(\trunc{n}X\) is weakly equivalent to the \(n\textsuperscript{th}\) truncation of \(\tau_{m}X\) for every \(m\geq n\).
+  Given \(n \leq m\), for any \(X\in\mathbf M\) there is a natural
+  weak equivalence \(\trunc{n}\trunc{m} X \simeq \trunc{n} X\) in
+  \(\mathbf M\). In particular, \(\trunc{n}X\) is weakly equivalent to
+  the \(n\textsuperscript{th}\) truncation of \(\tau_{m}X\) for every
+  \(m\geq n\).
 \end{corollary}
 \begin{proof}
-  Observe that \(n\leq m\) implies that \(X \simeq_{\leq n}\trunc{m}X\), since \(\mathbf M|_{\leq n}\subset \mathbf M|_{\leq m}\) and \(X\simeq_{\leq m}\trunc{m}X\). Hence, given any \(Y\in\mathbf M\), we find
+  Observe that \(n\leq m\) implies that \(X \simeq_{\leq
+    n}\trunc{m}X\), since \(\mathbf M|_{\leq n}\subset \mathbf
+  M|_{\leq m}\) and \(X\simeq_{\leq m}\trunc{m}X\). Hence, given any
+  \(Y\in\mathbf M\), we find
   \begin{align*}
     \RHom_{\mathbf M}(Y, \trunc{n}\trunc{m} X)&\simeq \RHom_{\mathbf M}(\trunc{n}Y, \trunc{n}\trunc{m}X)\simeq \RHom_{\mathbf M_{\leq n}}(Y, \trunc{m}X)\simeq \\
     &\simeq \RHom_{\mathbf M_{\leq n}}(Y, X) \simeq \RHom_{\mathbf M}(\trunc{n}Y, \trunc{n}X)\simeq \RHom_{\mathbf M}(Y, \trunc{n}X).
@@ -218,11 +402,20 @@ whenever \(Y\) is \(k\)--truncated. Concretely, every morphism \(f\colon X\to Y\
   It follows that \(\trunc{n}\trunc{m}X\simeq \trunc{n}X\).
 \end{proof}
 
-For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf M/X\) is again a combinatorial simplicial model category. Hence, by the above, it has truncation functors which we will denote by \(\trunc{k}^{X}\). Observe that an object \(f\colon Y\to X\) in \(\mathbf M/X\) is \(k\)--truncated if and only if \(f\) is a \(k\)--truncated morphism in \(\mathbf M\). Indeed, for any \(g\colon Z\to X\) we have a weak equivalence
-\[\RHom_{\mathbf M/X}(g, f)\simeq \RHom_{\mathbf M}(Y, X)\times^{h}_{\RHom_{\mathbf M}(Z, X)} \{g\}.\]
+For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf
+M/X\) is again a combinatorial simplicial model category. Hence, by
+the above, it has truncation functors which we will denote by
+\(\trunc{k}^{X}\). Observe that an object \(f\colon Y\to X\) in
+\(\mathbf M/X\) is \(k\)--truncated if and only if \(f\) is a
+\(k\)--truncated morphism in \(\mathbf M\). Indeed, for any \(g\colon
+Z\to X\) we have a weak equivalence
+\[
+\RHom_{\mathbf M/X}(g, f)\simeq \RHom_{\mathbf M}(Y, X)\times^{h}_{\RHom_{\mathbf M}(Z, X)} \{g\}.
+\]
 
 \begin{proposition}\label{prop:left-exact-preserves-trunc}
-  Let \(\mathbf M\) and \(\mathbf N\) be combinatorial simplicial model categories and let
+  Let \(\mathbf M\) and \(\mathbf N\) be combinatorial simplicial
+  model categories and let
   \[
   \begin{tikzcd}
     \mathbf M \arrow[r, shift right=.7ex, "G"'] & \arrow[l, shift right=.7ex, "F"'] \mathbf N
@@ -233,58 +426,136 @@ For \(X\in\mathbf{M}\) a fixed object, the slice category \(\mathbf M/X\) is aga
   for every \(X\in\mathbf N\).
 \end{proposition}
 \begin{proof}
-  By \autoref{prop:truncated-objects-exact-functors} \(\LL F\) sends \(n\)--truncated objects in \(\mathbf N\) to \(n\)--truncated objects in \(\mathbf M\). Hence, the canonical morphism \(\LL F(X)\to\LL F(\trunc{n}^{\mathbf N}X)\) factors up to weak equivalence through a morphism \(f\colon \trunc{n}^{\mathbf M}\LL F(X)\to \LL F(\trunc{n}^{\mathbf N}X)\). To show that this is a weak equivalence, let \(Y\in\mathbf M\) be \(n\)--truncated. Then the induced morphism \(f^{*}\) factors through weak equivalences
+  By \autoref{prop:truncated-objects-exact-functors} \(\LL F\) sends
+  \(n\)--truncated objects in \(\mathbf N\) to \(n\)--truncated
+  objects in \(\mathbf M\). Hence, the canonical morphism \(\LL
+  F(X)\to\LL F(\trunc{n}^{\mathbf N}X)\) factors up to weak
+  equivalence through a morphism \(f\colon \trunc{n}^{\mathbf M}\LL
+  F(X)\to \LL F(\trunc{n}^{\mathbf N}X)\). To show that this is a weak
+  equivalence, let \(Y\in\mathbf M\) be \(n\)--truncated. Then the
+  induced morphism \(f^{*}\) factors through weak equivalences
   \begin{align*}
     \RHom_{\mathbf M}(\LL F(\trunc{n}^{\mathbf N}X), Y)&\simeq \RHom_{\mathbf N}(\trunc{n}^{\mathbf N}X, \RR G(Y)) \simeq\\
                                                     &\simeq \RHom_{\mathbf N}(X, \RR G(Y)) \simeq \\
                                                     &\simeq \RHom_{\mathbf M}(\LL F(X), Y) \simeq \\
                                                     &\simeq \RHom_{\mathbf M}(\trunc{n}^{\mathbf M}\LL F(X), Y).
   \end{align*}
-  Hence, \(f\) is \(n\)--connected. But since \(f\) is a morphism beteween \(n\)--truncated objects, this is enough to show that \(f\) is a weak equivalence in \(\mathbf M\).
+  Hence, \(f\) is \(n\)--connected. But since \(f\) is a morphism
+  beteween \(n\)--truncated objects, this is enough to show that \(f\)
+  is a weak equivalence in \(\mathbf M\).
 \end{proof}
 
 \section{Homotopy Sheaves}
 
-Given a space \(X\) in classical homotopy theory one can always choose a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) = [S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\) the group structure comes from the usual (homotopy) ogroup structure on \(S^{n}\): the multiplication is induced by precomposition with the \enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
+Given a space \(X\) in classical homotopy theory one can always choose
+a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) =
+[S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\)
+the group structure comes from the usual (homotopy) ogroup structure
+on \(S^{n}\): the multiplication is induced by precomposition with the
+\enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
 
-The main difficulty in working with homotopy groups in more general homotopy theories is that for various purposes restricting one's attention to pointed spaces is not good enough. This phenomenon is entirely analogous to the observation that a sheaf of sets on a topological space need not have any global section. For example, the sheaf of local sections of a torsor on a topological space has a global section if and only if the torsor is trivial. One could now imagine working with a more general notion of basepoint for objects in an arbitrary model category; for example, for simplicial sheaves there certainly exist sections over small enough open sets. But doing so amounts to choosing a presentation of a combinatorial model category in the sense of \cite{mr1870516}.
+The main difficulty in working with homotopy groups in more general
+homotopy theories is that for various purposes restricting one's
+attention to pointed spaces is not good enough. This phenomenon is
+entirely analogous to the observation that a sheaf of sets on a
+topological space need not have any global section. For example, the
+sheaf of local sections of a torsor on a topological space has a
+global section if and only if the torsor is trivial. One could now
+imagine working with a more general notion of basepoint for objects in
+an arbitrary model category; for example, for simplicial sheaves there
+certainly exist sections over small enough open sets. But doing so
+amounts to choosing a presentation of a combinatorial model category
+in the sense of \cite{mr1870516}.
 
-In light of these considerations we will attempt to treat all possible basepoints at the same time. Let us first spell out the case of simplicial sets. Let \(X\) be some simplicial set (connected or not). Choose some simplicial model \(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that the homotopy fiber of \(p\) over some point \(x\in X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the set of connected components of this homotopy fiber is precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible basepoints. This motivates the definition of homotopy sheaves in any combinatorial simplicial model category.
+In light of these considerations we will attempt to treat all possible
+basepoints at the same time. Let us first spell out the case of
+simplicial sets. Let \(X\) be some simplicial set (connected or
+not). Choose some simplicial model \(S^{n}\) for the
+\(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\)
+of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical
+basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to
+X\). Observe that the homotopy fiber of \(p\) over some point \(x\in
+X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of
+\emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the set of
+connected components of this homotopy fiber is precisely
+\(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the
+canonical map \(p\colon X^{S^{n}}\to X\) captures the
+\(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible
+basepoints. This motivates the definition of homotopy sheaves in any
+combinatorial simplicial model category.
 
 \begin{definition}
-  Let \(\mathbf M\) be a combinatorial simplicial model category and let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\) homotopy sheaf} of \(X\) is the homotopy type \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf M/X)\).
+  Let \(\mathbf M\) be a combinatorial simplicial model category and
+  let \(X\in\mathbf M\). Then the \emph{\(n\textsuperscript{th}\)
+    homotopy sheaf} of \(X\) is the homotopy type
+  \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf
+  M/X)\).
 \end{definition}
 
-The sheaves \(\pi_{n}(X)\) admit canonical sections. Indeed, the unique map \(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\) which is a section of the map \(X^{S^{n}}\to X\). Applying \(\trunc{0}^{X}\) yields a section of \(\pi_{n}(X)\). Hence, the homotopy sheaves of \(X\) can be considered as pointed objects in \(\disc(\mathbf M/X)\). However, to construct a group structure on higher homotopy sheaves we will need to assume some exactness properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a \emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
+The sheaves \(\pi_{n}(X)\) admit canonical sections. Indeed, the
+unique map \(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\)
+which is a section of the map \(X^{S^{n}}\to X\). Applying
+\(\trunc{0}^{X}\) yields a section of \(\pi_{n}(X)\). Hence, the
+homotopy sheaves of \(X\) can be considered as pointed objects in
+\(\disc(\mathbf M/X)\). However, to construct a group structure on
+higher homotopy sheaves we will need to assume some exactness
+properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a
+\emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
 
 \begin{definition}\label{defn:model-topos}
-  A combinatorial simplicial model category \(\mathbf M\) is a \emph{model topos} if there is a presentation of \(\mathbf M\) as a \emph{left exact} Bousfield localization of a category of simplicial presheaves. That is, \(\mathbf M\) is a model topos if there is a simplicial Quillen adjunction\footnote{Written in the direction of the right adjoint.}
-\[
-\begin{tikzcd}
-  \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex, "L"'] \spshv(\mathbf C)
-\end{tikzcd}
-\]
-for some simplicial category \(\mathbf C\) and the injective model structure on \(\spshv(\mathbf C)\) such that \(\LL L\) preserves finite homotopy limits and \(\RR i\) is \emph{homotopically fully faithful}, i.\,e.~it induces weak equivalences
-\[\RHom(X, Y)\simeq\RHom(\RR i(X), \RR i(Y))\]
-for all \(X,Y\in\mathbf M\).
+  A combinatorial simplicial model category \(\mathbf M\) is a
+  \emph{model topos} if there is a presentation of \(\mathbf M\) as a
+  \emph{left exact} Bousfield localization of a category of simplicial
+  presheaves. That is, \(\mathbf M\) is a model topos if there is a
+  simplicial Quillen adjunction\footnote{Written in the direction of
+    the right adjoint.}
+  \[
+  \begin{tikzcd}
+    \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex, "L"'] \spshv(\mathbf C)
+  \end{tikzcd}
+  \]
+  for some simplicial category \(\mathbf C\) and the injective model
+  structure on \(\spshv(\mathbf C)\) such that \(\LL L\) preserves
+  finite homotopy limits and \(\RR i\) is \emph{homotopically fully
+    faithful}, i.\,e.~it induces weak equivalences
+  \[
+  \RHom(X, Y)\simeq\RHom(\RR i(X), \RR i(Y))
+  \]
+  for all \(X,Y\in\mathbf M\).
 \end{definition}
 
-Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an object in a model topos \(\mathbf M\), the slice category \(\mathbf M/X\) is again a model topos.
+Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for
+\(X\) an object in a model topos \(\mathbf M\), the slice category
+\(\mathbf M/X\) is again a model topos.
 
 \begin{lemma}\label{lem:trunc-presheaves}
-  Let \(\mathbf C\) be a simplicial category and let \(F\in\spshv(\mathbf C)\) be a simplicial presheaf. Then, for every \(c\in\mathbf C\) there is a natural weak equivalence \((\trunc{n}F)(c)\simeq \trunc{n}F(c)\) of simplicial sets.
+  Let \(\mathbf C\) be a simplicial category and let
+  \(F\in\spshv(\mathbf C)\) be a simplicial presheaf. Then, for every
+  \(c\in\mathbf C\) there is a natural weak equivalence
+  \((\trunc{n}F)(c)\simeq \trunc{n}F(c)\) of simplicial sets.
 \end{lemma}
 \begin{proof}
-  This follows from the fact that homotopy limits in \(\spshv(\mathbf C)\) may be computed pointwise and \autoref{prop:truncated-objects-exact-functors}.
+  This follows from the fact that homotopy limits in \(\spshv(\mathbf
+  C)\) may be computed pointwise and
+  \autoref{prop:truncated-objects-exact-functors}.
 \end{proof}
 
 \begin{proposition}[{see \cite[Lemma~6.5.1.2]{mr2522659}}]\label{prop:trunc-products}
-  If \(\mathbf M\) is a model topos, then the truncation functors \(\trunc{n}\) preserve finite homotopy products.
+  If \(\mathbf M\) is a model topos, then the truncation functors
+  \(\trunc{n}\) preserve finite homotopy products.
 \end{proposition}
 \begin{proof}
-  First, let \(F,G\in\spshv(\mathbf C)\) be simplicial presheaves on some simplicial category \(\mathbf C\) and consider the canonical morphism
-  \[\trunc{n}(F\times G)\to \trunc{n}F\times\trunc{n}G.\]
-  To prove that it is a weak equivalence, it will be enough to check this after evaluating at all \(c\in\mathbf C\). Hence, by \autoref{lem:trunc-presheaves} we have reduced to the case of simplicial sets. There it follows from Whitehead's theorem by computing homotopy groups of both sides.
+  First, let \(F,G\in\spshv(\mathbf C)\) be simplicial presheaves on
+  some simplicial category \(\mathbf C\) and consider the canonical
+  morphism
+  \[
+  \trunc{n}(F\times G)\to \trunc{n}F\times\trunc{n}G.
+  \]
+  To prove that it is a weak equivalence, it will be enough to check
+  this after evaluating at all \(c\in\mathbf C\). Hence, by
+  \autoref{lem:trunc-presheaves} we have reduced to the case of
+  simplicial sets. There it follows from Whitehead's theorem by
+  computing homotopy groups of both sides.
 
   Now choose a simplicial Quillen adjunction
   \[
@@ -292,7 +563,14 @@ Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an obje
     \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex, "L"'] \spshv(\mathbf C)
   \end{tikzcd}
   \]
-  as in \autoref{defn:model-topos} and take \(X, Y\in\mathbf M\). By our previous considerations we have a natural weak equivalence \(\trunc{n}(\RR i(X)\times^{h}\RR i(Y))\simeq \trunc{n}\RR i(X)\times^{h}\trunc{n}\RR i(Y)\). Since \(\RR i\) is homotopically fully faithful the counit of the adjunction \(\LL L\dashv \RR i\) induces a weak equivalence \(\LL L\,\RR i (Z)\simeq Z\) for all \(Z\). Consequently, \autoref{prop:left-exact-preserves-trunc} provides us with weak equivalences
+  as in \autoref{defn:model-topos} and take \(X, Y\in\mathbf M\). By
+  our previous considerations we have a natural weak equivalence
+  \(\trunc{n}(\RR i(X)\times^{h}\RR i(Y))\simeq \trunc{n}\RR
+  i(X)\times^{h}\trunc{n}\RR i(Y)\). Since \(\RR i\) is homotopically
+  fully faithful the counit of the adjunction \(\LL L\dashv \RR i\)
+  induces a weak equivalence \(\LL L\,\RR i (Z)\simeq Z\) for all
+  \(Z\). Consequently, \autoref{prop:left-exact-preserves-trunc}
+  provides us with weak equivalences
   \begin{align*}
     \trunc{n}(X\times^{h} Y) &\simeq \trunc{n}(\LL L\,\RR i(X\times^{h} Y)) \simeq \LL L\trunc{n}(\RR i(X)\times^{h} \RR i(Y)) \simeq \\
                          &\simeq \LL L(\trunc{n}\RR i(X)\times^{h} \trunc{n}\RR i(Y)) \simeq \\
@@ -302,26 +580,59 @@ Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an obje
   since \(\LL L\) is assumed to preserve finite homotopy limits.
 \end{proof}
 
-\Autoref{prop:trunc-products} allows us to produce a group structure on \(\pi_{n}(X)\) for \(n\geq 1\) if \(X\) is an object in a model topos \(\mathbf M\): We have the usual (homotopy) cogroup structure on \(S^{n}\) given by the pinch map \(S^{n}\to S^{n}\vee S^{n}\). This induces a morphism
-\[ X^{S^{n}}\times^{h}_{X} X^{S^{n}} \simeq X^{S^{n}}\times^{h}_{X^{*}} X^{S^{n}} \simeq X^{S^{n}\vee S^{n}} \to X^{S^{n}}.\]
-By \autoref{prop:trunc-products} the functor \(\trunc{0}^{X}\) preserves finite homotopy products in \(\mathbf M/X\), so we get a morphism
-\[\pi_{n}(X)\times_{X}\pi_{n}(X)\isom \trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\isom \trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \isom \pi_{n}(X)\]
-in \(\disc(\mathbf M/X)\). It is then straightforward to check that this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\), which are abelian for \(n\geq 2\).
+\Autoref{prop:trunc-products} allows us to produce a group structure
+on \(\pi_{n}(X)\) for \(n\geq 1\) if \(X\) is an object in a model
+topos \(\mathbf M\): We have the usual (homotopy) cogroup structure on
+\(S^{n}\) given by the pinch map \(S^{n}\to S^{n}\vee S^{n}\). This
+induces a morphism
+\[
+X^{S^{n}}\times^{h}_{X} X^{S^{n}} \simeq X^{S^{n}}\times^{h}_{X^{*}}
+X^{S^{n}} \simeq X^{S^{n}\vee S^{n}} \to X^{S^{n}}.
+\]
+By \autoref{prop:trunc-products} the functor \(\trunc{0}^{X}\)
+preserves finite homotopy products in \(\mathbf M/X\), so we get a
+morphism
+\[
+\pi_{n}(X)\times_{X}\pi_{n}(X)\isom
+\trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\isom
+\trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \isom
+\pi_{n}(X)
+\]
+in \(\disc(\mathbf M/X)\). It is then straightforward to check that
+this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\),
+which are abelian for \(n\geq 2\).
 
-Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves \(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
+Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as
+an object of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves
+\(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of
+categories \((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be
+a simplicial Quillen equivalence. Hence, we can consider the homotopy
+sheaves \(\pi_{n}(f)\) as objects of \(\disc(\mathbf M/X)\).
 
-One can give a slightly more concrete description of \(\pi_{n}(f)\) as follows. Consider the homotopy fiber product \(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\) along the canonical section \(Y\to Y^{S^{n}}\). This is a model for the object \(f^{S^{n}}\in \mathbf M/Y\). Hence, along the equivalence \((\mathbf M/Y)/f\simeq \mathbf M/X\), we find that
-\[\trunc{0}^{X}(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y)\to X\]
+One can give a slightly more concrete description of \(\pi_{n}(f)\) as
+follows. Consider the homotopy fiber product
+\(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\) along the canonical section
+\(Y\to Y^{S^{n}}\). This is a model for the object \(f^{S^{n}}\in
+\mathbf M/Y\). Hence, along the equivalence \((\mathbf M/Y)/f\simeq
+\mathbf M/X\), we find that
+\[
+\trunc{0}^{X}(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y)\to X
+\]
 is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
 
 \begin{remark}\label{rem:homotopy-group-functoriality}
-  Rezk proves in \cite[Example~6.13]{rezkhomotopytoposes} that any morphism \(f\colon X\to Y\) in a model topos \(\mathbf M\) induces a simplicial Quillen adjunction
+  Rezk proves in \cite[Example~6.13]{rezkhomotopytoposes} that any
+  morphism \(f\colon X\to Y\) in a model topos \(\mathbf M\) induces a
+  simplicial Quillen adjunction
   \[
   \begin{tikzcd}
     \mathbf M/X \arrow[r, shift right=.7ex, "f_{*}"'] & \arrow[l, shift right=.7ex, "f^{*}"'] \mathbf M/Y
   \end{tikzcd}
   \]
-  where the left adjoint \(f^{*}\) is given by homotopy pullback along \(f\) and is left exact. Consequently, \autoref{prop:left-exact-preserves-trunc} shows that \(f^{*}\) commutes with truncation. There is a homotopy commutative diagram
+  where the left adjoint \(f^{*}\) is given by homotopy pullback along
+  \(f\) and is left exact. Consequently,
+  \autoref{prop:left-exact-preserves-trunc} shows that \(f^{*}\)
+  commutes with truncation. There is a homotopy commutative diagram
   \[
   \begin{tikzcd}
     X^{S^{n}} \arrow[r] \arrow[d] & f^{*}Y^{S^{n}} \arrow[r] \arrow[d] & Y^{S^{n}} \arrow[d] \\
@@ -329,39 +640,69 @@ is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
   \end{tikzcd}
   \]
   and applying \(\trunc{0}^{X}\), we obtain a morphism
-  \[f_{*}\colon \pi_{n}(X)\simeq\trunc{0}^{X}(X^{S^{n}})\longrightarrow \trunc{0}^{X}(f^{*}Y^{S^{n}})\simeq f^{*}\trunc{0}^{Y}(Y^{S^{n}})\simeq f^{*}\pi_{n}(Y).\]
+  \[
+  f_{*}\colon \pi_{n}(X)\simeq\trunc{0}^{X}(X^{S^{n}})\longrightarrow
+  \trunc{0}^{X}(f^{*}Y^{S^{n}})\simeq
+  f^{*}\trunc{0}^{Y}(Y^{S^{n}})\simeq f^{*}\pi_{n}(Y).
+  \]
 \end{remark}
 
 \begin{proposition}[{see~\cite[Remark~6.5.1.5]{mr2522659}}]
-  Given maps \(f\colon X\to Y\) and \(g\colon Y\to Z\) in a model topos \(\mathbf M\), there is a long exact sequence
+  Given maps \(f\colon X\to Y\) and \(g\colon Y\to Z\) in a model
+  topos \(\mathbf M\), there is a long exact sequence
   \[
   \cdots \to f^{*}\pi_{n+1}(g) \to \pi_{n}(f) \to \pi_{n}(g\circ f) \to f^{*}\pi_{n}(g) \to \cdots
   \]
   of pointed objects in \(\disc(\mathbf M/X)\).
 \end{proposition}
 \begin{proof}
-  We will first construct the relevant maps between homotopy sheaves. First, \(g\) induces a natural map
-  \[g_{*}\colon X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\to X^{S^{n}}\times^{h}_{Z^{S^{n}}} Z\]
-  and by functoriality of truncation we get at map \(g_{*}\colon \pi_{n}(f)\to\pi_{n}(g\circ f)\). Second, applying \autoref{rem:homotopy-group-functoriality} to the model topos \(\mathbf M/Z\) yields the required morphism \(f_{*}\colon \pi_{n}(g\circ f)\to f^{*}\pi_{n}(g)\).
+  We will first construct the relevant maps between homotopy
+  sheaves. First, \(g\) induces a natural map
+  \[
+  g_{*}\colon X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\to
+  X^{S^{n}}\times^{h}_{Z^{S^{n}}} Z
+  \]
+  and by functoriality of truncation we get at map \(g_{*}\colon
+  \pi_{n}(f)\to\pi_{n}(g\circ f)\). Second, applying
+  \autoref{rem:homotopy-group-functoriality} to the model topos
+  \(\mathbf M/Z\) yields the required morphism \(f_{*}\colon
+  \pi_{n}(g\circ f)\to f^{*}\pi_{n}(g)\).
   \viktor{finish constructing the connecting homomorphism and prove exactness}
 \end{proof}
 
 
 \section{Postnikov Towers}
 
-Using truncation functors we can define Postnikov towers in any combinatorial simplicial model category. Recall that a \emph{tower} in \(\mathbf M\) is a diagram of the form
-\[\cdots \to X_{n+1}\to X_{n}\to X_{n-1}\to \cdots \to X_{0} \]
+Using truncation functors we can define Postnikov towers in any
+combinatorial simplicial model category. Recall that a \emph{tower} in
+\(\mathbf M\) is a diagram of the form
+\[
+\cdots \to X_{n+1}\to X_{n}\to X_{n-1}\to \cdots \to X_{0}
+\]
 and a \emph{convergent tower} in \(\mathbf M\) is a diagram
-\[X_{\infty}\xrightarrow{\pi} \cdots \to X_{n+1}\to X_{n}\to\cdots\to X_{0}\]
+\[
+X_{\infty}\xrightarrow{\pi} \cdots \to X_{n+1}\to X_{n}\to\cdots\to
+X_{0}
+\]
 exhibiting \(X_{\infty}\) as the homotopy limit of the tower \(\{X_{n}\}_{n\in\NN}\), i.\,e.~such that the morphism
-\[X_{\infty}\xrightarrow{\pi}\holim_{n\in\NN} X_{n}\]
+\[
+X_{\infty}\xrightarrow{\pi}\holim_{n\in\NN} X_{n}
+\]
 is a weak equivalence.
 
 \begin{definition}
-  Let \(\mathbf M\) be a combinatorial simplicial model category and \(X\in\mathbf M\). The tower
-  \[\cdots\to\trunc{n} X\to\trunc{n-1} X\to\cdots\to\trunc{1} X\to\trunc{0}X\]
-  is called the \emph{Postnikov tower} for \(X\). The Postnikov tower for \(X\) is said to \emph{converge} if
-  \[X\to\cdots\to\trunc{n} X\to\trunc{n-1} X\to\cdots\to\trunc{1} X\to\trunc{0}X\]
+  Let \(\mathbf M\) be a combinatorial simplicial model category and
+  \(X\in\mathbf M\). The tower
+  \[
+  \cdots\to\trunc{n} X\to\trunc{n-1} X\to\cdots\to\trunc{1}
+  X\to\trunc{0}X
+  \]
+  is called the \emph{Postnikov tower} for \(X\). The Postnikov tower
+  for \(X\) is said to \emph{converge} if
+  \[
+  X\to\cdots\to\trunc{n} X\to\trunc{n-1} X\to\cdots\to\trunc{1}
+  X\to\trunc{0}X
+  \]
   is a convergent tower in \(\mathbf M\).
 \end{definition}
 
