@@ -130,7 +130,18 @@ adjunctions
 (\iota_k)_! \dashv \iota_k^* \dashv (\iota_k)_*,
 \]
 see e.\,g.~\cite[Theorem~4, p.~59]{sheavesgeometrylogic} or
-\cite[{Exposé}~i, Proposition~5.1]{SGA4-1}.
+\cite[{Exposé}~i, Proposition~5.1]{SGA4-1}. Composing these, we get an
+adjunction
+\[
+\sk_k = (\iota_k)_{!}\iota_k^{*} \dashv (\iota_k)_{*}\iota_k^{*} = \cosk_k.
+\]
+
+\begin{proposition}\label{prop:cosk-is-truncated}
+  If \(X\in\sset_{\leq k}\), then \((\iota_k)_{*}X \in \sset\) is
+  \(k\)--truncated. In particular, \(\cosk_k(Y)\) is \(k\)--truncated
+  for all simplicial sets \(Y\).
+\end{proposition}
+
 \viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove
   classical homotopy group statements.}
 
