@@ -187,21 +187,30 @@ is a functor \(\mathbf{M}\to\mathbf{N}\) such that \(F(W)\subset
 W'\). A relative functor between model categories is sometimes also
 called a \emph{homotopical functor}.
 
-\begin{remark}
+\begin{remark}\label{rem:holim-homotopical}
   Let \(I\) be some category and let \(\mathbf{M}^{I}\) be the
-  category of \(I\)--shaped diagrams in \(\mathbf{M}\).
+  category of \(I\)--shaped diagrams in \(\mathbf{M}\). In
+  \(\mathbf{M}^{I}\) we take the weak equivalences to be those natural
+  transformations that induce weak equivalences in \(\mathbf{M}\) on
+  every object \(i\in I\). The Bousfield--Kan construction of the
+  homotopy limit yields a functor
+\[
+\holim\colon \mathbf{M}^I \to \mathbf{M}
+\]
+  In fact, this functor is homotopical by the weak homotopy invariance
+  of the homotopy limit.
 \end{remark}
 
-\begin{proposition}\label{prop:truncated-objects-exact-functors}\viktor{Per Aravind's suggestion: factor out the definition of homotopical functors and give examples.}
+\begin{proposition}\label{prop:truncated-objects-exact-functors}
   Let \(F\colon \mathbf{M}\to\mathbf{N}\) be a homotopical functor
   between combinatorial simplicial model categories that preserves
-  homotopy pullbacks; that is, \(F(f)\) is a weak equivalence in
-  \(\mathbf N\) for every weak equivalence in \(f\) in \(\mathbf M\)
-  and the image under \(F\) of any homotopy pullback square in
-  \(\mathbf M\) is a homotopy pullback square in \(\mathbf N\). Then
-  \(F\) preserves \(k\)--truncated morphisms for any \(k\) and
-  consequently restricts to a functor \(F\colon \mathbf M|_{\leq
-    k}\to\mathbf N|_{\leq k}\).
+  homotopy pullbacks; that is, the image under \(F\) of any homotopy
+  pullback square in \(\mathbf M\) is a homotopy pullback square in
+  \(\mathbf N\).
+
+  Then \(F\) preserves \(k\)--truncated morphisms for any \(k\) and
+  consequently restricts to a functor
+  \(F\colon \mathbf M|_{\leq k}\to\mathbf N|_{\leq k}\).
 \end{proposition}
 \begin{proof}
   Since \(F\) is homotopical, by definition it preserves
