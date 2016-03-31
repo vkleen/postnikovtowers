@@ -137,13 +137,24 @@ adjunction
 \]
 
 \begin{proposition}\label{prop:cosk-is-truncated}
-  If \(X\in\sset_{\leq k}\), then \((\iota_k)_{*}X \in \sset\) is
-  \(k\)--truncated. In particular, \(\cosk_k(Y)\) is \(k\)--truncated
-  for all simplicial sets \(Y\).
+  If \(X\in\sset\), then  \(\cosk_k(X)\) is \(k\)--truncated.
+\end{proposition}
+\begin{proof}
+  \viktor{Write proof, induction over \(k\)?}
+\end{proof}
+
+\viktor{Change notation of \(\sset_{\leq k}\) so as not to conflict
+  with general notation \(\mathbf M_{\leq k}\),}
+
+\begin{proposition}
+  \(\RHom(\cosk_k(X), Y) \simeq \RHom(X, Y)\) whenever \(Y\) is
+  \(k\)--truncated.
 \end{proposition}
 
 \viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove
-  classical homotopy group statements.}
+  classical homotopy group statements: truncated implies homotopy
+  groups vanish in some degrees; relative truncation functors; long
+  exact sequence; basepoint free definition}
 
 \section{Truncated and Connected Morphisms}
 Most of the material in this section is due to \cite{mr2522659} and
