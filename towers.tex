@@ -113,6 +113,14 @@ f^{*}\colon \RHom(Y, Z) \to \RHom(X, Z)
 is a weak equivalence.
 \end{definition}
 
+\begin{proposition}
+  \(n\)--connected is equivalent to isomorphisms/epimorphisms on
+  homotopy groups \viktor{write up properly}
+\end{proposition}
+\begin{proof}
+  \viktor{write proof}
+\end{proof}
+
 \begin{definition}\label{defn:trunc_functor}
   A functor \(\trunc{n}\colon \sset \to \sset\) with a natural
   transformation \(\eta\colon \id\to\trunc{n}\) is an \emph{\Th{n}
@@ -152,18 +160,27 @@ adjunction
 
 \begin{lemma}\label{lem:cosk_sk_composition}
   The counit is a natural isomorphism \(\id \simeq
-  \iota^{*}\iota_{!}\) and consequently induces a natural isomorphism
+  \iota_{n}^{*}(\iota_{n})_{!}\) and consequently induces a natural isomorphism
   \(\cosk_{n}\sk_{n}\simeq \cosk_{n}\).
 \end{lemma}
 \begin{proof}
-  \viktor{Write proof}
+  By \cite[{Exposé}~i, Proposition~5.6]{SGA4-1} the assertion that
+  \(\id\simeq\iota_n^{*}(\iota_n)_{!}\) is equivalent to \(\iota_{n}\)
+  being a fully faithful functor. But this is immediate from the
+  definitions.
+
+  For the second part, observe that
+\[
+  \cosk_n\sk_n = (\iota_n)_{*}\iota_n^{*}(\iota_{n})_{!}\iota_n^{*}
+  \simeq (\iota_n)_{*}\iota_n^{*} = \cosk_{n}.\qedhere
+\]
 \end{proof}
 
 We will abuse notation somewhat and simply call the composition
 \(\id\to\cosk_{n}\sk_{n}\simeq\cosk_{n}\) the \emph{unit transformation}.
 
 \begin{proposition}\label{prop:cosk-is-truncated}
-  If \(X\in\sset\) is a Kan complex, then  \(\cosk_n(X)\) is
+  If \(X\in\sset\) is a Kan complex, then  \(\cosk_n(X)\) is an
   \(n\)--truncated Kan complex.
 \end{proposition}
 \begin{proof}
@@ -173,16 +190,14 @@ We will abuse notation somewhat and simply call the composition
 \viktor{Change notation of \(\sset_{\leq n}\) so as not to conflict
   with general notation \(\mathbf M_{\leq n}\),}
 
-\begin{proposition}
-  There is a weak equivalence
-  \(\RHom(\cosk_n(X), Y) \simeq \RHom(X, Y)\) whenever \(Y\) is
-  \(n\)--truncated.
+\begin{proposition}\label{prop:cosk-unit-is-connected}
+The unit map \(X\to \cosk_n(X)\) is \(n\)--connected.
 \end{proposition}
 \begin{proof}
   \viktor{Write proof}
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{cor:cosk-is-truncation}
   The functor \(\cosk_n\) together with the unit transformation
   \(\id\to \cosk_{n}\) is an \Th{n} truncation functor.
 \end{corollary}
