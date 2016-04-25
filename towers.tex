@@ -19,11 +19,11 @@
   every \(i>n\). A morphism \(f\colon Y\to X\) of simplicial sets is
   called \emph{\(n\)--truncated} if every homotopy fiber of \(f\)
   is \(n\)--truncated.
-\end{definition}
 
-By convention we call a simplicial set \((-2)\)--truncated
-if and only if it is contractible; a map of simplicial sets is
-\((-2)\)--truncated if it is a weak equivalence.
+  By convention, a simplicial set is \((-2)\)--truncated if and only
+  if it is contractible; a map of simplicial sets is
+  \((-2)\)--truncated if it is a weak equivalence.
+\end{definition}
 
 \begin{lemma}\label{lem:truncated-diagonal}
   A simplicial set \(X\) is \(n\)--truncated if and only if the
@@ -104,22 +104,44 @@ if and only if it is contractible; a map of simplicial sets is
 \end{proof}
 
 \begin{definition}\label{defn:connect_simp}
-  A map \(f\colon X\to Y\) of simplicial sets is called
-  \emph{\(n\)--connected} or an \emph{\(n\)--equivalence} if for every
-  \(n\)--truncated simplicial set \(Z\) the induced morphism
-\[
-f^{*}\colon \RHom(Y, Z) \to \RHom(X, Z)
-\]
-is a weak equivalence.
+  Let \(n\geq 0\). A (nonempty) simplicial set \(X\) is called
+  \emph{\(n\)--connected} if \(\pi_i(X,x) = *\) for every \(i\leq n\)
+  and every \(x\in X_{0}\). A morphism \(f\colon Y\to X\) of
+  simplicial sets is \emph{\(n\)--connected} or an
+  \emph{\(n\)--equivalence} if all its homotopy fibers are
+  \(n\)--connected.
+
+  By convention, a simplicial set is \((-1)\)--connected if and only
+  if it is nonempty and a map is a \((-1)\)--equivalence if it is
+  surjective. Every simplicial set and every map of simplicial sets is
+  \((-2)\)--connected.
 \end{definition}
 
-\begin{proposition}
-  \(n\)--connected is equivalent to isomorphisms/epimorphisms on
-  homotopy groups \viktor{write up properly}
-\end{proposition}
+\begin{lemma}\label{lem:connected-homotopy-grps}
+  Let \(n\geq 0\) and let \(f\colon Y\to X\) be a map of simplicial
+  sets. Then \(f\) is \(n\)--connected if and only if, for every
+  choice of \(y\in Y_{0}\), the induced map
+  \(f_{*}\colon \pi_i(Y,y)\to\pi_{i}(X,f(y))\) is an isomorphism for
+  \(i \leq n\) and an epimorphism for \(i = n+1\) .
+\end{lemma}
 \begin{proof}
-  \viktor{write proof}
+  Without loss of generality we can assuem that \(f\) is a fibration
+  between fibrant simplicial sets. Let \(y\in Y_{0}\) and write
+  \(P = f^{-1}(f(y))\) for the fiber of \(f\) at \(f(y)\). The long
+  exact sequence of \(f\) provides exact sequences
+\[
+  \pi_{i+1}(P,y) \to \pi_{i+1}(Y, y) \to \pi_{i+1}(X,f(y)) \to
+  \pi_{i}(P,y)
+\]
+for \(i\geq 0\) which proves the lemma.
 \end{proof}
+
+\begin{remark}
+  \autoref{lem:connected-homotopy-grps} justifies the terminology
+  \enquote{\(n\)--equivalence} for \(n\)--connected maps: A map
+  \(f\colon Y\to X\) between \(n\)--truncated simplicial sets \(Y\)
+  and \(X\) is a weak equivalence if and only if it is \(n\)--connected.
+\end{remark}
 
 \begin{definition}\label{defn:trunc_functor}
   A functor \(\trunc{n}\colon \sset \to \sset\) with a natural
