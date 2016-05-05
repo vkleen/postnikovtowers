@@ -149,10 +149,12 @@ for \(i\geq 0\) which proves the lemma.
     truncation functor} if
   \begin{itemize}
   \item \(\trunc{n}X\) is \(n\)--truncated for all \(X\in\sset\).
-  \item the map \(\eta_X\colon X\to\trunc{n}(X)\) is \(n\)--connected.
+  \item the map \(\eta_X\colon X\to\trunc{n}X\) is an \(n\)--equivalence.
   \end{itemize}
 \end{definition}
 
+\viktor{Change notation of \(\sset_{\leq n}\) so as not to conflict
+  with general notation \(\mathbf M_{\leq n}\),}
 We will now construct explicit truncation functors for the category
 \(\sset\) of simplicial sets. First, the simplex category
 \(\simplex\), when regarded as the category of nonzero finite
@@ -181,39 +183,127 @@ adjunction
 \]
 
 \begin{lemma}\label{lem:cosk_sk_composition}
-  The counit is a natural isomorphism \(\id \simeq
-  \iota_{n}^{*}(\iota_{n})_{!}\) and consequently induces a natural isomorphism
-  \(\cosk_{n}\sk_{n}\simeq \cosk_{n}\).
+  The counit is a natural isomorphism
+  \(\id \simeq \iota_{n}^{*}(\iota_{n})_{!}\) and the unit is a
+  natural isomorphism
+  \(\iota_{n}^{*}(\iota_n)_{*}\simeq\id\). Consequently, there are
+  induced natural isomorphisms \(\cosk_{n}\sk_{n}\simeq \cosk_{n}\)
+  and \(\sk_n\cosk_n\simeq\sk_n\).
 \end{lemma}
 \begin{proof}
   By \cite[{Exposé}~i, Proposition~5.6]{SGA4-1} the assertion that
-  \(\id\simeq\iota_n^{*}(\iota_n)_{!}\) is equivalent to \(\iota_{n}\)
-  being a fully faithful functor. But this is immediate from the
-  definitions.
+  \(\id\simeq\iota_n^{*}(\iota_n)_{!}\) and
+  \(\iota_{n}^{*}(\iota_n)_{*}\simeq\id\) is equivalent to
+  \(\iota_{n}\) being a fully faithful functor. But this is immediate
+  from the definitions.
 
   For the second part, observe that
 \[
   \cosk_n\sk_n = (\iota_n)_{*}\iota_n^{*}(\iota_{n})_{!}\iota_n^{*}
-  \simeq (\iota_n)_{*}\iota_n^{*} = \cosk_{n}.\qedhere
+  \simeq (\iota_n)_{*}\iota_n^{*} = \cosk_{n}
+\]
+and
+\[
+\sk_n\cosk_n = (\iota_n)_{!}\iota_n^{*}(\iota_n)_{*}\iota_n^{*}\simeq
+(\iota_n)_{!}\iota_n^{*}\simeq \sk_n.\qedhere
 \]
 \end{proof}
 
 We will abuse notation somewhat and simply call the composition
-\(\id\to\cosk_{n}\sk_{n}\simeq\cosk_{n}\) the \emph{unit transformation}.
+\(\id\to\cosk_{n}\sk_{n}\simeq\cosk_{n}\) the \emph{unit
+  transformation} and the composition
+\(\sk_{n}\simeq\sk_n\cosk_n\to\id\) the \emph{counit transformation}.
+
+\begin{lemma}\label{lem:sk-comp}
+  If \(i > n\), then there is a natural isomorphism
+  \(\sk_n\sk_i\isom \sk_n\).
+\end{lemma}
+\begin{proof}
+We have a commutative diagram of functors
+\[
+  \begin{tikzcd}[column sep=1em]
+    {} & \simplex_{\leq i} \arrow[rd, "\iota_i"] & {} \\
+    \simplex_{\leq n} \arrow[ru, "\iota_n^i"] \arrow[rr, "\iota_n"'] & & \simplex
+  \end{tikzcd}
+\]
+wich induces a commutative diagram
+\[
+  \begin{tikzcd}[column sep=1em]
+    {} & \sset_{\leq i} \arrow[dl, "(\iota_n^i)^{*}"'] & {} \\
+    \sset_{\leq n} & & \sset \arrow[ul, "\iota_i^{*}"'] \arrow[ll, "\iota_n^{*}"].
+  \end{tikzcd}
+\]
+By \autoref{lem:cosk_sk_composition} we find
+\begin{align*}
+  \sk_n\sk_i &= (\iota_n)_{!}\iota_n^{*}(\iota_i)_{!}\iota_i^{*} \simeq
+               (\iota_n)_{!}(\iota_n^i)^{*}\iota_i^{*}(\iota_i)_{!}\iota_i^{*} \simeq
+  \\
+             &\simeq (\iota_n)_{!}(\iota_{n}^i)^{*}\iota_i^{*}\simeq (\iota_n)_{!}\iota_n^{*} = \sk_{n}.\qedhere
+\end{align*}
+\end{proof}
 
 \begin{proposition}\label{prop:cosk-is-truncated}
-  If \(X\in\sset\) is a Kan complex, then  \(\cosk_n(X)\) is an
+  If \(X\in\sset\) is a Kan complex, then  \(\cosk_n X\) is an
   \(n\)--truncated Kan complex.
 \end{proposition}
 \begin{proof}
-  \viktor{Write proof, induction over \(n\)?}
+To show that \(\cosk_n X\) is a Kan complex, we need to show that
+any horn \(\Lambda^k_i\to\cosk_n X\) extends to a simplex
+\(\Delta^k\to\cosk_n X\) in \(\cosk_n X\). By adjunction, this is
+equivalent to showing that in any diagram
+\[
+  \begin{tikzcd}
+    \sk_n \Lambda^k_i \arrow[r, "h"] \arrow[d, into] & X \\
+    \sk_n \Delta^k \arrow[ur, dashed]
+  \end{tikzcd}
+\]
+a dashed arrow making the diagram commute exists. Now, if \(n<k-1\),
+then the horn inclusion \(\Lambda^k_i\into \Delta^k\) induces an
+isomorphism on \(\sk_n\), so the required extension exists trivially.
+
+If \(n \geq k-1\), then the counit is an isomorphism
+\(\sk_{k-1}\Lambda^k_i\isom \Lambda^k_i\) and by fibrancy of \(X\)
+there is an extension of \(h\) to a simplex \(\Delta^{k}\to
+X\). Naturality of the counit transformation yields a commutative
+square
+\[
+  \begin{tikzcd}
+    \sk_n\Lambda^k_i \arrow[r, "{\isom}"] \arrow[d] & \Lambda^k_i
+    \arrow[d, into] \\
+    \sk_n\Delta^k \arrow[r] & \Delta^k
+  \end{tikzcd}
+\]
+which implies that we can take the composite
+\(\sk_n\Delta^k\to\Delta^k\to X\) as the required extension.
+
+To show that \(\cosk_n X\) is \(n\)--truncated, let \(i>n\), choose
+some basepoint \(x\in (\cosk_n X)_{0}\) and let
+\([\alpha]\in\pi_i(\cosk_nX, x)\) be some homotopy class. Because
+\(\sk_{i}\Delta^{i+1}\) is a model for the \(i\)--sphere, we can take
+\(\alpha\) to be a map \(\sk_i\Delta^{i+1}\to\cosk_n X\). To prove
+that \([\alpha]=*\in\pi_i(\cosk_{n}X, x)\), it will then be enough to
+show that in
+\[
+  \begin{tikzcd}
+    \sk_i\Delta^{i+1} \arrow[r, "\alpha"] \arrow[d] & \cosk_nX \\
+    \Delta^{i+1} \arrow[ru, dashed]
+  \end{tikzcd}
+\]
+a dashed map making the diagram commute exists. By adjunction this is
+equivalent to showing that a dashed map in
+\[
+  \begin{tikzcd}
+    \sk_n\sk_i\Delta^{i+1} \arrow[r] \arrow[d] & X \\
+    \sk_n\Delta^{i+1} \arrow[ru, dashed]
+  \end{tikzcd}
+\]
+exists. But by \autoref{lem:sk-comp} there is a natural isomorphism
+\(\sk_n\sk_i\Delta^{i+1}\isom \sk_n\Delta^{i+1}\), which implies that
+such an extension always exists.
 \end{proof}
 
-\viktor{Change notation of \(\sset_{\leq n}\) so as not to conflict
-  with general notation \(\mathbf M_{\leq n}\),}
-
 \begin{proposition}\label{prop:cosk-unit-is-connected}
-The unit map \(X\to \cosk_n(X)\) is \(n\)--connected.
+The unit map \(X\to \cosk_n X\) is \(n\)--connected.
 \end{proposition}
 \begin{proof}
   \viktor{Write proof}
@@ -224,22 +314,8 @@ The unit map \(X\to \cosk_n(X)\) is \(n\)--connected.
   \(\id\to \cosk_{n}\) is an \Th{n} truncation functor.
 \end{corollary}
 
-\begin{corollary}
-  If \(X\) is a Kan complex, the unit map \(X\to\cosk_n(X)\) induces
-  isomorphisms
-\[
-  \pi_{i}(X, x) \isom \pi_{i}(\cosk_n(X), x)
-\]
-for every basepoint \(x\in X_{0}\) and \(i<n\).
-\end{corollary}
-\begin{proof}
-  \viktor{Write proof}
-\end{proof}
-
-\viktor{Prove that \(\cosk_{n}\) are truncation functors. Prove
-  classical homotopy group statements: truncated implies homotopy
-  groups vanish in some degrees; relative truncation functors; long
-  exact sequence; basepoint free definition}
+\viktor{Prove classical homotopy group statements: relative truncation
+  functors; long exact sequence; basepoint free definition}
 
 \section{Truncated and Connected Morphisms}
 Most of the material in this section is due to \cite{mr2522659} and
