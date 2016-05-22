@@ -215,6 +215,34 @@ We will abuse notation somewhat and simply call the composition
   transformation} and the composition
 \(\sk_{n}\simeq\sk_n\cosk_n\to\id\) the \emph{counit transformation}.
 
+\begin{remark}\label{rem:unit-is-unit}
+  In fact, the unit transformation
+  \(\eta\colon \id\to\cosk_n=(\iota_n)_{*}\iota_n^{*}\) is the unit of
+  the adjunction \(\iota_n^{*}\dashv (\iota_n)_{*}\): Writing
+  \(\iota=\iota_n\), the isomorphism
+  \[
+    \hom(\iota_{!}\iota^{*}(X), \iota_{!}\iota^{*}(X)) \to \hom(X,
+    \iota_{*}\iota^{*}\iota_{!}\iota^{*}(X))
+  \]
+  sends the identity map to
+  \[
+    \iota_{*}\Big(\iota^{*}({\id})\circ
+    \unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(X)}\Big)\circ\unit_X^{\iota^{*}\dashv\iota_{*}}.
+  \]
+  Since the isomorphism
+  \(\iota_{*}\iota^{*}(X)\to\iota_{*}\iota^{*}\iota_{!}\iota^{*}(X)\)
+  is given by
+  \(\iota_{*}(\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(X)})\), it
+  follows that the composite
+  \[
+    \eta_{X}\colon X \to \cosk_n\sk_n(X)\isom\cosk_n(X)
+  \]
+  is precisely \(\unit_X^{\iota^{*}\dashv\iota_{*}}\).
+
+Dually, the counit transformation \((\iota_n)_{!}\iota_{n}^{*} = \sk_n
+\to \id\) is the counit of the adjunction \((\iota_{n})_{!}\dashv\iota_{n}^{*}\).
+\end{remark}
+
 \begin{lemma}\label{lem:sk-comp}
   If \(n\leq i\), then there are natural isomorphisms
   \(\sk_n\sk_i\simeq \sk_n \simeq \sk_i\sk_n\).
@@ -333,17 +361,17 @@ is preserved under arbitrary colimits.
     \(K\times\Delta^1\) is \((n+1)\)--skeletal.
   \item The functors \(\hom(\_,X)\) and \(\hom(\_, \cosk_nX)\) agree
     on the full subcategory of \(\sset\) consisting of \(n\)--skeletal
-    simplicial sets, that is, composition with \(\eta\) is a natural
+    simplicial sets, that is, composition with \(\eta_X\) is a natural
     isomorphism
     \[
-      \eta_{*}\colon\hom(K,X)\to\hom(K,\cosk_nX)
+      (\eta_X)_{*}\colon\hom(K,X)\to\hom(K,\cosk_nX)
     \]
-    for \(n\)--skeletal \(K\). Furthermore, this isomorphism preserves
-    pointed maps.
-  \item If \(L\) is an \((n-1)\)--skeletal simplicial set and
-    \(\alpha,\beta\colon L\to X\) are homotopic after composing with
-    \(\eta\colon X\to\cosk_n X\),
-    \ie~\(\eta\circ\alpha\simeq\eta\circ\beta\), then \(\alpha\simeq\beta\).
+    for \(n\)--skeletal \(K\).
+  \item If \(L\) is an \((n-1)\)--skeletal simplicial set, \(X\) is a
+    Kan complex and \(\alpha,\beta\colon L\to X\) are homotopic after
+    composing with \(\eta_X\colon X\to\cosk_n X\),
+    \ie~\(\eta_X\circ\alpha\simeq\eta_X\circ\beta\), then
+    \(\alpha\simeq\beta\).
   \end{enumerate}
 \end{lemma}
 \begin{proof}
@@ -352,10 +380,34 @@ is preserved under arbitrary colimits.
   \begin{enumerate}
   \item Since being \(n\)--skeletal is preserved under colimits and
     every simplicial set is a colimit of standard simplices, we need
-    only consider the case \(K = \Delta^i\). \viktor{triangulate \(\Delta^i\times\Delta^1\)}
+    only consider the case \(K = \Delta^i\). \viktor{triangulate
+      \(\Delta^i\times\Delta^1\)}
   \item Because \(K\) is assumed to be \(n\)--skeletal, the counit
-    \(\varepsilon\colon \sk_nK \to K\) is an isomorphism.
-  \item blub.\qedhere
+    \(\varepsilon\colon \sk_nK \to K\) is an isomorphism. It follows
+    that we have an isomorphism
+    \[
+      \psi\colon \hom(K,X)\to[\varepsilon^{*}]\hom(\sk_nK, X)\to\hom(K,\cosk_nX).
+    \]
+    It remains to check that \(\psi = (\eta_X)_{*}\). Take
+    \(\gamma\colon K\to X\). Then, writing \(\iota = \iota_n\), we
+    find as in \autoref{rem:unit-is-unit} and using the triangle
+    identity
+    \(\iota^{*}(\counit^{\iota_{!}\dashv\iota^{*}}_K) \circ
+    \unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)} = {\id}\), that
+    \begin{align*}
+      \psi(\gamma) &=
+                     \iota_{*}\Big(\iota^{*}(\gamma\circ\varepsilon)\circ\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)}\Big)\circ
+                     \eta_{K} =\\
+                   &=
+                     \cosk_n(\gamma)\circ\iota_{*}(\iota^{*}\counit^{\iota_{!}\dashv\iota^{*}}_K)\circ\iota_{*}(\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)})\circ\eta_{K}
+                     =\\
+                   &= \cosk_n(\gamma)\circ\eta_K =\\
+                   &= \eta_{X}\circ\gamma.
+    \end{align*}
+    The last equation follows from the naturality of \(\eta\).
+  \item Since homotopy of maps \(L\to X\) is determined by maps
+    \(L\times\Delta^1\to X\), this follows directly by combining (i)
+    and (ii).\qedhere
   \end{enumerate}
 \viktor{write proof}
 \end{proof}
