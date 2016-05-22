@@ -322,7 +322,9 @@ such an extension always exists.
 \end{definition}
 
 Note that, by \autoref{lem:sk-comp}, an \(n\)--skeletal simplicial set
-is automatically \(i\)--skeletal for any \(i\leq n\).
+is automatically \(i\)--skeletal for any \(i\leq n\). Also, since
+\(\sk_{n}\) is a left adjoint, the property of being \(n\)--skeletal
+is preserved under arbitrary colimits.
 
 \begin{lemma}\label{lem:skeletal-simp-sets}
   Let \(X\) be any simplicial set and \(n\geq 0\).
@@ -345,9 +347,14 @@ is automatically \(i\)--skeletal for any \(i\leq n\).
   \end{enumerate}
 \end{lemma}
 \begin{proof}
+  Suppose \(X\) is some simplicial set, \(K\) is \(n\)--skeletal
+  and \(L\) is \((n-1)\)--skeletal for some \(n\).
   \begin{enumerate}
-  \item blub.
-  \item blub.
+  \item Since being \(n\)--skeletal is preserved under colimits and
+    every simplicial set is a colimit of standard simplices, we need
+    only consider the case \(K = \Delta^i\). \viktor{triangulate \(\Delta^i\times\Delta^1\)}
+  \item Because \(K\) is assumed to be \(n\)--skeletal, the counit
+    \(\varepsilon\colon \sk_nK \to K\) is an isomorphism.
   \item blub.\qedhere
   \end{enumerate}
 \viktor{write proof}
