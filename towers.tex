@@ -122,7 +122,7 @@
   sets. Then \(f\) is \(n\)--connected if and only if, for every
   choice of \(y\in Y_{0}\), the induced map
   \(f_{*}\colon \pi_i(Y,y)\to\pi_{i}(X,f(y))\) is an isomorphism for
-  \(i \leq n\) and an epimorphism for \(i = n+1\) .
+  \(i \leq n\) and an epimorphism for \(i = n+1\).
 \end{lemma}
 \begin{proof}
   Without loss of generality we can assume that \(f\) is a fibration
@@ -255,7 +255,7 @@ We have a commutative diagram of functors
     \simplex_{\leq n} \arrow[ru, "\iota_n^i"] \arrow[rr, "\iota_n"'] & & \simplex
   \end{tikzcd}
 \]
-wich induces commutative diagrams
+which induces commutative diagrams
 \[
   \begin{tikzcd}[column sep=1em]
     {} & \sset_{\leq i} \arrow[dl, "(\iota_n^i)^{*}"'] & {} \\
@@ -318,7 +318,7 @@ which implies that we can take the composite
 \(\sk_n\Delta^k\to\Delta^k\to X\) as the required extension.
 
 To show that \(\cosk_n X\) is \((n-1)\)--truncated, let \(i\geq n\), choose
-some basepoint \(x\in (\cosk_n X)_{0}\) and let
+some base point \(x\in (\cosk_n X)_{0}\) and let
 \([\alpha]\in\pi_i(\cosk_nX, x)\) be some homotopy class. Because
 \(\sk_{i}\Delta^{i+1}\) is a model for the \(i\)--sphere, we can take
 \(\alpha\) to be a map \(\sk_i\Delta^{i+1}\to\cosk_n X\). To prove
@@ -458,21 +458,61 @@ The unit map \(\eta\colon X\to \cosk_n X\) is an \((n-1)\)--equivalence.
   \(\id\to \cosk_{n}\) is an \Th{(n-1)} truncation functor.\qed
 \end{corollary}
 
-\begin{definition}
-  relative \(\cosk\) as homotopy pullback
+\begin{definition}\label{defn:rel-trunc-functor}
+  Let \(f\colon X\to Y\) be some map of simplicial sets and let
+  \((\trunc{n},\eta)\) be an \Th{n} truncation functor in the sense of
+\autoref{defn:trunc_functor}. The associated \emph{relative \Th{n}
+  truncation} of \(f\) is defined as the homotopy pullback
+  \[
+    \trunc{n}(f) = \trunc{n}^Y(X) = Y\times^h_{\trunc{n}Y}\trunc{n}X
+  \]
+along the natural map \(\eta_Y\colon Y\to\trunc{n}Y\).
 \end{definition}
 
-\begin{definition}
-  homotopy sheaf as \(\pi_{n}(X) = \cosk_{1/X}(X^{S^n})\)
+\begin{example}
+  Using \autoref{cor:cosk-is-truncation}, our usual example of a
+  relative truncation in the sense of \autoref{defn:rel-trunc-functor}
+  will be the \emph{relative coskeleton}
+  \[
+    \cosk_n^Y(X) = Y\times^h_{\cosk_n Y}\cosk_nX.
+  \]
+\end{example}
+
+We can formally eliminate the dependence of homotopy groups on a chosen
+base point by taking a relative point of view. Any simplicial set \(X\)
+acquires a \emph{canonical} base point when pulled back to itself. That
+is, the diagonal \(X\to X\times X\) should be regarded as a base point
+of \(X\times X\) considered as a space parameterized by \(X\). As
+usual we can now consider homotopy classes of maps from spheres to
+\(X\times X\) over \(X\).
+
+\begin{definition}\label{defn:homotopy-sheaf}
+  Let \(X\) be any simplicial set. Let \(S^{n}\) be some simplicial
+  model of the \(n\)--sphere and consider the function complex
+  \(X^{S^n}\). It naturally is a space over \(X\) via the map
+  \(X^{S^n}\to X\) induced by evaluation at the canonical base point of
+  \(S^n\). Let \(\tau_0^X\) be a relative \Th{0} truncation functor.
+  Then the \emph{\Th{n} homotopy sheaf} of \(X\) is defined as
+  \[
+    \pi_nX = \tau_0^{X}(X^{S^n}).
+  \]
 \end{definition}
 
 \begin{proposition}
-  Given \(f\colon X\to Y\) and \(g\colon Y\to Z\) we have long exact
-  sequence of homotopy groups...
+  Let \(X\) be some simplicial set and \(x\in X_{0}\). Then the
+  homotopy fiber of \(\pi_nX\) over \(x\) is isomorphic to the usual
+  homotopy group \(\pi_n(X,x)\).
+\end{proposition}
+\begin{proof}
+  \viktor{Prove this.}
+\end{proof}
+
+\begin{proposition}
+  Given \(f\colon X\to Y\) we have a long exact sequence of homotopy groups:
 \end{proposition}
 
 \viktor{Prove classical homotopy group statements: relative truncation
-  functors; long exact sequence; basepoint free definition}
+  functors; long exact sequence; base point free definition}
 
 \section{Truncated and Connected Morphisms}
 Most of the material in this section is due to \cite{mr2522659} and
@@ -790,16 +830,16 @@ Z\to X\) we have a weak equivalence
                                                     &\simeq \RHom_{\mathbf M}(\trunc{n}^{\mathbf M}\LL F(X), Y).
   \end{align*}
   Hence, \(f\) is \(n\)--connected. But since \(f\) is a morphism
-  beteween \(n\)--truncated objects, this is enough to show that \(f\)
+  between \(n\)--truncated objects, this is enough to show that \(f\)
   is a weak equivalence in \(\mathbf M\).
 \end{proof}
 
 \section{Homotopy Sheaves}
 
 Given a space \(X\) in classical homotopy theory one can always choose
-a basepoint \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) =
+a base point \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) =
 [S^{n}, (X,x)]_{*} = \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\)
-the group structure comes from the usual (homotopy) ogroup structure
+the group structure comes from the usual (homotopy) cogroup structure
 on \(S^{n}\): the multiplication is induced by precomposition with the
 \enquote{pinch map} \(S^{n}\to S^{n}\vee S^{n}\).
 
@@ -810,19 +850,19 @@ entirely analogous to the observation that a sheaf of sets on a
 topological space need not have any global section. For example, the
 sheaf of local sections of a torsor on a topological space has a
 global section if and only if the torsor is trivial. One could now
-imagine working with a more general notion of basepoint for objects in
+imagine working with a more general notion of base point for objects in
 an arbitrary model category; for example, for simplicial sheaves there
 certainly exist sections over small enough open sets. But doing so
 amounts to choosing a presentation of a combinatorial model category
 in the sense of \cite{mr1870516}.
 
 In light of these considerations we will attempt to treat all possible
-basepoints at the same time. Let us first spell out the case of
+base points at the same time. Let us first spell out the case of
 simplicial sets. Let \(X\) be some simplicial set (connected or
 not). Choose some simplicial model \(S^{n}\) for the
 \(n\)--sphere. Then we can consider the simplicial set \(X^{S^{n}}\)
 of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical
-basepoint of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to
+base point of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to
 X\). Observe that the homotopy fiber of \(p\) over some point \(x\in
 X\) is precisely \(\RHom_{*}(S^{n}, (X,x))\), the space of
 \emph{pointed} maps from \(S^{n}\) to \((X,x)\). So the set of
@@ -830,7 +870,7 @@ connected components of this homotopy fiber is precisely
 \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the
 canonical map \(p\colon X^{S^{n}}\to X\) captures the
 \(n\textsuperscript{th}\) homotopy groups of \(X\) at all possible
-basepoints. This motivates the definition of homotopy sheaves in any
+base points. This motivates the definition of homotopy sheaves in any
 combinatorial simplicial model category.
 
 \begin{definition}
