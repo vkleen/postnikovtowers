@@ -458,61 +458,71 @@ The unit map \(\eta\colon X\to \cosk_n X\) is an \((n-1)\)--equivalence.
   \(\id\to \cosk_{n}\) is an \Th{(n-1)} truncation functor.\qed
 \end{corollary}
 
-\begin{definition}\label{defn:rel-trunc-functor}
-  Let \(f\colon X\to Y\) be some map of simplicial sets and let
-  \((\trunc{n},\eta)\) be an \Th{n} truncation functor in the sense of
-\autoref{defn:trunc_functor}. The associated \emph{relative \Th{n}
-  truncation} of \(f\) is defined as the homotopy pullback
-  \[
-    \trunc{n}(f) = \trunc{n}^Y(X) = Y\times^h_{\trunc{n}Y}\trunc{n}X
-  \]
-along the natural map \(\eta_Y\colon Y\to\trunc{n}Y\).
-\end{definition}
+% \begin{definition}\label{defn:rel-trunc-functor}
+%   Let \(f\colon X\to Y\) be some map of simplicial sets and let
+%   \((\trunc{n},\eta)\) be an \Th{n} truncation functor in the sense of
+%   \autoref{defn:trunc_functor}. The associated \emph{relative \Th{n}
+%     truncation} of \(f\) is defined as follows. Write \(Y\) as a
+%   homotopy colimit of contractible simplicial sets,~e.\,g.
+%   \[
+%     Y \simeq \hocolim_{i\in I} \{i\}
+%   \]
+%   and observe that \(f\) is weakly equivalent to the map
+%   \[
+%     \hocolim_{i\in I} \hofib_i(f) \to \hocolim_{i\in I} \{i\}.
+%   \]
+%   Then we set
+%   \[
+% \trunc{n}(f) = \trunc{n}^{Y}(X) = \hocolim_{i\in I} \trunc{n}\hofib_i(f).
+%   \]
+% \end{definition}
 
-\begin{example}
-  Using \autoref{cor:cosk-is-truncation}, our usual example of a
-  relative truncation in the sense of \autoref{defn:rel-trunc-functor}
-  will be the \emph{relative coskeleton}
-  \[
-    \cosk_n^Y(X) = Y\times^h_{\cosk_n Y}\cosk_nX.
-  \]
-\end{example}
+% % \begin{example}
+% %   Using \autoref{cor:cosk-is-truncation}, our usual example of a
+% %   relative truncation in the sense of \autoref{defn:rel-trunc-functor}
+% %   will be the \emph{relative coskeleton}
+% %   \[
+% %     \cosk_n^Y(X) = Y\times^h_{\cosk_n Y}\cosk_nX.
+% %   \]
+% % \end{example}
 
-We can formally eliminate the dependence of homotopy groups on a chosen
-base point by taking a relative point of view. Any simplicial set \(X\)
-acquires a \emph{canonical} base point when pulled back to itself. That
-is, the diagonal \(X\to X\times X\) should be regarded as a base point
-of \(X\times X\) considered as a space parameterized by \(X\). As
-usual we can now consider homotopy classes of maps from spheres to
-\(X\times X\) over \(X\).
+% We can formally eliminate the dependence of homotopy groups on a chosen
+% base point by taking a relative point of view. Any simplicial set \(X\)
+% acquires a \emph{canonical} base point when pulled back to itself. That
+% is, the diagonal \(X\to X\times X\) should be regarded as a base point
+% of \(X\times X\) considered as a space parameterized by \(X\). As
+% usual we can now consider homotopy classes of maps from spheres to
+% \(X\times X\) over \(X\).
 
-\begin{definition}\label{defn:homotopy-sheaf}
-  Let \(X\) be any simplicial set. Let \(S^{n}\) be some simplicial
-  model of the \(n\)--sphere and consider the function complex
-  \(X^{S^n}\). It naturally is a space over \(X\) via the map
-  \(X^{S^n}\to X\) induced by evaluation at the canonical base point of
-  \(S^n\). Let \(\tau_0^X\) be a relative \Th{0} truncation functor.
-  Then the \emph{\Th{n} homotopy sheaf} of \(X\) is defined as
-  \[
-    \pi_nX = \tau_0^{X}(X^{S^n}).
-  \]
-\end{definition}
+% \begin{definition}\label{defn:homotopy-sheaf}
+%   Let \(X\) be any simplicial set. Let \(S^{n}\) be some simplicial
+%   model of the \(n\)--sphere and consider the function complex
+%   \(X^{S^n}\). It naturally is a space over \(X\) via the map
+%   \(\ev\colon X^{S^n}\to X\) induced by evaluation at the canonical base point of
+%   \(S^n\). Let \(\trunc{0}^X\) be a relative \Th{0} truncation functor.
+%   Then the \emph{\Th{n} homotopy sheaf} of \(X\) is defined as
+%   \[
+%     \pi_nX = \trunc{0}^{X}(X^{S^n}).
+%   \]
+%   This is a priori a simplicial set equipped with a map \(\pi_n X\to X\) whose
+%   homotopy fibers are \(0\)-truncated.
+% \end{definition}
 
-\begin{proposition}
-  Let \(X\) be some simplicial set and \(x\in X_{0}\). Then the
-  homotopy fiber of \(\pi_nX\) over \(x\) is isomorphic to the usual
-  homotopy group \(\pi_n(X,x)\).
-\end{proposition}
-\begin{proof}
-  \viktor{Prove this.}
-\end{proof}
+% \begin{proposition}
+%   Let \(X\) be some simplicial set and \(x\in X_{0}\). Then the
+%   homotopy fiber of \(\pi_nX\) over \(x\) is isomorphic to the usual
+%   homotopy group \(\pi_n(X,x)\).
+% \end{proposition}
+% \begin{proof}
+% \viktor{write new proof}
+% \end{proof}
 
-\begin{proposition}
-  Given \(f\colon X\to Y\) we have a long exact sequence of homotopy groups:
-\end{proposition}
+% \begin{proposition}
+%   Given any map \(f\colon X\to Y\), we have a long exact sequence of homotopy sheaves:
+% \end{proposition}
 
-\viktor{Prove classical homotopy group statements: relative truncation
-  functors; long exact sequence; base point free definition}
+% \viktor{Prove classical homotopy group statements: relative truncation
+%   functors; long exact sequence; base point free definition}
 
 \section{Truncated and Connected Morphisms}
 Most of the material in this section is due to \cite{mr2522659} and
@@ -747,15 +757,27 @@ called a \emph{homotopical functor}.
   \emph{sheaves on \(X\)}.
 \end{remark}
 
+We can immediately adapt \autoref{defn:trunc_functor} to this more
+general setting:
+
+\begin{definition}\label{defn:gen-trunc-functor}
+  A functor \(\trunc{n}\colon \mathbf M \to \mathbf M\) with a natural
+  transformation \(\eta\colon \id\to\trunc{n}\) is an \emph{\Th{n}
+    truncation functor} for \(\mathbf M\) if
+  \begin{itemize}
+  \item \(\trunc{n}X\) is \(n\)--truncated for all \(X\in\mathbf M\).
+  \item the map \(\eta_X\colon X\to\trunc{n}X\) is an
+    \(n\)--equivalence.
+  \end{itemize}
+\end{definition}
+
 By functorial factorizations,
 \autoref{thm:truncated-model-structure-exists} implies, for every
 \(n\geq -2\), the existence of fibrant replacement functors
 \[
 \trunc{n}\colon \mathbf{M}\to\mathbf{M}|_{\leq n}
 \]
-for \(\mathbf M_{\leq n}\). The functor \(\trunc{n}\) is called the
-\emph{\Th{n} truncation functor} for
-\(\mathbf{M}\). In particular, given any object \(X\in\mathbf{M}\) we
+for \(\mathbf M_{\leq n}\). In particular, given any object \(X\in\mathbf{M}\) we
 get maps
 \[
 X\to \trunc{n} X\to *,
@@ -771,6 +793,12 @@ weak equivalences
 whenever \(Y\) is \(n\)--truncated. Concretely, every morphism
 \(f\colon X\to Y\) factors up to weak equivalence as morphisms \(X\to
 \trunc{n}X\to Y\) if \(Y\) is \(n\)--truncated.
+
+\begin{corollary}\label{cir:trunc-is-trunc}
+  The functors \(\trunc{n}\) as defined above together with
+  the natural maps \(X\to\trunc{n}X\) are \Th{n} truncation functors
+  in the sense of \autoref{defn:gen-trunc-functor}.\qed
+\end{corollary}
 
 \begin{corollary}
   Given \(n \leq m\), for any \(X\in\mathbf M\) there is a natural
@@ -888,8 +916,8 @@ which is a section of the map \(X^{S^{n}}\to X\). Applying
 homotopy sheaves of \(X\) can be considered as pointed objects in
 \(\disc(\mathbf M/X)\). However, to construct a group structure on
 higher homotopy sheaves we will need to assume some exactness
-properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a
-\emph{model topos} in the sense of \cite{rezkhomotopytoposes}.
+properties for \(\mathbf M\). For instance, assuming that \(\mathbf
+M\) is a model topos in the sense of \cite{rezkhomotopytoposes} would suffice.
 
 \begin{definition}\label{defn:model-topos}
   A combinatorial simplicial model category \(\mathbf M\) is a
@@ -916,6 +944,28 @@ properties for \(\mathbf M\); namely, \(\mathbf M\) needs to be a
 Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for
 \(X\) an object in a model topos \(\mathbf M\), the slice category
 \(\mathbf M/X\) is again a model topos.
+
+However, for applications to motivic homotopy theory, the setting of
+model toposes is inconvenient. The \(\AA^1\)--model structure on
+simplicial presheaves on smooth schemes over some base is not a model
+topos. FOr this reason we will need to work in a more general setting
+than model toposes.\viktor{prove \(\AA^1\)--homotopy is not a model
+  topos}
+
+\begin{definition}[{cf.~\cite[Section~7]{gepner-kock}}]
+  A \emph{locally cartesian closed category \(C\)} is a category with
+  finite limits such that for every morphism \(f\colon X\to Y\) in
+  \(C\), the associated pullback functor \(f^{*}\colon C/Y \to C/X\)
+  has a right adjoint \(\Pi_{f}\).
+
+  A \emph{locally cartesian closed model category \(\mathbf M\)} is a
+  locally cartesian closed category equipped with a model structure
+  such that all adjunctions \(f^{*}\dashv \Pi_{f}\) are Quillen
+  adjunctions for the slice model structures.
+\end{definition}
+
+\viktor{add abbreviation for simplicial combinatorial locally
+  cartesian closed model categories.}
 
 \begin{lemma}\label{lem:trunc-presheaves}
   Let \(\mathbf C\) be a simplicial category and let
