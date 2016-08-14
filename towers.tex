@@ -1155,6 +1155,16 @@ is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
   \viktor{write proof.}
 \end{proof}
 
+\begin{proposition}[{cf.~\cite[Prop.~6.2.3.4]{mr2522659} and
+    \cite[Prop.~7.8]{rezkhomotopytoposes}}]\label{prop:cech-complex}
+  Let \(X\) be some object in a model topos. Let \(U_\bullet\) be the simplicial
+  object with \(U_n = X^{n+1}\). Then \(X = U_0\to\hocolim U_\bullet\) is a
+  \((-1)\)--truncation of \(X\).
+\end{proposition}
+\begin{proof}
+  \viktor{write proof}
+\end{proof}
+
 \section{Obstruction Theory}
 
 Using truncation functors we can define Postnikov towers in any
@@ -1198,7 +1208,7 @@ is a weak equivalence.
   \emph{\(n\)--gerbe over \(X\)}.
 
   An \(n\)--gerbe \(E\) equipped with a morphism \(*\to E\) is an
-  \emph{Eilenberg--Mac Lane object in degree \(n\)}.
+  \emph{Eilenberg--Mac~Lane object in degree \(n\)}.
 \end{definition}
 
 \begin{example}
@@ -1206,14 +1216,105 @@ is a weak equivalence.
   \(n\)--gerbe over \(\trunc{n-1}X\).
 \end{example}
 
-Given an Eilenberg--Mac Lane object \(E\) in degree
+Given an Eilenberg--Mac~Lane object \(E\) in degree
 \(n\),~\autoref{prop:truncated-homotopy-groups}
 and~\autoref{prop:connected-homotopy-groups} imply that \(E\) has a single
-nontrivial homotopy sheaf \(\pi_n(E)\).
+nontrivial homotopy sheaf \(\pi_n(E)\in\disc(\mathbf M/E)\). If \(n\geq 2\) then
+\(\pi_n(E)\) is always equivalent to the pullback of a sheaf of abelian groups
+\(A\in\disc(\mathbf M)\)\viktor{Prove this.
+  insert~\cite[Lemma~7.2.1.13]{mr2522659} maybe?}. However, this need not be the
+case for \(n\leq 1\).
 
-\viktor{construct \(K(A,n)\)}
+Given a group object \(G\) in a model topos \(\mathbf M\), there
+always is a \emph{delooping} \(\deloop{G}\in\mathbf M\). This is a naturally pointed
+and connected object of \(\mathbf M\) such that \(\Omega\deloop{G} \simeq
+G\). It can be constructed as follows. The group object
+\(G\) determines a simplicial object
+\[
+  \actgrp{*}{G} = \begin{tikzcd}
+    \cdots \arrow[r, shift left=2.4ex] \arrow[r, shift left=1.2ex] \arrow[r]
+    \arrow[r, shift left=-1.2ex] \arrow[r, shift left=-2.4ex] & G\times G\times G \arrow[r, shift left=1.8ex] \arrow[r, shift
+    left=.6ex] \arrow[r, shift left=-.6ex] \arrow[r, shift left=-1.8ex] & G\times G \arrow[r, shift left=1.2ex] \arrow[r]
+    \arrow[r, shift left=-1.2ex] & G \arrow[r, shift left=.6ex]
+    \arrow[r, shift left=-.6ex] & *
+  \end{tikzcd}
+\]
+and \(\deloop{G} = \hocolim \actgrp{*}{G}\) is defined to be the
+homotopy colimit of this diagram.\viktor{compute loops of this beast, use
+  descent statement by Rezk}
 
-\viktor{insert~\cite[Lemma~7.2.1.13]{mr2522659} maybe?}
+\begin{proposition}\label{prop:deloop-products}
+  Let \(\mathbf M\) be a model topos. There is a functor \(F\) from the category
+  of group objects in \(\mathbf M\) to \(\mathbf M\) which is compatible with
+  products and such that \(F(G)\simeq\deloop{G}\) for all group objects \(G\) in
+  \(\mathbf M\).
+\end{proposition}
+
+\begin{proof}
+  Choose a presentation for the model topos \(\mathbf M\) as a left exact
+  localization
+  \[
+    \begin{tikzcd}
+      \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex,
+      "L"'] \spshv(\mathbf C).
+    \end{tikzcd}
+  \]
+  Any such presentation allows one to transfer a functor \(F\) as in the
+  proposition from \(\spshv(\mathbf C)\) to \(\mathbf M\). Hence, without loss
+  of generality, we can assume \(\mathbf M = \spshv(\mathbf C)\).
+
+  Given a simplicial presheaf of groups in \(\spshv(\mathbf C)\) the
+  construction \(\actgrp{*}{G}\) yields a bisimplicial presheaf over \(\mathbf
+  C\). Its diagonal \(d(\actgrp{*}{G})\) is weakly equivalent to its homotopy
+  colimit\viktor{find a proper reference}, hence \(d(\actgrp{*}{G})\) is a model
+  for the delooping \(\deloop{G}\) of \(G\). Furthermore, this way of
+  constructing \(\deloop{G}\) is evidently compatible with products\viktor{maybe
+    not so evidently?}; as a functor from the category of simplicial presheaves
+  of groups on \(\mathbf C\) to \(\spshv(\mathbf C)\).
+\end{proof}
+
+An abelian group object \(A\) in \(\mathbf M\) can equivalently be regarded as
+an abelian group object in the category of group objects in \(\mathbf M\). Since
+product preserving functors send abelian group objects to abelian group objects,
+\autoref{prop:deloop-products} implies that \(\deloop{A}\) is again an abelian
+group object in \(\mathbf M\). It follows that deloopings \(\deloop[n]{A}\) of
+all orders \(n\in\NN\) exist.
+
+\begin{definition}
+  Given a sheaf of abelian groups \(A\in\disc(\mathbf M)\) in a model topos
+  \(\mathbf M\) and \(n\in\mathbb N\), the \(n\)--fold delooping
+  \(\deloop[n]{A}\) of \(A\) is the standard Eilenberg--Mac~Lane object \(K(A,n)\).
+
+  Similarly, for a sheaf of groups \(G\in\disc(\mathbf M)\), the delooping
+  \(\deloop{G}\) is the standard Eilenberg--Mac~Lane object \(K(G,1)\).
+\end{definition}
+
+\begin{proposition}\label{prop:uniqueness-em-objects}
+  Let \(E\) be a degree \(n\) Eilenberg--Mac~Lane object in a model topos \(\mathbf M\).
+  Assume that there is a sheaf of groups \(G\in\disc(\mathbf M)\) such that
+  \(\pi_n(E)\) is equivalent to the pullback of \(G\) along the canonical morphism
+  \(E\to *\). Then \(E\simeq K(G,n)\).
+\end{proposition}
+\begin{proof}
+  \viktor{write proof}
+\end{proof}
+\begin{remark}
+  The assumption that \(\pi_n(E)\) be a pullback in
+  \autoref{prop:uniqueness-em-objects} is automatic for \(n\geq
+  2\).\viktor{reference connectedness statements}
+\end{remark}
+
+\begin{proposition}\label{prop:gerbe-classification}
+  Assume \(E\) is an \(n\)--gerbe in a model topos \(\mathbf M\). Then \(E\times
+  E\) equipped with the diagonal \(E\to E\times E\) is a degree \(n\)
+  Eilenberg--Mac-Lane object in \(\mathbf M/E\). If additionally \(\pi_n(E)
+  \simeq f^*G\) for \(f\colon E\to *\) and some sheaf of groups
+  \(G\in\disc(\mathbf M)\), then there is a morphism \(g\colon * \to K(G,n)\)
+  whose homotopy fiber is equivalent to \(E\).
+\end{proposition}
+\begin{proof}
+\viktor{write proof}
+\end{proof}
 
 \begin{theorem}
   Given a map \(f\colon Y\to \trunc{n}X\), there exists a lift \(g\colon Y\to\trunc{n+1}X\) making the diagram
