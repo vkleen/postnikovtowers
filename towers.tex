@@ -1142,14 +1142,17 @@ is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
 \end{proof}
 
 \begin{proposition}\label{prop:truncated-homotopy-groups}
-  If \(X\) is \(n\)--truncated, then \(\pi_iX = *\) for all \(i>n\).
+  If \(X\) is \(n\)--truncated, then \(\pi_iX = *\) for all \(i>n\). Conversely,
+  if \(X\) is \(n\)--truncated and \(\pi_iX = *\) for all \(i>k\) for some
+  \(k\), then \(X\) is \(k\)--truncated as well.
 \end{proposition}
 \begin{proof}
   \viktor{write proof.}
 \end{proof}
 
 \begin{proposition}\label{prop:connected-homotopy-groups}
-  If \(X\) is \(n\)--connected, then \(\pi_iX = *\) for all \(i\leq n\).
+  Let \(n\geq -1\). An object \(X\) in a model topos is \(n\)--connected if and only if it is
+  \((-1)\)--connected and \(\pi_iX = *\) for all \(i\leq n\).
 \end{proposition}
 \begin{proof}
   \viktor{write proof.}
@@ -1299,10 +1302,10 @@ all orders \(n\in\NN\) exist.
 \end{definition}
 
 \begin{proposition}\label{prop:uniqueness-em-objects}
-  Let \(E\) be a degree \(n\) Eilenberg--Mac~Lane object in a model topos \(\mathbf M\).
-  Assume that there is a sheaf of groups \(G\in\disc(\mathbf M)\) such that
-  \(\pi_n(E)\) is equivalent to the pullback of \(G\) along the canonical morphism
-  \(E\to *\). Then there is a base point preserving equivalence \(E\to K(G,n)\).
+  Let \(E\) be a degree \(n\) Eilenberg--Mac~Lane object in a model topos
+  \(\mathbf M\). Assume that there is a sheaf of groups \(G\in\disc(\mathbf M)\)
+  such that \(\pi_n(E)\isom E\times G\). Then there is a base point preserving
+  equivalence \(E\to K(G,n)\).
 \end{proposition}
 \begin{proof}
   For \(n=0\) this is trivial. Let \(n\geq 1\) and assume \(E\) is a degree
@@ -1310,10 +1313,6 @@ all orders \(n\in\NN\) exist.
   factorization lemma of \cite{MR0341469} there is a factorization \(e = p\circ
   i\) with \(p\colon P\to E\) a fibration and \(i\colon *\to P\) right inverse
   to an acyclic fibration \(r\colon P\to *\).
-
-  Since \(p\) is a fibration and \(\mathbf M\) is right proper, the ordinary
-  pullback \(P\times_E *\) is a model for the homotopy pullback \(*\times_E^h *\),
-  the loop space \(\Omega_e E\).
 \end{proof}
 \begin{remark}
   The assumption that \(\pi_n(E)\) be a pullback in
@@ -1324,7 +1323,7 @@ all orders \(n\in\NN\) exist.
 \begin{proposition}\label{prop:gerbe-classification}
   Assume \(E\) is an \(n\)--gerbe in a model topos \(\mathbf M\). Then \(E\times
   E\) equipped with the diagonal \(E\to E\times E\) is a degree \(n\)
-  Eilenberg--Mac-Lane object in \(\mathbf M/E\). If additionally \(\pi_n(E)
+  Eilenberg--Mac~Lane object in \(\mathbf M/E\). If additionally \(\pi_n(E)
   \simeq f^*G\) for \(f\colon E\to *\) and some sheaf of groups
   \(G\in\disc(\mathbf M)\), then there is a morphism \(g\colon * \to K(G,n)\)
   whose homotopy fiber is equivalent to \(E\).
