@@ -424,7 +424,7 @@ colimits.
                                   [\eta_{*}^{-1}(\eta\circ\alpha)] =
                                   [\alpha] \\
     \shortintertext{and}
-    \eta_{*}(\varphi([\beta])) &= \eta_{*}([\eta_{*}^{-1}(\beta)] =
+    \eta_{*}(\varphi([\beta])) &= \eta_{*}([\eta_{*}^{-1}(\beta)]) =
                                  [\eta\circ\eta_{*}^{-1}(\beta)] = [\beta].\qedhere
   \end{align*}
 \end{proof}
@@ -1257,31 +1257,41 @@ that is, it is the simplicial set of base point preserving morphisms \(E\to F\).
 
 For \(n\geq 0 \), let \(\EM_n(\mathbf M)\) be the full simplicial subcategory of
 \(\mathbf M_*\) on the Eilenberg--Mac~Lane objects of degree \(n\). Let
-\(\EM_n(\mathbf M_*)^{cf}\) be the full simplicial subcategory of \(\EM_n(\mathbf
-M_*)\) on those object which are fibrant and cofibrant in \(\mathbf M_*\).
+\(\EM_n(\mathbf M)^{cf}\) be the full simplicial subcategory of \(\EM_n(\mathbf
+M)\) on those object which are fibrant and cofibrant in \(\mathbf M_*\).
 
 Taking homotopy groups and pulling back along the base point inclusion defines
 (simplicial) functors
 \begin{align*}
-  \pi_0\colon&\mathbf M_* \to \set \\
-  \pi_1\colon&\mathbf M_* \to \grp \\
+  \pi_0\colon&\mathbf M_* \to \disc(\mathbf M)_*,\\
+  \pi_1\colon&\mathbf M_* \to \grp(\disc(\mathbf M)), \\
   \shortintertext{and}
-  \pi_n\colon&\mathbf M_* \to \abgrp;\qquad\text{for \(n\geq 2\).}
+  \pi_n\colon&\mathbf M_* \to \abgrp(\disc(\mathbf M));\qquad\text{for \(n\geq 2\).}
 \end{align*}
 Here, the categories \(\set\) of sets, \(\grp\) of groups and \(\abgrp\) of
 abelian groups are considered as simplicial categories with discrete morphism
-complexes. Our next goal will be to show that the homotopy group functors define
+complexes. Our next goal will be to show that the homotopy group functors induce
 equivalences of categories
 \begin{align*}
-  \pi_0\colon&\pi\EM_0(\mathbf M)^{cf}\to \set \\
-  \pi_1\colon&\pi\EM_1(\mathbf M)^{cf}\to \grp \\
+  \pi_0\colon&\hoEM_0(\mathbf M)\to \disc(\mathbf M)_*, \\
+  \pi_1\colon&\hoEM_1(\mathbf M)\to \grp(\disc(\mathbf M)), \\
   \shortintertext{and}
-  \pi_n\colon&\pi\EM_n(\mathbf M)^{cf}\to \abgrp;\qquad\text{for \(n\geq 2\).}
+  \pi_n\colon&\hoEM_n(\mathbf M)\to \abgrp(\disc(\mathbf M));\qquad\text{for \(n\geq 2\).}
 \end{align*}
-Recall that, for a simplicial category \(\mathbf C\), the category \(\pi\mathbf
-C\) has the same objects as \(\mathbf C\) and for \(E,F\in\mathbf C\) one
-defines
-\[\hom_{\pi\mathbf C}(E, F) = \pi_0\Hom_{\mathbf C}(E,F).\]
+Here, \(\hoEM_n(\mathbf M)\) denotes the category with the same objects as
+\(\EM_n(\mathbf M)^{cf}\) but with morphism sets
+\[\hom_{\hoEM_n(\mathbf M)}(X, Y) = \pi_0\Hom_{\mathbf M_*}(X,Y),\]
+that is, simplicial homotopy classes of base point preserving morphisms in
+\(\mathbf M\) between \(X\) and \(Y\).
+
+Note that \(\pi_0\colon \hoEM_0(\mathbf M)\to\disc(\mathbf M)_*\) is evidently
+an equivalence. Furthermore, our construction of \(\deloop{G}\) for
+\(G\in\grp(\mathbf M)\) shows that \(\pi_n\) is essentially surjective for all
+\(n\).
+
+The first ingredient for the rest of the proof is the construction of a loop
+functor \(\Omega\) on \(\mathbf M_*\) that sends \(\EM_n(\mathbf M)\) to
+\(\EM_{n-1}(\mathbf M)\).
 
 \begin{proposition}\label{prop:uniqueness-em-objects}
   Let \(E\) be a degree \(n\) Eilenberg--Mac~Lane object in a model topos
