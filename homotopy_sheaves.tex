@@ -1,0 +1,307 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{Homotopy Sheaves}
+
+Given a space \(X\) in classical homotopy theory one can always choose a base
+point \(x\in X\) and define homotopy groups \(\pi_{n}(X,x) = [S^{n}, (X,x)]_{*}
+= \pi_{0}\RHom_{*}(S^{n}, (X,x))\). For \(n\geq 1\) the group structure comes
+from the usual (homotopy) cogroup structure on \(S^{n}\): the multiplication is
+induced by precomposition with the \enquote{pinch map} \(S^{n}\to S^{n}\vee
+S^{n}\).
+
+The main difficulty in working with homotopy groups in more general homotopy
+theories is that for various purposes restricting one's attention to pointed
+spaces is not good enough. This phenomenon is entirely analogous to the
+observation that a sheaf of sets on a topological space need not have any global
+section. For example, the sheaf of local sections of a torsor on a topological
+space has a global section if and only if the torsor is trivial. One could now
+imagine working with a more general notion of base point for objects in an
+arbitrary model category; for example, for simplicial sheaves there certainly
+exist sections over small enough open sets. Doing so amounts to choosing a
+presentation of a combinatorial model category in the sense of \cite{mr1870516}.
+
+In light of these considerations we will attempt to treat all possible base
+points at the same time. Let us first spell out the case of simplicial sets. Let
+\(X\) be some simplicial set (connected or not). Choose some simplicial model
+\(S^{n}\) for the \(n\)--sphere. Then we can consider the simplicial set
+\(X^{S^{n}}\) of all simplicial maps \(S^{n}\to X\). Evaluation at the canonical
+base point of \(S^{n}\) induces a map \(p\colon X^{S^{n}}\to X\). Observe that
+the homotopy fiber of \(p\) over some point \(x\in X\) is precisely
+\(\RHom_{*}(S^{n}, (X,x))\), the space of \emph{pointed} maps from \(S^{n}\) to
+\((X,x)\). So the set of connected components of this homotopy fiber is
+precisely \(\pi_{n}(X,x)\). In this sense, the \(0\)--truncation of the
+canonical map \(p\colon X^{S^{n}}\to X\) captures the \(n\textsuperscript{th}\)
+homotopy groups of \(X\) at all possible base points. This motivates the
+definition of homotopy sheaves in any combinatorial simplicial model category.
+
+\begin{definition}
+  Let \(\mathbf M\) be a combinatorial simplicial model category and let
+  \(X\in\mathbf M\). Then the \emph{\Th{n} homotopy sheaf} of \(X\) is the
+  homotopy type \(\pi_{n}(X)\coloneqq\trunc{0}^{X}(X^{S^{n}})\in\disc(\mathbf
+  M/X)\).
+\end{definition}
+
+The sheaves \(\pi_{n}(X)\) admit canonical sections. Indeed, the unique map
+\(S^{n}\to *\) induces a map \(X\simeq X^{*}\to X^{S^{n}}\) which is a section
+of the map \(X^{S^{n}}\to X\). Applying \(\trunc{0}^{X}\) yields a section of
+\(\pi_{n}(X)\). Hence, the homotopy sheaves of \(X\) can be considered as
+pointed objects in \(\disc(\mathbf M/X)\). However, to construct a group
+structure on higher homotopy sheaves we will need to assume some exactness
+properties for \(\mathbf M\). For instance, assuming that \(\mathbf M\) is a
+model topos in the sense of \cite{rezkhomotopytoposes} would suffice.
+
+\begin{definition}\label{defn:model-topos}
+  A combinatorial simplicial model category \(\mathbf M\) is a \emph{model
+    topos} if there is a presentation of \(\mathbf M\) as a \emph{left exact}
+  Bousfield localization of a category of simplicial presheaves. That is,
+  \(\mathbf M\) is a model topos if there is a simplicial Quillen
+  adjunction\footnote{Written in the direction of the right adjoint.}
+  \[
+    \begin{mytikzcd}
+      \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex,
+      "L"'] \spshv(\mathbf C)
+    \end{mytikzcd}
+  \]
+  for some simplicial category \(\mathbf C\) and the injective model structure
+  on \(\spshv(\mathbf C)\) such that \(\LL L\) preserves finite homotopy limits
+  and \(\RR i\) is \emph{homotopically fully faithful}, \ie~it induces weak
+  equivalences
+  \[
+    \RHom(X, Y)\simeq\RHom(\RR i(X), \RR i(Y))
+  \]
+  for all \(X,Y\in\mathbf M\).
+\end{definition}
+
+Rezk proves in \cite[Corollary~6.10]{rezkhomotopytoposes} that for \(X\) an
+object in a model topos \(\mathbf M\), the slice category \(\mathbf M/X\) is
+again a model topos.
+
+% However, for applications to motivic homotopy theory, the setting of model
+% toposes is inconvenient. The \(\AA^1\)--model structure on simplicial presheaves
+% on smooth schemes over some base is not a model topos. For this reason we will
+% need to work in a more general setting than model toposes.\viktor{prove
+%   \(\AA^1\)--homotopy is not a model topos}
+
+% \begin{definition}[{cf.~\cite[Section~7]{gepner-kock}}]
+%   A \emph{locally cartesian closed category \(C\)} is a category with finite
+%   limits such that for every morphism \(f\colon X\to Y\) in \(C\), the
+%   associated pullback functor \(f^{*}\colon C/Y \to C/X\) has a right adjoint
+%   \(f_{*}\).
+
+%   A \emph{locally cartesian closed model category \(\mathbf M\)} is a locally
+%   cartesian closed category equipped with a model structure such that the
+%   adjunctions \(f^{*}\dashv f_{*}\) for \(f\) a fibration between fibrant
+%   objects are Quillen adjunctions for the slice model structures.
+% \end{definition}
+
+% \begin{definition}[{cf.~\cite{cisinski2002theories} and
+%     \cite{cisinski2006prefaisceaux}}]
+%   A \emph{Cisinski model structure} on a Grothendieck topos \(\mathbf M\) is a
+%   cofibrantly generated model structure whose cofibrations are precisely the
+%   monomorphisms.
+% \end{definition}
+
+% \begin{proposition}[{cf.~\cite{gepner-kock} and \cite{cisinski2002theories}}]\label{prop:proper-cisinski}
+%   A proper Cisinski model category \(\mathbf M\) is locally cartesian closed.
+% \end{proposition}
+% \begin{proof}
+%   Since \(\mathbf M\) is assumed to be a Grothendieck topos, it is automatically
+%   locally cartesian closed. Hence, it remains to show that, for \(f\colon A\to
+%   B\) a fibration between fibrant objects in \(\mathbf M\), the pullback functor
+%   \(f^*\) is a left Quillen functor. By assumption it preserves cofibrations
+%   because those are exactly the monomorphisms in a Cisinski model structure.
+%   Consequently, we need to check that the pullback of an acyclic cofibration
+%   \(g\colon X\to B\) along \(f\) is a weak equivalence. But this is immediate by
+%   right properness.
+% \end{proof}
+
+% \begin{corollary}
+%   The Morel--Voevodsky \(\AA^1\)--model structure on \(\spshv(\Sm{S})\) for a
+%   base scheme \(S\) is locally cartesian closed, as are all its slices.
+% \end{corollary}
+% \begin{proof}
+%   The \(\AA^1\)--model structure is constructed in~\cite{mv} as a left Bousfield
+%   localization of the Nisnevich--local injective model structure on
+%   \(\spshv(\Sm{S})\). As such, its underlying category is a Grothendieck topos
+%   and its cofibrations are precisely the monomorphisms. Furthermore,~\cite{mv}
+%   proves that it is proper. Hence, \autoref{prop:proper-cisinski} implies that
+%   it is a locally cartesian closed model category, as are all its slices.
+% \end{proof}
+
+\begin{lemma}\label{lem:trunc-presheaves}
+  Let \(\mathbf C\) be a simplicial category and let \(F\in\spshv(\mathbf C)\)
+  be a simplicial presheaf. Then, for every \(c\in\mathbf C\), there is a natural
+  weak equivalence \((\trunc{n}F)(c)\simeq \trunc{n}F(c)\) of simplicial sets.
+\end{lemma}
+\begin{proof}
+  This follows from the fact that homotopy limits in \(\spshv(\mathbf C)\) may
+  be computed pointwise and \autoref{prop:left-exact-preserves-trunc}.
+\end{proof}
+
+\begin{proposition}[{see \cite[Lemma~6.5.1.2]{mr2522659}}]\label{prop:trunc-products}
+  If \(\mathbf M\) is a model topos, then the truncation functors \(\trunc{n}\)
+  preserve finite homotopy products.
+\end{proposition}
+\begin{proof}
+  First, let \(F,G\in\spshv(\mathbf C)\) be simplicial presheaves on some
+  simplicial category \(\mathbf C\) and consider the canonical morphism
+  \[
+    \trunc{n}(F\times G)\to \trunc{n}F\times\trunc{n}G.
+  \]
+  To prove that it is a weak equivalence, it will be enough to check this after
+  evaluating at all \(c\in\mathbf C\). Hence, by \autoref{lem:trunc-presheaves}
+  we have reduced to the case of simplicial sets. There it follows from
+  Whitehead's theorem by computing homotopy groups of both sides.
+
+  Now choose a simplicial Quillen adjunction
+  \[
+    \begin{mytikzcd}
+      \mathbf M \arrow[r, shift right=.7ex, "i"'] & \arrow[l, shift right=.7ex,
+      "L"'] \spshv(\mathbf C)
+    \end{mytikzcd}
+  \]
+  as in \autoref{defn:model-topos} and take \(X, Y\in\mathbf M\). By our
+  previous considerations we have a natural weak equivalence \(\trunc{n}(\RR
+  i(X)\times^{h}\RR i(Y))\simeq \trunc{n}\RR i(X)\times^{h}\trunc{n}\RR i(Y)\).
+  Since \(\RR i\) is homotopically fully faithful the counit of the adjunction
+  \(\LL L\dashv \RR i\) induces a weak equivalence \(\LL L\,\RR i (Z)\simeq Z\)
+  for all \(Z\). Consequently, \autoref{prop:left-exact-preserves-trunc}
+  provides us with weak equivalences
+  \begin{align*}
+    \trunc{n}(X\times^{h} Y) &\simeq \trunc{n}(\LL L\,\RR i(X\times^{h} Y)) \simeq \LL L\trunc{n}(\RR i(X)\times^{h} \RR i(Y)) \simeq \\
+                             &\simeq \LL L(\trunc{n}\RR i(X)\times^{h} \trunc{n}\RR i(Y)) \simeq \\
+                             &\simeq \trunc{n}(\LL L\,\RR i(X)) \times^{h} \trunc{n}(\LL L\,\RR i(Y)) \simeq \\
+                             &\simeq \trunc{n}(X) \times^{h} \trunc{n}(Y)
+  \end{align*}
+  since \(\LL L\) is assumed to preserve finite homotopy limits.
+\end{proof}
+
+\Autoref{prop:trunc-products} allows us to produce a group structure on
+\(\pi_{n}(X)\) for \(n\geq 1\) if \(X\) is an object in a model topos \(\mathbf
+M\): We have the usual (homotopy) cogroup structure on \(S^{n}\) given by the
+pinch map \(S^{n}\to S^{n}\vee S^{n}\). This induces a morphism
+\[
+  X^{S^{n}}\times^{h}_{X} X^{S^{n}} \simeq X^{S^{n}}\times^{h}_{X^{*}} X^{S^{n}}
+  \simeq X^{S^{n}\vee S^{n}} \to X^{S^{n}}.
+\]
+By \autoref{prop:trunc-products} the functor \(\trunc{0}^{X}\) preserves finite
+homotopy products in \(\mathbf M/X\), so we get a morphism
+\[
+  \pi_{n}(X)\times_{X}\pi_{n}(X)\isom
+  \trunc{0}^{X}(X^{S^{n}})\times_{X}\trunc{0}^{X}(X^{S^{n}})\isom
+  \trunc{0}^{X}(X^{S^{n}\vee S^{n}}) \to \trunc{0}^{X}(X^{S^{n}}) \isom
+  \pi_{n}(X)
+\]
+in \(\disc(\mathbf M/X)\). It is then straightforward to check that for \(n\geq
+1\) this gives group objects \(\pi_{n}(X)\) in \(\disc(\mathbf M/X)\), which are
+abelian for \(n\geq 2\).
+
+Given a map \(f\colon X\to Y\) in \(\mathbf M\) we can consider it as an object
+of \(\mathbf M/Y\). As such, \(f\) has homotopy sheaves
+\(\pi_{n}(f)\in\disc((\mathbf M/Y)/f)\). There is an equivalence of categories
+\((\mathbf M/Y)/f\simeq \mathbf M/X\) which turns out to be a simplicial Quillen
+equivalence. Hence, we can consider the homotopy sheaves \(\pi_{n}(f)\) as
+objects of \(\disc(\mathbf M/X)\).
+
+One can give a slightly more concrete description of \(\pi_{n}(f)\) as follows.
+Consider the homotopy fiber product \(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\) along
+the canonical section \(Y\to Y^{S^{n}}\). This is a model for the object
+\(f^{S^{n}}\in \mathbf M/Y\). Hence, along the equivalence \((\mathbf
+M/Y)/f\simeq \mathbf M/X\), we find that
+\[
+  \trunc{0}^{X}(X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y)\to X
+\]
+is a model for the homotopy sheaves \(\pi_{n}(f)\in\disc(\mathbf M/X)\).
+
+\begin{remark}\label{rem:homotopy-group-functoriality}
+  Rezk proves in \cite[Example~6.13]{rezkhomotopytoposes} that any morphism
+  \(f\colon X\to Y\) in a model topos \(\mathbf M\) induces a simplicial Quillen
+  adjunction
+  \[
+    \begin{mytikzcd}
+      \mathbf M/X \arrow[r, shift right=.7ex, "f_{*}"'] & \arrow[l, shift
+      right=.7ex, "f^{*}"'] \mathbf M/Y
+    \end{mytikzcd}
+  \]
+  where the left adjoint \(f^{*}\) is given by homotopy pullback along \(f\) and
+  is left exact. Consequently, \autoref{prop:left-exact-preserves-trunc} shows
+  that \(f^{*}\) commutes with truncation. There is a homotopy commutative
+  diagram
+  \[
+    \begin{mytikzcd}
+      X^{S^{n}} \arrow[r] \arrow[d] & f^{*}Y^{S^{n}} \arrow[r] \arrow[d] & Y^{S^{n}} \arrow[d] \\
+      X \arrow[r, equals] & X \arrow[r, "f"'] & Y
+    \end{mytikzcd}
+  \]
+  and applying \(\trunc{0}^{X}\), we obtain a morphism
+  \[
+    f_{*}\colon \pi_{n}(X)\simeq\trunc{0}^{X}(X^{S^{n}})\longrightarrow
+    \trunc{0}^{X}(f^{*}Y^{S^{n}})\simeq f^{*}\trunc{0}^{Y}(Y^{S^{n}})\simeq
+    f^{*}\pi_{n}(Y).
+  \]
+\end{remark}
+
+\begin{proposition}[{see~\cite[Remark~6.5.1.5]{mr2522659}}]\label{prop:long-exact-sequence}
+  Given maps \(f\colon X\to Y\) and \(g\colon Y\to Z\) in a model topos
+  \(\mathbf M\), there is a long exact sequence
+  \[
+    \cdots \to f^{*}\pi_{n+1}(g) \to \pi_{n}(f) \to \pi_{n}(g\circ f) \to
+    f^{*}\pi_{n}(g) \to \cdots
+  \]
+  of pointed objects in \(\disc(\mathbf M/X)\).
+\end{proposition}
+\begin{proof}
+  We will first construct the relevant maps between homotopy sheaves. First,
+  \(g\) induces a natural map
+  \[
+    g_{*}\colon X^{S^{n}}\times^{h}_{Y^{S^{n}}} Y\to
+    X^{S^{n}}\times^{h}_{Z^{S^{n}}} Z
+  \]
+  and by functoriality of truncation we get at map \(g_{*}\colon
+  \pi_{n}(f)\to\pi_{n}(g\circ f)\). Second, applying
+  \autoref{rem:homotopy-group-functoriality} to the model topos \(\mathbf M/Z\)
+  yields the required morphism \(f_{*}\colon \pi_{n}(g\circ f)\to
+  f^{*}\pi_{n}(g)\). \viktor{finish constructing the connecting homomorphism and
+    prove exactness}
+\end{proof}
+
+\begin{proposition}\label{prop:truncated-homotopy-groups}
+  If \(X\) is \(n\)--truncated, then \(\pi_iX = *\) for all \(i>n\). Conversely,
+  if \(X\) is \(n\)--truncated and \(\pi_iX = *\) for all \(i>k\) for some
+  \(k\), then \(X\) is \(k\)--truncated as well.
+\end{proposition}
+\begin{proof}
+  \viktor{write proof.}
+\end{proof}
+
+\begin{proposition}\label{prop:connected-homotopy-groups}
+  Let \(n\geq -1\). An object \(X\) in a model topos is \(n\)--connected if and
+  only if it is \((-1)\)--connected and \(\pi_iX = *\) for all \(i\leq n\).
+\end{proposition}
+\begin{proof}
+  \viktor{write proof.}
+\end{proof}
+
+\begin{proposition}[{cf.~\cite[Prop.~6.2.3.4]{mr2522659} and
+    \cite[Prop.~7.8]{rezkhomotopytoposes}}]\label{prop:cech-complex}
+  Let \(X\) be some object in a model topos. Let \(U_\bullet\) be the simplicial
+  object with \(U_n = X^{n+1}\). Then \(X = U_0\to\hocolim U_\bullet\) is a
+  \((-1)\)--truncation of \(X\).
+\end{proposition}
+\begin{proof}
+  \viktor{write proof}
+\end{proof}
+
+\begin{proposition}{\viktor{add reference}}
+  In a model topos, if \(g\colon Z\to X\) is \((-1)\)--connected and \(f\colon
+  Y\to X\) is any morphism, then \(f\) is an equivalence if and only if the
+  homotopy pullback \(g^*(f)\colon Y\times_X^h Z\to Z\) is an equivalence.
+\end{proposition}
+\begin{proof}
+  \viktor{write proof}
+\end{proof}
+\end{document}
+
+% Local Variables:
+% tex-main-file: "main.tex"
+% End:

@@ -1,0 +1,498 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+\section{Truncated and Connected Simplicial Sets}
+
+\begin{definition}\label{defn:truncated_simp}
+  A simplicial set \(X\) is called \emph{\(n\)--truncated} for \(n\geq-1\) if
+  \(\pi_{i}(X,x) = *\) for every \(x\in X_{0}\) and every \(i>n\). A morphism
+  \(f\colon Y\to X\) of simplicial sets is called \emph{\(n\)--truncated} if
+  every homotopy fiber of \(f\) is \(n\)--truncated.
+
+  By convention, a simplicial set is \((-2)\)--truncated if and only if it is
+  contractible; a map of simplicial sets is \((-2)\)--truncated if it is a weak
+  equivalence.
+\end{definition}
+
+\begin{lemma}\label{lem:truncated-diagonal}
+  A simplicial set \(X\) is \(n\)--truncated if and only if the diagonal
+  \(\Delta\colon X\to X\times X\) is \((n-1)\)--truncated.
+\end{lemma}
+\begin{proof}
+  Let \(X\) be any connected simplicial set and let \((a,b)\in X\times X\). Let
+  \(P\) be the homotopy fiber of \(\Delta\) at \((a,b)\). Any path from \(a\) to
+  \(b\) in \(X\) induces a homotopy equivalence \(\Omega_{a}X \simeq P \simeq
+  \Omega_{b} X\), hence isomorphisms \(\pi_{i+1}(X)\cong \pi_{i}(P)\). This
+  proves the claim for connected simplicial sets. For the general case, write
+  \(X = \bigsqcup_{j\in I} X_{j}\) as a disjoint union of its connected
+  components and observe that \(X\times X = \bigsqcup_{j,\ell\in I} X_{j}\times
+  X_{\ell}\). Then the homotopy fiber of the diagonal over a point \((a,b)\in
+  X_{j}\times X_{\ell}\) is either empty (if \(j\neq \ell\)) or homotopy
+  equivalent to \(\Omega_{a}X_{j}\) (if \(j = \ell\)). Since \(X\) is
+  \(n\)--truncated if and only if all its connected components are
+  \(n\)--truncated, this reduces the problem to the case of connected simplicial
+  sets, which we have already dealt with.
+\end{proof}
+
+\begin{lemma}\label{lem:relative-truncated-diagonal}
+  A map \(f\colon Y\to X\) of simplicial sets is \(n\)--truncated if and only if
+  the diagonal \(\Delta_{f}\colon Y\to Y\times^{h}_{X} Y\) is
+  \((n-1)\)--truncated.
+\end{lemma}
+\begin{proof}
+  We can assume that \(f\) is a fibration between fibrant simplicial sets. If
+  \(x\in X\) then the homotopy fiber of \(f\) is just the ordinary fiber product
+  \(Y_{x}\coloneqq \{x\}\times_{X} Y\). Observe that \(\Delta_{f}\) is weakly
+  equivalent to the fibration \(Y^{\Delta^{1}}\to Y\times_{X} Y\) and
+  \(Y\times_{X}^{h} Y \simeq Y\times_{X} Y\). Given any \((y, y')\in Y\times_{X}
+  Y\), let \(x = f(y) = f(y')\). Then there is a commutative diagram
+  \[
+    \begin{mytikzcd}
+      \Omega_{y} Y_{x} \arrow[r] \arrow[d] & Y_{x}^{\Delta^{1}} \arrow[r] \arrow[d] & Y^{\Delta^{1}} \arrow[d] \\
+      * \arrow[r, "{(y,y')}"'] & Y_{x}\times Y_{x} \arrow[r] & Y\times_{X} Y
+    \end{mytikzcd}
+  \]
+  in which both small squares are cartesian. It follows that the homotopy fiber
+  of \(\Delta_{f}\) at \((y,y')\) is weakly equivalent to the homotopy fiber of
+  \(\Delta\colon Y_{x}\to Y_{x}\times Y_{x}\). Hence, all homotopy fibers of
+  \(\Delta_{f}\) are \((n-1)\)--truncated if and only if all homotopy fibers of
+  all diagonals \(Y_{x}\to Y_{x}\times Y_{x}\) are. By
+  \autoref{lem:truncated-diagonal} this is the case if and only if all \(Y_{x}\)
+  are \(n\)--truncated, \ie~if and only if the map \(Y\to X\) is
+  \(n\)--truncated.
+\end{proof}
+
+\begin{corollary}\label{cor:truncatedness-makes-sense}
+  A simplicial set \(X\) is \(n\)--truncated if and only if for every simplicial
+  set \(Z\) the derived mapping space \(\RHom(Z, X)\) is \(n\)--truncated. A map
+  \(f\colon X\to Y\) is \(n\)--truncated if and only if for every \(Z\) the map
+  \(f_{*}\colon \RHom(Z, X)\to\RHom(Z, Y)\) is \(n\)--truncated.
+\end{corollary}
+\begin{proof}
+  The proof proceeds by induction on \(n\). By
+  \autoref{lem:relative-truncated-diagonal} a map \(f\colon Y\to X\) is
+  \(n\)--truncated if and only if \(\Delta_{f}\colon Y\to Y\times_{X}^{h} Y\) is
+  \((n-1)\)--truncated. By induction this is the case if and only if
+  \(\RHom(Z,Y)\to \RHom(Z, Y\times_{X}^{h} Y)\) is \((n-1)\)--truncated. Observe
+  that
+  \[
+    \begin{mytikzcd}
+      \RHom(Z,Y) \arrow[r] \arrow[dr] & \RHom(Z, Y\times^{h}_{X} Y) \arrow[d, "\simeq"] \\
+      {} & \RHom(Z, Y)\times_{\RHom(Z, X)}^{h} \RHom(Z,Y)
+    \end{mytikzcd}
+  \]
+  commutes. Hence, \(\Delta_{f_{*}}\) is \((n-1)\)--truncated as well and again
+  by \autoref{lem:relative-truncated-diagonal} this is equivalent to
+  \(f_{*}\colon \RHom(Z, Y)\to\RHom(Z, X)\) being \(n\)--truncated.
+\end{proof}
+
+\begin{definition}\label{defn:connect_simp}
+  Let \(n\geq 0\). A (nonempty) simplicial set \(X\) is called
+  \emph{\(n\)--connected} if \(\pi_i(X,x) = *\) for every \(i\leq n\) and every
+  \(x\in X_{0}\). A morphism \(f\colon Y\to X\) of simplicial sets is
+  \emph{\(n\)--connected} or an \emph{\(n\)--equivalence} if all its homotopy
+  fibers are \(n\)--connected.
+
+  By convention, a simplicial set is \((-1)\)--connected if and only if it is
+  nonempty and a map is a \((-1)\)--equivalence if it is surjective. Every
+  simplicial set and every map of simplicial sets is \((-2)\)--connected.
+\end{definition}
+
+\begin{lemma}\label{lem:connected-homotopy-grps}
+  Let \(n\geq 0\) and let \(f\colon Y\to X\) be a map of simplicial sets. Then
+  \(f\) is \(n\)--connected if and only if, for every choice of \(y\in Y_{0}\),
+  the induced map \(f_{*}\colon \pi_i(Y,y)\to\pi_{i}(X,f(y))\) is an isomorphism
+  for \(i \leq n\) and an epimorphism for \(i = n+1\).
+\end{lemma}
+\begin{proof}
+  Without loss of generality we can assume that \(f\) is a fibration between
+  fibrant simplicial sets. Let \(y\in Y_{0}\) and write \(P = f^{-1}(f(y))\) for
+  the fiber of \(f\) at \(f(y)\). The long exact sequence of \(f\) provides
+  exact sequences
+  \[
+    \pi_{i+1}(P,y) \to \pi_{i+1}(Y, y) \to \pi_{i+1}(X,f(y)) \to \pi_{i}(P,y)
+  \]
+  for \(i\geq 0\) which proves the lemma.
+\end{proof}
+
+\begin{remark}
+  \autoref{lem:connected-homotopy-grps} justifies the terminology
+  \enquote{\(n\)--equivalence} for \(n\)--connected maps: A map \(f\colon Y\to
+  X\) between \(n\)--truncated simplicial sets \(Y\) and \(X\) is a weak
+  equivalence if and only if it is \(n\)--connected.
+\end{remark}
+
+\begin{definition}\label{defn:trunc_functor}
+  A functor \(\trunc{n}\colon \sset \to \sset\) with a natural transformation
+  \(\eta\colon \id\to\trunc{n}\) is an \emph{\Th{n} truncation functor} if
+  \begin{itemize}
+  \item \(\trunc{n}X\) is \(n\)--truncated for all \(X\in\sset\).
+  \item the map \(\eta_X\colon X\to\trunc{n}X\) is an \(n\)--equivalence.
+  \end{itemize}
+\end{definition}
+
+\viktor{Change notation of \(\sset_{\leq n}\) so as not to conflict with general
+  notation \(\mathbf M_{\leq n}\),} We will now construct explicit truncation
+functors for the category \(\sset\) of simplicial sets. First, the simplex
+category \(\simplex\), when regarded as the category of nonzero finite ordinals,
+has a natural filtration by full subcategories
+\[
+  * = \simplex_{\leq 0} \subset \simplex_{\leq 1} \subset\cdots\subset\simplex
+\]
+where \(\simplex_n\) is the category of nonzero finite ordinals less than or
+equal to \(n\). This induces a tower of functors
+\[
+  \sset \to \cdots \to \sset_{\leq 1} \to \sset_{\leq 0} = \set
+\]
+and we write \(\iota_n^*\colon \sset \to \sset_{\leq n}\) for the restriction
+functors.
+
+By general abstract nonsense the functors \(\iota_n^*\) extend to adjunctions
+\[
+  (\iota_n)_! \dashv \iota_n^* \dashv (\iota_n)_*,
+\]
+see e.\,g.~\cite[Theorem~4, p.~59]{sheavesgeometrylogic} or \cite[{Exposé}~i,
+Proposition~5.1]{SGA4-1}. Composing these, we get an adjunction
+\[
+  \sk_n = (\iota_n)_{!}\iota_n^{*} \dashv (\iota_n)_{*}\iota_n^{*} = \cosk_n.
+\]
+
+\begin{lemma}\label{lem:cosk_sk_composition}
+  The counit is a natural isomorphism \(\id \simeq
+  \iota_{n}^{*}(\iota_{n})_{!}\) and the unit is a natural isomorphism
+  \(\iota_{n}^{*}(\iota_n)_{*}\simeq\id\). Consequently, there are induced
+  natural isomorphisms \(\cosk_{n}\sk_{n}\simeq \cosk_{n}\) and
+  \(\sk_n\cosk_n\simeq\sk_n\).
+\end{lemma}
+\begin{proof}
+  By \cite[{Exposé}~i, Proposition~5.6]{SGA4-1} the assertion that
+  \(\id\simeq\iota_n^{*}(\iota_n)_{!}\) and
+  \(\iota_{n}^{*}(\iota_n)_{*}\simeq\id\) is equivalent to \(\iota_{n}\) being a
+  fully faithful functor. But this is immediate from the definitions.
+
+  For the second part, observe that
+  \[
+    \cosk_n\sk_n = (\iota_n)_{*}\iota_n^{*}(\iota_{n})_{!}\iota_n^{*} \simeq
+    (\iota_n)_{*}\iota_n^{*} = \cosk_{n}
+  \]
+  and
+  \[
+    \sk_n\cosk_n = (\iota_n)_{!}\iota_n^{*}(\iota_n)_{*}\iota_n^{*}\simeq
+    (\iota_n)_{!}\iota_n^{*}\simeq \sk_n.\qedhere
+  \]
+\end{proof}
+
+We will abuse notation somewhat and simply call the composition
+\(\id\to\cosk_{n}\sk_{n}\simeq\cosk_{n}\) the \emph{unit transformation} and the
+composition \(\sk_{n}\simeq\sk_n\cosk_n\to\id\) the \emph{counit
+  transformation}.
+
+\begin{remark}\label{rem:unit-is-unit}
+  In fact, the unit transformation \(\eta\colon
+  \id\to\cosk_n=(\iota_n)_{*}\iota_n^{*}\) is the unit of the adjunction
+  \(\iota_n^{*}\dashv (\iota_n)_{*}\): Writing \(\iota=\iota_n\), the
+  isomorphism
+  \[
+    \hom(\iota_{!}\iota^{*}(X), \iota_{!}\iota^{*}(X)) \to \hom(X,
+    \iota_{*}\iota^{*}\iota_{!}\iota^{*}(X))
+  \]
+  sends the identity map to
+  \[
+    \iota_{*}\Big(\iota^{*}({\id})\circ
+    \unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(X)}\Big)\circ\unit_X^{\iota^{*}\dashv\iota_{*}}.
+  \]
+  Since the isomorphism
+  \(\iota_{*}\iota^{*}(X)\to\iota_{*}\iota^{*}\iota_{!}\iota^{*}(X)\) is given
+  by \(\iota_{*}(\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(X)})\), it follows
+  that the composite
+  \[
+    \eta_{X}\colon X \to \cosk_n\sk_n(X)\isom\cosk_n(X)
+  \]
+  is precisely \(\unit_X^{\iota^{*}\dashv\iota_{*}}\).
+
+  Dually, the counit transformation \((\iota_n)_{!}\iota_{n}^{*} = \sk_n \to
+  \id\) is the counit of the adjunction \((\iota_{n})_{!}\dashv\iota_{n}^{*}\).
+\end{remark}
+
+\begin{lemma}\label{lem:sk-comp}
+  If \(n\leq i\), then there are natural isomorphisms \(\sk_n\sk_i\simeq \sk_n
+  \simeq \sk_i\sk_n\).
+\end{lemma}
+\begin{proof}
+  We have a commutative diagram of functors
+  \[
+    \begin{mytikzcd}[column sep=1em]
+      {} & \simplex_{\leq i} \arrow[rd, "\iota_i"] & {} \\
+      \simplex_{\leq n} \arrow[ru, "\iota_n^i"] \arrow[rr, "\iota_n"'] & &
+      \simplex
+    \end{mytikzcd}
+  \]
+  which induces commutative diagrams
+  \[
+    \begin{mytikzcd}[column sep=1em]
+      {} & \sset_{\leq i} \arrow[dl, "(\iota_n^i)^{*}"'] & {} \\
+      \sset_{\leq n} & & \sset \arrow[ul, "\iota_i^{*}"'] \arrow[ll,
+      "\iota_n^{*}"]
+    \end{mytikzcd}\quad\text{and}\quad
+    \begin{mytikzcd}[column sep=1em]
+      {} & \sset_{\leq i} \arrow[dr, "(\iota_i)_{!}"] & {} \\
+      \sset_{\leq n} \arrow[ru, "(\iota_n^i)_{!}"] \arrow[rr, "(\iota_n)_{!}"']
+      & & \sset.
+    \end{mytikzcd}
+  \]
+  By \autoref{lem:cosk_sk_composition} we find
+  \begin{align*}
+    \sk_n\sk_i &= (\iota_n)_{!}\iota_n^{*}(\iota_i)_{!}\iota_i^{*} \simeq
+                 (\iota_n)_{!}(\iota_n^i)^{*}\iota_i^{*}(\iota_i)_{!}\iota_i^{*} \simeq
+    \\
+               &\simeq (\iota_n)_{!}(\iota_{n}^i)^{*}\iota_i^{*}\simeq
+                 (\iota_n)_{!}\iota_n^{*} = \sk_{n} \\
+    \shortintertext{and}
+    \sk_i\sk_n &= (\iota_i)_{!}\iota_i^{*}(\iota_n)_{!}\iota_n^{*}
+                 \simeq
+                 (\iota_i)_{!}\iota_i^{*}(\iota_i)_{!}(\iota_n^i)_{!}\iota_n^{*}
+                 \simeq \\
+               &\simeq (\iota_i)_{!}(\iota_n^i)_{!}\iota_n^{*} \simeq
+                 (\iota_n)_{!}\iota_n^{*} = \sk_n.\qedhere
+  \end{align*}
+\end{proof}
+
+\begin{proposition}\label{prop:cosk-is-truncated}
+  If \(X\in\sset\) is a Kan complex, then \(\cosk_n X\) is an
+  \((n-1)\)--truncated Kan complex.
+\end{proposition}
+\begin{proof}
+  To show that \(\cosk_n X\) is a Kan complex, we need to show that any horn
+  \(\Lambda^k_i\to\cosk_n X\) extends to a simplex \(\Delta^k\to\cosk_n X\) in
+  \(\cosk_n X\). By adjunction, this is equivalent to showing that in any
+  diagram
+  \[
+    \begin{mytikzcd}
+      \sk_n \Lambda^k_i \arrow[r, "h"] \arrow[d, into] & X \\
+      \sk_n \Delta^k \arrow[ur, dashed]
+    \end{mytikzcd}
+  \]
+  a dashed arrow making the diagram commute exists. Now, if \(n<k-1\), then the
+  horn inclusion \(\Lambda^k_i\into \Delta^k\) induces an isomorphism on
+  \(\sk_n\), so the required extension exists trivially.
+
+  If \(n \geq k-1\), then the counit is an isomorphism
+  \(\sk_{k-1}\Lambda^k_i\isom \Lambda^k_i\) and by fibrancy of \(X\) there is an
+  extension of \(h\) to a simplex \(\Delta^{k}\to X\). Naturality of the counit
+  transformation yields a commutative square
+  \[
+    \begin{mytikzcd}
+      \sk_n\Lambda^k_i \arrow[r, "{\isom}"] \arrow[d] & \Lambda^k_i
+      \arrow[d, into] \\
+      \sk_n\Delta^k \arrow[r] & \Delta^k
+    \end{mytikzcd}
+  \]
+  which implies that we can take the composite \(\sk_n\Delta^k\to\Delta^k\to X\)
+  as the required extension.
+
+  To show that \(\cosk_n X\) is \((n-1)\)--truncated, let \(i\geq n\), choose
+  some base point \(x\in (\cosk_n X)_{0}\) and let \([\alpha]\in\pi_i(\cosk_nX,
+  x)\) be some homotopy class. Because \(\sk_{i}\Delta^{i+1}\) is a model for
+  the \(i\)--sphere, we can take \(\alpha\) to be a map
+  \(\sk_i\Delta^{i+1}\to\cosk_n X\). To prove that
+  \([\alpha]=*\in\pi_i(\cosk_{n}X, x)\), it will then be enough to show that in
+  \[
+    \begin{mytikzcd}
+      \sk_i\Delta^{i+1} \arrow[r, "\alpha"] \arrow[d] & \cosk_nX \\
+      \Delta^{i+1} \arrow[ru, dashed]
+    \end{mytikzcd}
+  \]
+  a dashed map making the diagram commute exists. By adjunction this is
+  equivalent to showing that a dashed map in
+  \[
+    \begin{mytikzcd}
+      \sk_n\sk_i\Delta^{i+1} \arrow[r] \arrow[d] & X \\
+      \sk_n\Delta^{i+1} \arrow[ru, dashed]
+    \end{mytikzcd}
+  \]
+  exists. But by \autoref{lem:sk-comp} there is a natural isomorphism
+  \(\sk_n\sk_i\Delta^{i+1}\isom \sk_n\Delta^{i+1}\), which implies that such an
+  extension always exists.
+\end{proof}
+
+\begin{definition}
+  A simplicial set \(X\) is called \(n\)--skeletal if \(X\isom \sk_n X\).
+  Equivalently, by \autoref{lem:sk-comp}, \(X\) is \(n\)--skeletal if and only
+  if it lies in the essential image of \(\sk_{n}\).
+\end{definition}
+
+Note that, by \autoref{lem:sk-comp}, an \(n\)--skeletal simplicial set is
+automatically \(i\)--skeletal for any \(i\leq n\). Also, since \(\sk_{n}\) is a
+left adjoint, the property of being \(n\)--skeletal is preserved under arbitrary
+colimits.
+
+\begin{lemma}\label{lem:skeletal-simp-sets}
+  Let \(X\) be any simplicial set and \(n\geq 0\).
+  \begin{enumerate}
+  \item If \(K\) is an \(n\)--skeletal simplicial set, then \(K\times\Delta^1\)
+    is \((n+1)\)--skeletal.
+  \item The functors \(\hom(\_,X)\) and \(\hom(\_, \cosk_nX)\) agree on the full
+    subcategory of \(\sset\) consisting of \(n\)--skeletal simplicial sets, that
+    is, composition with \(\eta_X\) is a natural isomorphism
+    \[
+      (\eta_X)_{*}\colon\hom(K,X)\to\hom(K,\cosk_nX)
+    \]
+    for \(n\)--skeletal \(K\).
+  \item If \(L\) is an \((n-1)\)--skeletal simplicial set, \(X\) is a Kan
+    complex and \(\alpha,\beta\colon L\to X\) are homotopic after composing with
+    \(\eta_X\colon X\to\cosk_n X\),
+    \ie~\(\eta_X\circ\alpha\simeq\eta_X\circ\beta\), then \(\alpha\simeq\beta\).
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Suppose \(X\) is some simplicial set, \(K\) is \(n\)--skeletal and \(L\) is
+  \((n-1)\)--skeletal for some \(n\).
+  \begin{enumerate}
+  \item Since being \(n\)--skeletal is preserved under colimits and every
+    simplicial set is a colimit of standard simplices, we need only consider the
+    case \(K = \Delta^i\). \viktor{triangulate \(\Delta^i\times\Delta^1\)}
+  \item Because \(K\) is assumed to be \(n\)--skeletal, the counit
+    \(\varepsilon\colon \sk_nK \to K\) is an isomorphism. It follows that we
+    have an isomorphism
+    \[
+      \psi\colon \hom(K,X)\to[\varepsilon^{*}]\hom(\sk_nK,
+      X)\to\hom(K,\cosk_nX).
+    \]
+    It remains to check that \(\psi = (\eta_X)_{*}\). Take \(\gamma\colon K\to
+    X\). Then, writing \(\iota = \iota_n\), we find as in
+    \autoref{rem:unit-is-unit} and using the triangle identity
+    \(\iota^{*}(\counit^{\iota_{!}\dashv\iota^{*}}_K) \circ
+    \unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)} = {\id}\), that
+    \begin{align*}
+      \psi(\gamma) &=
+                     \iota_{*}\Big(\iota^{*}(\gamma\circ\varepsilon)\circ\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)}\Big)\circ
+                     \eta_{K} =\\
+                   &=
+                     \cosk_n(\gamma)\circ\iota_{*}(\iota^{*}\counit^{\iota_{!}\dashv\iota^{*}}_K)\circ\iota_{*}(\unit^{\iota_{!}\dashv\iota^{*}}_{\iota^{*}(K)})\circ\eta_{K}
+                     =\\
+                   &= \cosk_n(\gamma)\circ\eta_K =\\
+                   &= \eta_{X}\circ\gamma.
+    \end{align*}
+    The last equation follows from the naturality of \(\eta\).
+  \item Since homotopy of maps \(L\to X\) is determined by maps
+    \(L\times\Delta^1\to X\), this follows directly by combining (i) and
+    (ii).\qedhere
+  \end{enumerate}
+  \viktor{write proof}
+\end{proof}
+
+
+\begin{proposition}\label{prop:cosk-unit-is-connected}
+  The unit map \(\eta\colon X\to \cosk_n X\) is an \((n-1)\)--equivalence.
+\end{proposition}
+\begin{proof}
+  By \autoref{prop:cosk-is-truncated} we can assume without loss of generality
+  that both \(X\) and \(\cosk_n X\) are Kan complexes. For each \(i\leq n-1\)
+  and \(x\in X_{0} = (\cosk_n X)_0\) we will construct an inverse map
+  \(\varphi\colon \pi_{i}(\cosk_n X, x)\to \pi_i(X,x)\) to \(\eta_{*}\). Because
+  of \(\pi_{n}(\cosk_n X, x) = 0\) and \autoref{lem:connected-homotopy-grps},
+  this will be enough to establish the proposition.
+
+  By \autoref{lem:skeletal-simp-sets}, the unit map \(\eta\colon X\to\cosk_n X\)
+  induces an isomorphism
+  \[
+    \eta_{*}^{-1}\colon\hom(\sk_i\Delta^{i+1},\cosk_n
+    X)\to[{\isom}]\hom(\sk_i\Delta^{i+1}, X)
+  \]
+  which preserves pointed maps. Composing with the map
+  \(\hom_{*}(\sk_i\Delta^{i+1},X)\to\pi_i(X,x)\) which takes pointed homotopy
+  classes, we obtain a map
+  \[
+    \overline\varphi\colon\hom_{*}(\sk_i\Delta^{i+1},\cosk_nX)\to\pi_{i}(X,x).
+  \]
+  Again, by \autoref{lem:skeletal-simp-sets} this map is compatible with pointed
+  homotopy and therefore descends to a map \(\varphi\colon \pi_i(\cosk_nX,
+  x)\to\pi_{i}(X,x)\).
+
+  We compute:
+  \begin{align*}
+    \varphi(\eta_{*}([\alpha])) &= \varphi([\eta\circ\alpha]) =
+                                  [\eta_{*}^{-1}(\eta\circ\alpha)] =
+                                  [\alpha] \\
+    \shortintertext{and}
+    \eta_{*}(\varphi([\beta])) &= \eta_{*}([\eta_{*}^{-1}(\beta)]) =
+                                 [\eta\circ\eta_{*}^{-1}(\beta)] = [\beta].\qedhere
+  \end{align*}
+\end{proof}
+
+\begin{corollary}\label{cor:cosk-is-truncation}
+  The functor \(\cosk_n\) together with the unit transformation \(\id\to
+  \cosk_{n}\) is an \Th{(n-1)} truncation functor.\qed
+\end{corollary}
+
+% \begin{definition}\label{defn:rel-trunc-functor}
+%   Let \(f\colon X\to Y\) be some map of simplicial sets and let
+%   \((\trunc{n},\eta)\) be an \Th{n} truncation functor in the sense of
+%   \autoref{defn:trunc_functor}. The associated \emph{relative \Th{n}
+%   truncation} of \(f\) is defined as follows. Write \(Y\) as a homotopy
+%   colimit of contractible simplicial sets,~e.\,g.
+%   \[
+%     Y \simeq \hocolim_{i\in I} \{i\}
+%   \]
+%   and observe that \(f\) is weakly equivalent to the map
+%   \[
+%     \hocolim_{i\in I} \hofib_i(f) \to \hocolim_{i\in I} \{i\}.
+%   \]
+%   Then we set
+%   \[
+%     \trunc{n}(f) = \trunc{n}^{Y}(X) = \hocolim_{i\in I} \trunc{n}\hofib_i(f).
+%   \]
+% \end{definition}
+
+% % \begin{example}
+% %   Using \autoref{cor:cosk-is-truncation}, our usual example of a
+% %   relative truncation in the sense of \autoref{defn:rel-trunc-functor}
+% %   will be the \emph{relative coskeleton}
+% %   \[
+% %     \cosk_n^Y(X) = Y\times^h_{\cosk_n Y}\cosk_nX.
+% %   \]
+% % \end{example}
+
+% We can formally eliminate the dependence of homotopy groups on a chosen base
+% point by taking a relative point of view. Any simplicial set \(X\) acquires a
+% \emph{canonical} base point when pulled back to itself. That is, the diagonal
+% \(X\to X\times X\) should be regarded as a base point of \(X\times X\)
+% considered as a space parameterized by \(X\). As usual we can now consider
+% homotopy classes of maps from spheres to \(X\times X\) over \(X\).
+
+% \begin{definition}\label{defn:homotopy-sheaf}
+%   Let \(X\) be any simplicial set. Let \(S^{n}\) be some simplicial model of
+%   the \(n\)--sphere and consider the function complex \(X^{S^n}\). It
+%   naturally is a space over \(X\) via the map \(\ev\colon X^{S^n}\to X\)
+%   induced by evaluation at the canonical base point of \(S^n\). Let
+%   \(\trunc{0}^X\) be a relative \Th{0} truncation functor. Then the
+%   \emph{\Th{n} homotopy sheaf} of \(X\) is defined as
+%   \[
+%     \pi_nX = \trunc{0}^{X}(X^{S^n}).
+%   \]
+%   This is a priori a simplicial set equipped with a map \(\pi_n X\to X\) whose
+%   homotopy fibers are \(0\)-truncated.
+% \end{definition}
+
+% \begin{proposition}
+%   Let \(X\) be some simplicial set and \(x\in X_{0}\). Then the homotopy fiber
+%   of \(\pi_nX\) over \(x\) is isomorphic to the usual homotopy group
+%   \(\pi_n(X,x)\).
+% \end{proposition}
+% \begin{proof}
+%   \viktor{write new proof}
+% \end{proof}
+
+% \begin{proposition}
+%   Given any map \(f\colon X\to Y\), we have a long exact sequence of homotopy
+%   sheaves:
+% \end{proposition}
+
+% \viktor{Prove classical homotopy group statements: relative truncation
+% functors; long exact sequence; base point free definition}
+
+\end{document}
+
+% Local Variables:
+% tex-main-file: "main.tex"
+% End:
