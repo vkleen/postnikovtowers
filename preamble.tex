@@ -14,6 +14,62 @@
 \usetikzlibrary{arrows,decorations.markings,chains,calc,matrix,cd}
 \tikzset{>=cm to}
 
+\usetikzlibrary{external}
+% \tikzexternalize[prefix=tikz/,mode=list and make]
+
+%\url{http://tex.stackexchange.com/q/171931/86}
+\usepackage{environ}
+\makeatletter
+\def\tikzcd@[#1]{%
+  \begin{tikzpicture}[/tikz/commutative diagrams/.cd,every diagram,#1]%
+  \ifx\arrow\tikzcd@arrow%
+    \pgfutil@packageerror{tikz-cd}{Diagrams cannot be nested}{}%
+  \fi%
+  \let\arrow\tikzcd@arrow%
+  \let\ar\tikzcd@arrow%
+  \def\rar{\tikzcd@xar{r}}%
+  \def\lar{\tikzcd@xar{l}}%
+  \def\dar{\tikzcd@xar{d}}%
+  \def\uar{\tikzcd@xar{u}}%
+  \def\urar{\tikzcd@xar{ur}}%
+  \def\ular{\tikzcd@xar{ul}}%
+  \def\drar{\tikzcd@xar{dr}}%
+  \def\dlar{\tikzcd@xar{dl}}%
+  \global\let\tikzcd@savedpaths\pgfutil@empty%
+  \matrix[%
+    /tikz/matrix of \iftikzcd@mathmode math \fi nodes,%
+    /tikz/every cell/.append code={\tikzcdset{every cell}},%
+    /tikz/commutative diagrams/.cd,every matrix]%
+  \bgroup}
+
+\def\endtikzcd{%
+  \pgfmatrixendrow\egroup%
+  \pgfextra{\global\let\tikzcdmatrixname\tikzlastnode};%
+  \tikzcdset{\the\pgfmatrixcurrentrow-row diagram/.try}%
+  \begingroup%
+    \pgfkeys{% `quotes' library support
+      /handlers/first char syntax/the character "/.initial=\tikzcd@forward@quotes,%
+      /tikz/edge quotes mean={%
+        edge node={node [execute at begin node=\iftikzcd@mathmode$\fi,%$
+                         execute at end node=\iftikzcd@mathmode$\fi,%$
+                         /tikz/commutative diagrams/.cd,every label,##2]{##1}}}}%
+    \let\tikzcd@errmessage\errmessage% improve error messages
+    \def\errmessage##1{\tikzcd@errmessage{##1^^J...^^Jl.\tikzcd@lineno\space%
+        I think the culprit is a tikzcd arrow in cell \tikzcd@currentrow-\tikzcd@currentcolumn}}%
+    \tikzcd@before@paths@hook%
+    \tikzcd@savedpaths%
+  \endgroup%
+  \end{tikzpicture}%
+  \ifnum0=`{}\fi}
+
+\NewEnviron{mytikzcd}[1][]{%
+  \def\@temp{\tikzcd@[#1]\BODY}%
+  \expandafter\@temp\endtikzcd
+}
+\makeatother
+
+\def\temp{&} \catcode`&=\active \let&=\temp
+
 \usepackage[lining]{libertine}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
