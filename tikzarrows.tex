@@ -60,9 +60,9 @@
   opim/.default=0.5
 }
 
-\newcommand*\@tikzto[2]{\mathrel{\begin{tikzpicture}[baseline]%
+\newcommand*\@tikzto[2]{\begin{tikzpicture}[baseline]%
       \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
-    \end{tikzpicture}}}
+    \end{tikzpicture}}
 
 \newcommand*\@tikzcto[2]{\mathrel{\begin{tikzpicture}[baseline]%
       \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (0.8em,.55ex);%
@@ -84,21 +84,53 @@
       \draw[into,opim,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
     \end{tikzpicture}}}
 
-\newcommand*\@tikzmapsto[2]{\mathrel{\begin{tikzpicture}[baseline]%
+\newcommand*\@tikzmapsto[2]{\begin{tikzpicture}[baseline]%
       \draw[mapsto,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
-    \end{tikzpicture}}}
+    \end{tikzpicture}}
 
 \newcommand*\@tikziso[4]{\mathrel{\begin{tikzpicture}[baseline]%
       \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- node[iso,pos=0.47,inner sep=#4]{$#3\sim$} (1.6em,.55ex);%
     \end{tikzpicture}}}
 
-\newcommand*\tikzto{\mathchoice{\@tikzto{1.0}{1}}{\@tikzto{1.0}{1}}{\@tikzcto{0.8}{0.9}}{\@tikzcto{0.6}{0.75}}}
+\newsavebox{\@todisplay}
+\savebox{\@todisplay}{\@tikzto{1.0}{1}}
+
+\newsavebox{\@totext}
+\savebox{\@totext}{\@tikzto{1.0}{1}}
+
+\newsavebox{\@toscript}
+\savebox{\@toscript}{\@tikzto{0.8}{0.9}}
+
+\newsavebox{\@toscriptscript}
+\savebox{\@toscriptscript}{\@tikzto{0.8}{0.75}}
+
+\newcommand*\tikzto{\mathrel{\mathchoice{\usebox{\@todisplay}}%
+  {\usebox{\@totext}}%
+  {\usebox{\@toscript}}%
+  {\usebox{\@toscriptscript}}}}
+
+\newsavebox{\@mapstodisplay}
+\savebox{\@mapstodisplay}{\@tikzmapsto{1.0}{1}}
+
+\newsavebox{\@mapstotext}
+\savebox{\@mapstotext}{\@tikzmapsto{1.0}{1}}
+
+\newsavebox{\@mapstoscript}
+\savebox{\@mapstoscript}{\@tikzmapsto{0.8}{0.9}}
+
+\newsavebox{\@mapstoscriptscript}
+\savebox{\@mapstoscriptscript}{\@tikzmapsto{0.8}{0.75}}
+
+\newcommand*\tikzmapsto{\mathrel{\mathchoice{\usebox{\@mapstodisplay}}%
+  {\usebox{\@mapstotext}}%
+  {\usebox{\@mapstoscript}}%
+  {\usebox{\@mapstoscriptscript}}}}
+
 \newcommand*\tikzcto{\mathchoice{\@tikzcto{1.0}{1}}{\@tikzcto{1.0}{1}}{\@tikzcto{0.8}{0.9}}{\@tikzcto{0.6}{0.75}}}
 \newcommand*\tikzonto{\mathchoice{\@tikzonto{1.0}{1}}{\@tikzonto{1.0}{1}}{\@tikzonto{0.8}{0.9}}{\@tikzonto{0.6}{0.75}}}
 \newcommand*\tikzinto{\mathchoice{\@tikzinto{1.0}{1}}{\@tikzinto{1.0}{1}}{\@tikzinto{0.8}{0.9}}{\@tikzinto{0.6}{0.75}}}
 \newcommand*\tikzclim{\mathchoice{\@tikzclim{1.0}{1}}{\@tikzclim{1.0}{1}}{\@tikzclim{0.8}{0.9}}{\@tikzclim{0.6}{0.75}}}
 \newcommand*\tikzopim{\mathchoice{\@tikzopim{1.0}{1}}{\@tikzopim{1.0}{1}}{\@tikzopim{0.8}{0.9}}{\@tikzopim{0.6}{0.75}}}
-\newcommand*\tikzmapsto{\mathchoice{\@tikzmapsto{1.0}{1}}{\@tikzmapsto{1.0}{1}}{\@tikzmapsto{0.8}{0.9}}{\@tikzmapsto{0.6}{0.75}}}
 \newcommand*\tikziso{\mathchoice{\@tikziso{1.0}{1}{\displaystyle}{0pt}}%
   {\@tikziso{1.0}{1}{\textstyle}{0pt}}%
   {\@tikziso{0.8}{0.9}{\scriptstyle}{0pt}}%
