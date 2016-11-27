@@ -163,14 +163,34 @@ that is, simplicial homotopy classes of base point preserving morphisms in
 
 \begin{lemma}
   There is a simplicial functor \(\kanloop{}\colon\mathbf M_*\to\grp(\mathbf M)\)
-  such that there is a natural weak equivalence \(\kanloop{X}\simeq
-  *\times^h_X*\) for all pointed objects \(X\) of \(\mathbf M\). Furthermore,
-  this functor is homotopically fully faithful: the induced map
+  such that there is a natural weak equivalence \(\kanloop{X}\simeq *\times^h_X*\) for all
+  \(0\)--connected pointed objects \(X\) of \(\mathbf M\). Furthermore, this
+  functor is homotopically fully faithful: the induced map
   \[\RHom_{\mathbf M_*}(X, Y)\to\RHom_{\grp(\mathbf M)}(\kanloop{X},\kanloop{Y})\]
   is a weak equivalence of simplicial sets.
 \end{lemma}
 \begin{proof}
-  \viktor{prove this}
+  First, let \(\mathbf M\) be a category of simplicial presheaves, say \(\mathbf
+  M = \spshv(\mathbf C)\) for a simplicial category \(\mathbf C\). Recall
+  from~\cite[Section~V.5]{goerssjardine} that there is simplicial adjunction
+  \[
+    \begin{mytikzcd}
+      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift right=.7ex][swap]{\operatorname{G}} \sset.
+    \end{mytikzcd}
+  \]
+  Furthermore, for reduced simplicial sets \(X\), \ie~if \(X_0 = *\), there is a
+  natural weak equivalence \(\operatorname{G}(X) \simeq *\times^h_X*\) of simplicial sets,
+  cf.~\cite[Corollary~V.5.11]{goerssjardine}. The inclusion of the category
+  \(\sset_0\) of reduced simplicial sets into simplicial sets admits a left
+  adjoint given by \(X \mapsto X/{\sk_0(X)}\). Since \(\wbar\) actually takes values
+  in reduced simplicial sets there is also a simplicial adjunction
+  \[
+    \begin{mytikzcd}
+      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift right=.7ex][swap]{\kanloop{}} \sset_0
+    \end{mytikzcd}
+  \]
+  with \(\kanloop{X} = \operatorname{G}(X/{\sk_0(X)})\).
+  \viktor{finish}
 \end{proof}
 
 \begin{lemma}
