@@ -121,8 +121,8 @@ all orders \(n\in\NN\) exist.
 \end{definition}
 
 The category \(\mathbf M_*\) of pointed objects \(*\to E\) of \(\mathbf M\)
-inherits a simplicial model structure. Given two pointed objects \((E,e)\) and
-\((F,f)\), the simplicial set of morphisms from \(E\) to \(F\) in \(\mathbf
+inherits a simplicial model structure. Given two pointed objects \(E\) and
+\(F\), the simplicial set of morphisms from \(E\) to \(F\) in \(\mathbf
 M_*\) is given by
 \[
   \Hom_{\mathbf M_*}(E,F) = \Hom_{\mathbf M}(E,F) \times_{\Hom_{\mathbf M}(*,
@@ -132,42 +132,65 @@ that is, it is the simplicial set of base point preserving morphisms \(E\to F\).
 
 For \(n\geq 0 \), let \(\EM_n(\mathbf M)\) be the full simplicial subcategory of
 \(\mathbf M_*\) on the Eilenberg--Mac~Lane objects of degree \(n\). Let
-\(\EM_n(\mathbf M)^{cf}\) be the full simplicial subcategory of \(\EM_n(\mathbf
+\(\Cof{\EM_n(\mathbf M)}\) be the full simplicial subcategory of \(\EM_n(\mathbf
 M)\) on those object which are fibrant and cofibrant in \(\mathbf M_*\).
 
-Taking homotopy groups and pulling back along the base point inclusion defines
-(simplicial) functors
+Taking sheaves of homotopy groups and pulling back along the base point inclusion defines
+simplicial functors
 \begin{align*}
   \pi_0\colon&\mathbf M_* \to \disc(\mathbf M)_*,\\
   \pi_1\colon&\mathbf M_* \to \grp(\disc(\mathbf M)), \\
   \shortintertext{and}
-  \pi_n\colon&\mathbf M_* \to \abgrp(\disc(\mathbf M));\qquad\text{for \(n\geq 2\).}
+  \pi_n\colon&\mathbf M_* \to \abgrp(\disc(\mathbf M))\qquad\text{for \(n\geq 2\),}
 \end{align*}
-Here, the categories \(\set\) of sets, \(\grp\) of groups and \(\abgrp\) of
-abelian groups are considered as simplicial categories with discrete morphism
-complexes. Our next goal will be to show that the homotopy group functors induce
-equivalences of categories
-\begin{align*}
-  \pi_0\colon&\hoEM_0(\mathbf M)\to \disc(\mathbf M)_*, \\
-  \pi_1\colon&\hoEM_1(\mathbf M)\to \grp(\disc(\mathbf M)), \\
-  \shortintertext{and}
-  \pi_n\colon&\hoEM_n(\mathbf M)\to \abgrp(\disc(\mathbf M));\qquad\text{for \(n\geq 2\).}
-\end{align*}
-Here, \(\hoEM_n(\mathbf M)\) denotes the category with the same objects as
-\(\EM_n(\mathbf M)^{cf}\) but with morphism sets
+where the target categories are considered as simplicial categories with
+discrete morphism complexes. For later convenience, we will write
+\[G_n(\mathbf M) =
+  \begin{cases}
+    \disc(\mathbf M)_* & \text{for \(n=0\)}\\
+    \grp(\disc(\mathbf M)) & \text{for \(n=1\)}\\
+    \abgrp(\disc(\mathbf M)) & \text{for \(n\geq 2\),}
+  \end{cases}
+\]
+
+Our next goal will be to show that the homotopy group functors induce
+equivalences of categories \(\pi_n\colon\hoEM_n(\mathbf M)\to G_n(\mathbf M)\)
+for all \(n\). Here, \(\hoEM_n(\mathbf M)\) denotes the category with the same
+objects as \(\Cof{\EM_n(\mathbf M)}\) but with morphism sets
 \[\hom_{\hoEM_n(\mathbf M)}(X, Y) = \pi_0\Hom_{\mathbf M_*}(X,Y),\]
 that is, simplicial homotopy classes of base point preserving morphisms in
 \(\mathbf M\) between \(X\) and \(Y\).
 
-Note that \(\pi_0\colon \hoEM_0(\mathbf M)\to\disc(\mathbf M)_*\) is evidently
-an equivalence. Furthermore, our construction of \(\deloop{G}\) for
-\(G\in\grp(\mathbf M)\) shows that \(\pi_n\) is essentially surjective for all
-\(n>1\).
+\begin{lemma}
+  There is a simplicial functor \(\kanloop{}\colon\mathbf M_*\to\grp(\mathbf M)\)
+  such that there is a natural weak equivalence \(\kanloop{X}\simeq
+  *\times^h_X*\) for all pointed objects \(X\) of \(\mathbf M\). Furthermore,
+  this functor is homotopically fully faithful: the induced map
+  \[\RHom_{\mathbf M_*}(X, Y)\to\RHom_{\grp(\mathbf M)}(\kanloop{X},\kanloop{Y})\]
+  is a weak equivalence of simplicial sets.
+\end{lemma}
+\begin{proof}
+  \viktor{prove this}
+\end{proof}
 
 \begin{lemma}
-  There is a simplicial functor \(\kanloop{}\colon\mathbf M_*\to\mathbf M_*\)
-  such that there is a natural weak equivalence \(\kanloop{X}\simeq
-  *\times^h_X*\) for all pointed objects \(X\) of \(\mathbf M\).
+  For all \(n\geq 0\), there is an equivalence \(G_n(\mathbf M)\simeq\grp(G_{n-1}(\mathbf M))\) of
+  categories, hence also of (discrete) simplicial categories.
+\end{lemma}
+\begin{proof}
+  \viktor{Prove this}
+\end{proof}
+
+\begin{lemma}
+  For each \(n\geq 1\), the functor \(\pi_n\colon\EM_n(\mathbf M)\to G_n(\mathbf
+  M)\) factors as
+  \[
+    \begin{mytikzcd}
+      \EM_n(\mathbf M) \arrow[r, "\pi_n"] \arrow[d, "\kanloop{}"'] & G_n(\mathbf M) \\
+      \grp(\EM_{n-1}(\mathbf M))\arrow[r, "\pi_{n-1}"'] & \grp(G_{n-1}(\mathbf
+      M))\arrow[u, "{\simeq}"']
+    \end{mytikzcd}
+  \]
 \end{lemma}
 \begin{proof}
   \viktor{prove this}
