@@ -175,22 +175,23 @@ that is, simplicial homotopy classes of base point preserving morphisms in
   from~\cite[Section~V.5]{goerssjardine} that there is simplicial adjunction
   \[
     \begin{mytikzcd}
-      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift right=.7ex][swap]{\operatorname{G}} \sset.
+      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift
+      right=.7ex][swap]{\operatorname{G}} \sset.
     \end{mytikzcd}
   \]
   Furthermore, for reduced simplicial sets \(X\), \ie~if \(X_0 = *\), there is a
   natural weak equivalence \(\operatorname{G}(X) \simeq *\times^h_X*\) of simplicial sets,
-  cf.~\cite[Corollary~V.5.11]{goerssjardine}. The inclusion of the category
-  \(\sset_0\) of reduced simplicial sets into simplicial sets admits a left
-  adjoint given by \(X \mapsto X/{\sk_0(X)}\). Since \(\wbar\) actually takes values
-  in reduced simplicial sets there is also a simplicial adjunction
+  cf.~\cite[Corollary~V.5.11]{goerssjardine}. Since \(\wbar\) actually takes
+  values in reduced simplicial sets there is also a simplicial adjunction
   \[
     \begin{mytikzcd}
-      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift right=.7ex][swap]{\kanloop{}} \sset_0
+      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift
+      right=.7ex][swap]{\operatorname{G}} \sset_0
     \end{mytikzcd}
   \]
-  with \(\kanloop{X} = \operatorname{G}(X/{\sk_0(X)})\).
-  \viktor{finish}
+  which turns out to be a simplicial Quillen adjunction between appropriate
+  model structures on \(\grp(\sset)\) and \(\sset_0\),
+  cf.~\cite[Proposition~V.6.3]{goerssjardine}. \viktor{finish}
 \end{proof}
 
 \begin{lemma}
