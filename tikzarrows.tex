@@ -47,6 +47,7 @@
   iso/.style={above,sloped,inner sep=0},
   iso'/.style={below,sloped,inner sep=0},
   to/.style={-cm to},
+  from/.style={cm to-},
   onto/.style={-cm double to},
   into/.style={my right hook-cm to},
   mapsto/.style={|-cm to},
@@ -62,6 +63,10 @@
 
 \newcommand*\@tikzto[2]{\begin{tikzpicture}[baseline]%
       \draw[to,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
+    \end{tikzpicture}}
+
+\newcommand*\@tikzfrom[2]{\begin{tikzpicture}[baseline]%
+      \draw[from,line width={#2\pgflinewidth},scale=#1](0,.55ex) -- (1.6em,.55ex);%
     \end{tikzpicture}}
 
 \newcommand*\@tikzcto[2]{\mathrel{\begin{tikzpicture}[baseline]%
@@ -126,6 +131,7 @@
   {\usebox{\@mapstoscript}}%
   {\usebox{\@mapstoscriptscript}}}}
 
+\newcommand*\tikzfrom{\mathrel{\mathchoice{\@tikzfrom{1.0}{1}}{\@tikzfrom{1.0}{1}}{\@tikzfrom{0.8}{0.9}}{\@tikzfrom{0.6}{0.75}}}}
 \newcommand*\tikzcto{\mathchoice{\@tikzcto{1.0}{1}}{\@tikzcto{1.0}{1}}{\@tikzcto{0.8}{0.9}}{\@tikzcto{0.6}{0.75}}}
 \newcommand*\tikzonto{\mathchoice{\@tikzonto{1.0}{1}}{\@tikzonto{1.0}{1}}{\@tikzonto{0.8}{0.9}}{\@tikzonto{0.6}{0.75}}}
 \newcommand*\tikzinto{\mathchoice{\@tikzinto{1.0}{1}}{\@tikzinto{1.0}{1}}{\@tikzinto{0.8}{0.9}}{\@tikzinto{0.6}{0.75}}}
@@ -138,6 +144,7 @@
 \makeatother
 
 \renewcommand*{\to}[1][]{\ifthenelse{\isempty{#1}}{\tikzto}{\xrightarrowb{#1}}}
+\newcommand*{\from}[1][]{\ifthenelse{\isempty{#1}}{\tikzfrom}{\xleftarrowb{#1}}}
 \newcommand*{\cto}{\ensuremath{\tikzcto}}
 \newcommand*{\into}[1][]{\ifthenelse{\isempty{#1}}{\tikzinto}{\xrightarrowb[into]{#1}}}
 \newcommand*{\onto}[1][]{\ifthenelse{\isempty{#1}}{\tikzonto}{\xrightarrowb[onto]{#1}}}

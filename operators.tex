@@ -12,7 +12,9 @@
 
 \undef\hom
 \DeclareMathOperator{\hom}{\textnormal{Hom}}
+\DeclareMathOperator{\aut}{\textnormal{Aut}}
 \DeclareMathOperator{\Hom}{\textnormal{\bfseries Hom}}
+\DeclareMathOperator{\Aut}{\textnormal{\bfseries Aut}}
 \DeclareMathOperator{\RHom}{\mathbb{R}\textnormal{\bfseries Hom}}
 
 \DeclareMathOperator{\spshv}{\textnormal{\textsf{sPShv}}}
@@ -22,6 +24,8 @@
 \DeclareMathOperator{\abgrp}{\textnormal{\textsf{AbGrp}}}
 \DeclareMathOperator{\simplex}{\mathbf{\Delta}}
 \DeclareMathOperator{\wbar}{\overline W}
+\DeclareMathOperator{\sgrp}{\textnormal{\textsf{sGrp}}}
+\DeclareMathOperator{\sgpd}{\textnormal{\textsf{sGpd}}}
 
 
 \newcommand{\Sm}[1]{\operatorname{\textnormal{Sm}}_{#1}}
@@ -38,7 +42,8 @@
 \DeclareMathOperator{\disc}{\textnormal{Disc}}
 \newcommand{\Cof}[1]{{#1}^{cf}}
 
-\newcommand{\deloop}[2][]{\ifthenelse{\isempty{#1}}{\textnormal{\bfseries B}#2}{\textnormal{\bfseries B}^{#1}#2}}
+\newcommand{\Deloop}[2][]{\ifthenelse{\isempty{#1}}{\textnormal{\bfseries B}#2}{\textnormal{\bfseries B}^{#1}#2}}
+\newcommand{\deloop}[2][]{\ifthenelse{\isempty{#1}}{\textnormal{B}#2}{\textnormal{B}^{#1}#2}}
 \newcommand{\actgrp}[2]{#1/\!/#2}
 
 \DeclareMathOperator{\ev}{\textnormal{ev}}

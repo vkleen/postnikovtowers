@@ -13,7 +13,7 @@ and a \emph{convergent tower} in \(\mathbf M\) is a diagram
   X_{\infty}\xrightarrow{\pi} \cdots \to X_{n+1}\to X_{n}\to\cdots\to X_{0}
 \]
 exhibiting \(X_{\infty}\) as the homotopy limit of the tower
-\(\{X_{n}\}_{n\in\NN}\), \ie~such that the morphism
+\({\{X_{n}\}}_{n\in\NN}\), \ie~such that the morphism
 \[
   X_{\infty}\xrightarrow{\pi}\holim_{n\in\NN} X_{n}
 \]
@@ -58,7 +58,7 @@ nontrivial homotopy sheaf \(\pi_n(E)\in\disc(\mathbf M/E)\). If \(n\geq 2\) then
 case for \(n\leq 1\).
 
 Given a group object \(G\) in a model topos \(\mathbf M\), there always is a
-\emph{delooping} \(\deloop{G}\in\mathbf M\). It can be constructed as follows.
+\emph{delooping} \(\Deloop{G}\in\mathbf M\). It can be constructed as follows.
 The group object \(G\) determines a simplicial object
 \[
   \actgrp{*}{G} = \begin{mytikzcd} \cdots \arrow[r, shift left=2.4ex] \arrow[r,
@@ -69,14 +69,14 @@ The group object \(G\) determines a simplicial object
     & G \arrow[r, shift left=.6ex] \arrow[r, shift left=-.6ex] & *
   \end{mytikzcd}
 \]
-and \(\deloop{G} = \hocolim \actgrp{*}{G}\) is defined to be the homotopy
+and \(\Deloop{G} = \hocolim \actgrp{*}{G}\) is defined to be the homotopy
 colimit of this diagram.\viktor{compute loops of this beast, use descent
   statement by Rezk}
 
-\begin{proposition}\label{prop:deloop-products}
+\begin{proposition}\label{prop:Deloop-products}
   Let \(\mathbf M\) be a model topos. There is a functor \(F\) from the category
   of group objects in \(\mathbf M\) to \(\mathbf M\) which is compatible with
-  products and such that \(F(G)\simeq\deloop{G}\) for all group objects \(G\) in
+  products and such that \(F(G)\simeq\Deloop{G}\) for all group objects \(G\) in
   \(\mathbf M\).
 \end{proposition}
 
@@ -97,8 +97,8 @@ colimit of this diagram.\viktor{compute loops of this beast, use descent
   construction \(\actgrp{*}{G}\) yields a bisimplicial presheaf over \(\mathbf
   C\). Its diagonal \(d(\actgrp{*}{G})\) is weakly equivalent to its homotopy
   colimit\viktor{find a proper reference}, hence \(d(\actgrp{*}{G})\) is a model
-  for the delooping \(\deloop{G}\) of \(G\). Furthermore, this way of
-  constructing \(\deloop{G}\) is evidently compatible with products\viktor{maybe
+  for the Delooping \(\Deloop{G}\) of \(G\). Furthermore, this way of
+  constructing \(\Deloop{G}\) is evidently compatible with products\viktor{maybe
     not so evidently?}; as a functor from the category of simplicial presheaves
   of groups on \(\mathbf C\) to \(\spshv(\mathbf C)\).
 \end{proof}
@@ -106,18 +106,18 @@ colimit of this diagram.\viktor{compute loops of this beast, use descent
 An abelian group object \(A\) in \(\mathbf M\) can equivalently be regarded as
 an abelian group object in the category of group objects in \(\mathbf M\). Since
 product preserving functors send abelian group objects to abelian group objects,
-\autoref{prop:deloop-products} implies that \(\deloop{A}\) is again an abelian
-group object in \(\mathbf M\). It follows that deloopings \(\deloop[n]{A}\) of
+\autoref{prop:Deloop-products} implies that \(\Deloop{A}\) is again an abelian
+group object in \(\mathbf M\). It follows that Deloopings \(\Deloop[n]{A}\) of
 all orders \(n\in\NN\) exist.
 
 \begin{definition}
   Given a sheaf of abelian groups \(A\in\disc(\mathbf M)\) in a model topos
-  \(\mathbf M\) and \(n\in\mathbb N\), the \(n\)--fold delooping
-  \(\deloop[n]{A}\) of \(A\) is the standard Eilenberg--Mac~Lane object
+  \(\mathbf M\) and \(n\in\mathbb N\), the \(n\)--fold Delooping
+  \(\Deloop[n]{A}\) of \(A\) is the standard Eilenberg--Mac~Lane object
   \(K(A,n)\).
 
-  Similarly, for a sheaf of groups \(G\in\disc(\mathbf M)\), the delooping
-  \(\deloop{G}\) is the standard Eilenberg--Mac~Lane object \(K(G,1)\).
+  Similarly, for a sheaf of groups \(G\in\disc(\mathbf M)\), the Delooping
+  \(\Deloop{G}\) is the standard Eilenberg--Mac~Lane object \(K(G,1)\).
 \end{definition}
 
 The category \(\mathbf M_*\) of pointed objects \(*\to E\) of \(\mathbf M\)
@@ -138,7 +138,7 @@ M)\) on those object which are fibrant and cofibrant in \(\mathbf M_*\).
 Taking sheaves of homotopy groups and pulling back along the base point inclusion defines
 simplicial functors
 \begin{align*}
-  \pi_0\colon&\mathbf M_* \to \disc(\mathbf M)_*,\\
+  \pi_0\colon&\mathbf M_* \to \disc{(\mathbf M)}_*,\\
   \pi_1\colon&\mathbf M_* \to \grp(\disc(\mathbf M)), \\
   \shortintertext{and}
   \pi_n\colon&\mathbf M_* \to \abgrp(\disc(\mathbf M))\qquad\text{for \(n\geq 2\),}
@@ -147,7 +147,7 @@ where the target categories are considered as simplicial categories with
 discrete morphism complexes. For later convenience, we will write
 \[G_n(\mathbf M) =
   \begin{cases}
-    \disc(\mathbf M)_* & \text{for \(n=0\)}\\
+    \disc{(\mathbf M)}_* & \text{for \(n=0\)}\\
     \grp(\disc(\mathbf M)) & \text{for \(n=1\)}\\
     \abgrp(\disc(\mathbf M)) & \text{for \(n\geq 2\),}
   \end{cases}
@@ -161,60 +161,116 @@ objects as \(\Cof{\EM_n(\mathbf M)}\) but with morphism sets
 that is, simplicial homotopy classes of base point preserving morphisms in
 \(\mathbf M\) between \(X\) and \(Y\).
 
-\begin{lemma}
-  There is a simplicial functor \(\kanloop{}\colon\mathbf M_*\to\grp(\mathbf M)\)
-  such that there is a natural weak equivalence \(\kanloop{X}\simeq *\times^h_X*\) for all
-  \(0\)--connected pointed objects \(X\) of \(\mathbf M\). Furthermore, this
-  functor is homotopically fully faithful: the induced map
-  \[\RHom_{\mathbf M_*}(X, Y)\to\RHom_{\grp(\mathbf M)}(\kanloop{X},\kanloop{Y})\]
-  is a weak equivalence of simplicial sets.
-\end{lemma}
-\begin{proof}
-  First, let \(\mathbf M\) be a category of simplicial presheaves, say \(\mathbf
-  M = \spshv(\mathbf C)\) for a simplicial category \(\mathbf C\). Recall
-  from~\cite[Section~V.5]{goerssjardine} that there is simplicial adjunction
-  \[
-    \begin{mytikzcd}
-      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift
-      right=.7ex][swap]{\operatorname{G}} \sset.
-    \end{mytikzcd}
-  \]
-  Furthermore, for reduced simplicial sets \(X\), \ie~if \(X_0 = *\), there is a
-  natural weak equivalence \(\operatorname{G}(X) \simeq *\times^h_X*\) of simplicial sets,
-  cf.~\cite[Corollary~V.5.11]{goerssjardine}. Since \(\wbar\) actually takes
-  values in reduced simplicial sets there is also a simplicial adjunction
-  \[
-    \begin{mytikzcd}
-      \grp(\sset) \rar[shift right=.7ex][swap]{\wbar} & \lar[shift
-      right=.7ex][swap]{\operatorname{G}} \sset_0
-    \end{mytikzcd}
-  \]
-  which turns out to be a simplicial Quillen adjunction between appropriate
-  model structures on \(\grp(\sset)\) and \(\sset_0\),
-  cf.~\cite[Proposition~V.6.3]{goerssjardine}. \viktor{finish}
-\end{proof}
+First, let \(\mathbf M=\sset\) be the category of simplicial sets and
+\(\sset_0\) the full subcategory of \emph{reduced} simplicial sets. A simplicial
+set \(X\) is called reduced if \(X_0= *\). In~\cite[Section~V]{goerssjardine}
+there is a description of a strict model for the \(\infty\)--group structure on the
+loop space of a reduced simplicial set. Specifically, denoting by \(\sgrp\) the
+category of simplicial groups, there is a functor \(\Gamma\colon
+\sset_0\to\sgrp\) such that \(\Gamma(X)\simeq *\times^h_X *\) for all
+\(X\in\sset_0\). Additionally, \(\Gamma\) preserves \emph{all} weak
+equivalences between reduced simplicial sets;
+see~\cite[Proposition~V.6.3]{goerssjardine}. We will need a generalization of
+this construction to nonreduced simplicial sets.
+
+To this end, let \(\sgpd\) be the category of simplicially enriched groupoids. A
+simplicially enriched functor \(f\colon G\to H\) between \(G,H\in\sgpd\) is a weak
+equivalence if it induces a bijection \(\pi_0 G\to \pi_0 H\) on the path components of
+\(G\) and \(H\) and for every pair of objects \(x,y\in G\) it induces a weak equivalence
+\(\Hom_G(x,y)\to\Hom_H(f(x), f(y))\) of simplicial sets. The category \(\sgpd\)
+admits a model structure with these weak equivalences and there is a Quillen equivalence
+\[
+  \begin{mytikzcd}
+    \sgpd \rar[shift right=.7ex][swap]{\wbar} & \lar[shift
+    right=.7ex][swap]{\operatorname{G}} \sset,
+  \end{mytikzcd}
+\]
+see~\cite[Section~V.7]{goerssjardine}. In fact,
+\cite[Theorem~V.7.8]{goerssjardine} proves the stronger fact that both
+\(\operatorname{G}\) and \(\wbar\) preserve all weak equivalences. Let \((X,x)\)
+be a pointed simplicial set. It follows from the explicit description of
+\(\operatorname{G}(X)\in\sgpd\) in~\cite[Section~V.7]{goerssjardine} that the set
+of objects of \(\operatorname{G}(X)\) coincides with the set \(X_0\) of
+\(0\)--simplices of \(X\). In particular, \(x\in \operatorname{G}(X)\) and we
+have the full simplicially enriched subgroupoid \(\operatorname{G}(X)(x,x)\) of
+\(\operatorname{G}(X)\) on the single object \(x\). The explicit description of
+the functor \({\wbar}\) then shows that the simplicial set
+\(\wbar(\operatorname{G}(X)(x,x))\) is reduced with unique \(0\)--simplex \(x\).
+Consequently, we can apply Kan's loop group functor \(\Gamma\colon \sset_0\to\sgrp\) and
+obtain a simplicial group \(\kanloop{X} \coloneqq \Gamma\wbar(\operatorname{G}(X)(x,x))\).
 
 \begin{lemma}
-  For all \(n\geq 0\), there is an equivalence \(G_n(\mathbf M)\simeq\grp(G_{n-1}(\mathbf M))\) of
+  The construction \(\kanloop{X}\) defines a functor \(\sset_*\to\sgrp\) from
+  pointed simplicial sets to simplicial groups. This functor preserves all pointed weak
+  equivalences between pointed and connected simplicial sets and for each pointed and
+  connected simplicial set \((X,x)\) there is a weak equivalence \(\kanloop{X} \simeq
+  \{x\}\times^h_{X}\{x\}\) which is natural up to homotopy in \(X\).
+\end{lemma}
+\begin{proof}
+  The functoriality of \(\kanloop{}\) is clear. Let \((H, h)\) be a pointed and
+  connected simplicially enriched groupoid and write \(H(h,h)\) for the full
+  simplicially enriched subgroupoid of \(H\) on the single object \(h\).
+  Then the inclusion \(H(h,h)\into H\) is a weak equivalence of simplicially
+  enriched groupoids because \(H\) is connected. Because \(\wbar\) preserves weak
+  equivalences between all simplicial groupoids the map \(\wbar H(h,h)\to \wbar
+  H\) induced by the inclusion is a weak equivalence as well.
+
+  For \((X,x)\) a pointed and connected simplicial
+  set,~\cite[Theorem~V.7.8]{goerssjardine} implies that the adjunction unit \(X
+  \to \wbar \operatorname{G}(X)\) is a weak equivalence. Because \((\operatorname
+  G(X), x)\) is a pointed and connected simplicially enriched groupoid we
+  therefore have a zig-zag of weak equivalences
+  \[
+    X \to \wbar\operatorname{G}(X) \from \wbar(\operatorname{G}(X)(x,x))
+  \]
+  and so we conclude that \(\{x\}\times^h_X\{x\}\simeq
+  \{x\}\times^h_{\wbar(\operatorname{G}(X)(x,x))}\{x\}\). But now the simplicial set
+  \(\wbar(\operatorname{G}(X)(x,x))\) is reduced and
+  so~\cite[Corollary~V.5.11]{goerssjardine} applies to show that
+  \[\kanloop{X} =
+    \Gamma\wbar(\operatorname{G}(X)(x,x))\simeq
+    \{x\}\times^h_{\wbar(\operatorname{G}(X)(x,x))}\{x\}\simeq\{x\}\times^h_X\{x\}.\]
+
+  If \((Y,y)\) is another pointed and connected simplicial set with a pointed
+  weak equivalence \(X\to Y\), then we have a commutative diagram
+  \[
+    \begin{tikzcd}
+      X \dar \rar & \wbar\operatorname{G}(X)\dar & \lar \dar\wbar(\operatorname{G}(X)(x,x)) \\
+      Y \rar & \wbar\operatorname{G}(Y) & \lar\wbar(\operatorname{G}(Y)(y,y))
+    \end{tikzcd}
+  \]
+  of simplicial sets. All horizontal and the two leftmost vertical maps are weak
+  equivalences because both \(\wbar\) and \(\operatorname{G}\) preserve all weak
+  equivalences. It follows that the rightmost map is a weak equivalence as well
+  and because \(\Gamma\) preserves all weak equivalences we conclude that
+  \(\kanloop{X}\to\kanloop{Y}\) is a weak equivalence.
+\end{proof}
+
+\begin{lemma}\label{lem:Gn-equivalence}
+  For all \(n \geq 1\), there is an equivalence \(G_n(\mathbf M) \simeq \grp(G_{n-1}(\mathbf M))\) of
   categories, hence also of (discrete) simplicial categories.
 \end{lemma}
 \begin{proof}
-  \viktor{Prove this}
-\end{proof}
+  For the case \(n=1\) we just need to observe that group objects in
+  \(\disc(\mathbf M)_*\) coincide with group objects in \(\disc(\mathbf
+  M)\).\viktor{Why is that true?} The case \(n>1\) is the Eckmann--Hilton
+  argument.
+\end{psoof}
 
 \begin{lemma}
-  For each \(n\geq 1\), the functor \(\pi_n\colon\EM_n(\mathbf M)\to G_n(\mathbf
-  M)\) factors as
+  For each \(n\geq 1\), the functor \(\pi_n\colon\EM_n(\mathbf M) \to G_n(\mathbf M)\)
+  factors as
   \[
     \begin{mytikzcd}
-      \EM_n(\mathbf M) \arrow[r, "\pi_n"] \arrow[d, "\kanloop{}"'] & G_n(\mathbf M) \\
-      \grp(\EM_{n-1}(\mathbf M))\arrow[r, "\pi_{n-1}"'] & \grp(G_{n-1}(\mathbf
-      M))\arrow[u, "{\simeq}"']
+      \EM_n(\mathbf M) \rar{\pi_n} \dar[swap]{\kanloop{}} & G_n(\mathbf M) \\
+      \grp(\EM_{n-1}(\mathbf M)) \rar[swap]{\pi_{n-1}} & \grp(G_{n-1}(\mathbf M))
+      \uar[swap]{\simeq}
     \end{mytikzcd}
   \]
+  up to natural isomorphism.
 \end{lemma}
 \begin{proof}
-  \viktor{prove this}
+  Because the homotopy group functor \(\pi_{n-1}\) preserves products, it induces a functor \(\grp(\EM_{n-1}(\mathbf M)) \to \grp(G_{n-1}(\mathbf M))\) on group objects. Using \autoref{lem:Gn-equivalence}, we only need to see that \(\pi_{n-1}(\kanloop{X}) \isom \pi_n(X)\) naturally in \(X\in\EM_n(\mathbf M)\). From [previous result\viktor{Fill in the details}] we have a weak equivalence \(\kanloop{X}\simeq \{*\}\times^h_X\{*\}\) which is natural up to homotopy in \(X\). This gives in particular the required natural isomorphism \(\pi_{n-1}(\kanloop{X})\isom\pi_n(X)\).
 \end{proof}
 
 \begin{proposition}\label{prop:uniqueness-em-objects}
@@ -226,7 +282,7 @@ that is, simplicial homotopy classes of base point preserving morphisms in
 \begin{proof}
   For \(n=0\) this is trivial. Let \(n\geq 1\) and assume \(E\) is a degree
   \(n\) Eilenberg--Mac~Lane object with base point \(e\colon *\to E\). By the
-  factorization lemma of \cite{MR0341469} there is a factorization \(e = p\circ
+  factorization lemma of~\cite{MR0341469} there is a factorization \(e = p\circ
   i\) with \(p\colon P\to E\) a fibration and \(i\colon *\to P\) right inverse
   to an acyclic fibration \(r\colon P\to *\).
 \end{proof}
