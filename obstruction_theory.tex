@@ -199,7 +199,7 @@ the functor \({\wbar}\) then shows that the simplicial set
 Consequently, we can apply Kan's loop group functor \(\Gamma\colon \sset_0\to\sgrp\) and
 obtain a simplicial group \(\kanloop{X} \coloneqq \Gamma\wbar(\operatorname{G}(X)(x,x))\).
 
-\begin{lemma}
+\begin{lemma}\label{lem:sset-kanloop}
   The construction \(\kanloop{X}\) defines a functor \(\sset_*\to\sgrp\) from
   pointed simplicial sets to simplicial groups. This functor preserves all pointed weak
   equivalences between pointed and connected simplicial sets and for each pointed and
@@ -272,6 +272,10 @@ obtain a simplicial group \(\kanloop{X} \coloneqq \Gamma\wbar(\operatorname{G}(X
 \begin{proof}
   Because the homotopy group functor \(\pi_{n-1}\) preserves products, it induces a functor \(\grp(\EM_{n-1}(\mathbf M)) \to \grp(G_{n-1}(\mathbf M))\) on group objects. Using \autoref{lem:Gn-equivalence}, we only need to see that \(\pi_{n-1}(\kanloop{X}) \isom \pi_n(X)\) naturally in \(X\in\EM_n(\mathbf M)\). From [previous result\viktor{Fill in the details}] we have a weak equivalence \(\kanloop{X}\simeq \{*\}\times^h_X\{*\}\) which is natural up to homotopy in \(X\). This gives in particular the required natural isomorphism \(\pi_{n-1}(\kanloop{X})\isom\pi_n(X)\).
 \end{proof}
+
+\begin{proposition}\label{prop:em-objects-vs-groups}
+  Let \(\mathbf M\) be a model topos and \(n\geq 0\). Then the \Th{n} homotopy group functor \(\pi_n\colon \EM_n(\mathbf M)\to G_n(\mathbf M)\) induces an equivalence of categories \(\hoEM_n(\mathbf M)\to G_n(\mathbf M)\).
+\end{proposition}
 
 \begin{proposition}\label{prop:uniqueness-em-objects}
   Let \(E\) be a degree \(n\) Eilenberg--Mac~Lane object in a model topos
